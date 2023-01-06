@@ -15,7 +15,7 @@ function Navbar(props: Props) {
             className={_cs(styles.navbar, className)}
         >
             <h2>
-                Flowers
+                This is the navbar
             </h2>
         </nav>
     );
