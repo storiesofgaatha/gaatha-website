@@ -1,0 +1,5 @@
+.footer {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-large) var(--spacing-super-large);
+    color: var(--color-text-on-dark);
+}

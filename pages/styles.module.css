@@ -1,0 +1,42 @@
+.home {
+    .mainContent {
+        display: flex;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        padding: var(--spacing-extra-large);
+        gap: var(--spacing-extra-large);
+
+        .card {
+            display: flex;
+            flex-basis: calc(100% / 3 - var(--spacing-large) * 2);
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: flex-start;
+            min-width: 20rem;
+            max-width: calc(50% - var(--spacing-large));
+            gap: var(--spacing-small);
+
+            @media screen and (max-width: 900px) {
+                flex-basis: 100%;
+                min-width: unset;
+                max-width: unset;
+            }
+
+            .imageContainer {
+                position: relative;
+                height: 16rem;
+
+                .flowerImage {
+                    object-fit: cover;
+                }
+            }
+
+            .description {
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+            }
+        }
+    }
+}

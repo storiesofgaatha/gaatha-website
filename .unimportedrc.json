@@ -1,0 +1,13 @@
+{
+    "entry": ["./pages/**/*.{jsx,tsx,js,ts}"],
+    "extensions": [".ts", ".js", ".tsx", ".jsx"],
+    "ignorePatterns": ["**/node_modules/**", "out/**", ".next/"],
+    "ignoreUnresolved": [],
+    "ignoreUnimported": ["**/*.d.ts"],
+    "ignoreUnused": [],
+    "rootDir": "./src",
+    "aliases": {
+        "components/*": ["./components/*"],
+        "styles/*": ["./styles/*"]
+    }
+}

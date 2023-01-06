@@ -1,0 +1,20 @@
+[
+    {
+        "id": "tulip",
+        "name": "Tulip",
+        "description": "Tulips (Tulipa) are a genus of spring-blooming perennial herbaceous bulbiferous geophytes (having bulbs as storage organs). The flowers are usually large, showy and brightly coloured, generally red, pink, yellow, or white (usually in warm colours). They often have a different coloured blotch at the base of the tepals (petals and sepals, collectively), internally. Because of a degree of variability within the populations, and a long history of cultivation, classification has been complex and controversial. The tulip is a member of the lily family, Liliaceae, along with 14 other genera, where it is most closely related to Amana, Erythronium and Gagea in the tribe Lilieae.",
+        "image": "https://images.pexels.com/photos/53978/tulipa-tulip-flowers-spring-53978.jpeg"
+    },
+    {
+        "id": "agave",
+        "name": "Agave",
+        "description": "Agave (/əˈɡɑːvi/; also UK: /əˈɡeɪvi/;[3] Anglo-Hispanic, also US: /əˈɡɑːveɪ/)[4] is a genus of monocots native to the hot and arid regions of the Americas and the Caribbean,[5] although some Agave species are also native to tropical areas of North America, such as Mexico.[6] The genus is primarily known for its succulent and xerophytic species that typically form large rosettes of strong, fleshy leaves.[7] Agave now includes species formerly placed in a number of other genera, such as Manfreda, ×Mangave, Polianthes and Prochnyanthes.",
+        "image": "https://images.pexels.com/photos/1207978/pexels-photo-1207978.jpeg"
+    },
+    {
+        "id": "orchid",
+        "name": "Orchid",
+        "description": "Orchids are plants that belong to the family Orchidaceae (/ˌɔːrkɪˈdeɪsiːˌiː/),[2] a diverse and widespread group of flowering plants with blooms that are often colourful and fragrant. Along with the Asteraceae, they are one of the two largest families of flowering plants. The Orchidaceae have about 28,000 currently accepted species, distributed in about 763 genera.[3][4] The determination of which family is larger is still under debate, because verified data on the members of such enormous families are continually in flux. Regardless, the number of orchid species is nearly equal to the number of bony fishes, more than twice the number of bird species, and about four times the number of mammal species.",
+        "image": "https://images.pexels.com/photos/1021386/pexels-photo-1021386.jpeg"
+    }
+]
