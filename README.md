@@ -1,3 +1,3 @@
-## base-nextjs-app
+## Gaatha version 2
 
-This is a starter template for Nextjs
+This is the version 2 for Gaatha website

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  next:
+    tty: true
+    build: ./
+    image: gaatha-next
+    command: sh -c 'yarn install && yarn dev'
+    environment:
+      NEXT_APP_NAME: 'Gaatha'
+    volumes:
+      - .:/code
+    ports:
+      - '3020:3020'
