@@ -4,11 +4,16 @@
         gap: var(--spacing-extra-large);
     }
 
+    .logo {
+        display: flex;
+        margin: auto;
+    }
+
     .routes {
         display: flex;
         align-content: center;
         flex-direction: column;
         flex-wrap: wrap;
-        gap: var(--spacing-extra-large);
+        gap: var(--spacing-extra-small);
     }
 }
