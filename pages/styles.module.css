@@ -1,9 +1,14 @@
 .home {
     .mainContent {
-        display: flex;
-        align-content: flex-start;
-        flex-wrap: wrap;
         padding: var(--spacing-extra-large);
+        gap: var(--spacing-extra-large);
+    }
+
+    .routes {
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        flex-wrap: wrap;
         gap: var(--spacing-extra-large);
     }
 }
