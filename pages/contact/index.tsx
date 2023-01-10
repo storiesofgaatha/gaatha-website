@@ -1,4 +1,5 @@
 import Page from 'components/Page';
+import LabelValue from 'components/Page/LabelValue';
 import Link from 'next/link';
 
 import styles from './styles.module.css';
@@ -33,41 +34,89 @@ function Contact() {
             </div>
             <div className={styles.contact}>
                 <div className={styles.contactDetail}>
-                    <p>Address</p>
-                    <p>Kupondole, Jwagal Road</p>
-                    <p>Lalitpur, Province 3, Nepal</p>
+                    <LabelValue
+                        label="Address"
+                        value={(
+                            <>
+                                <p>
+                                    Kupondole, Jwagal Road
+                                </p>
+                                <p>
+                                    Lalitpur, Province 3, Nepal
+                                </p>
+                            </>
+                        )}
+                    />
                 </div>
                 <div className={styles.contactDetail}>
-                    <p>Telephone</p>
-                    <p>+977-1234567890</p>
-                    <p>+01-1234567</p>
+                    <LabelValue
+                        value={(
+                            <>
+                                <p>
+                                    <a href="tel:+977-123456789">
+                                        +977-123456789
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="tel:+01-1234567">
+                                        +1-1234567
+                                    </a>
+                                </p>
+                            </>
+                        )}
+                        label="Telephone"
+                    />
                 </div>
                 <div className={styles.contactDetail}>
-                    <p>Enquiries</p>
-                    <p>studio@storiesofgaatha.com</p>
-                    <p>For business and general enquires</p>
+                    <LabelValue
+                        label="Enquiries"
+                        value={(
+                            <a
+                                target="_blank"
+                                href="mailto:studio@storiesofgaatha.com"
+                                rel="noreferrer noopener"
+                            >
+                                studio@storiesofgaatha.com
+                            </a>
+                        )}
+                    />
                 </div>
                 <div className={styles.contactDetail}>
-                    <p>Jobs</p>
-                    <p>recruit@storiesofgaatha.com</p>
-                    <p>For job opportunities and intership related enquires</p>
+                    <LabelValue
+                        label="Jobs"
+                        value={(
+                            <a
+                                target="_blank"
+                                href="mailto:recruit@storiesofgaatha.com"
+                                rel="noreferrer noopener"
+                            >
+                                recruit@storiesofgaatha.com
+                            </a>
+                        )}
+                    />
                 </div>
                 <div className={styles.contactDetail}>
-                    <p>Social Media</p>
-                    <p>
-                        <Link
-                            href="/"
-                        >
-                            Instagram
-                        </Link>
-                    </p>
-                    <p>
-                        <Link
-                            href="/"
-                        >
-                            LinkedIn
-                        </Link>
-                    </p>
+                    <LabelValue
+                        label="Social Media"
+                        value={(
+                            <>
+                                <p>
+                                    <Link
+                                        href="/"
+                                    >
+                                        Instagram
+                                    </Link>
+                                </p>
+                                <p>
+                                    <Link
+                                        href="/"
+                                    >
+                                        LinkedIn
+                                    </Link>
+                                </p>
+                            </>
+                        )}
+                    />
                 </div>
             </div>
         </Page>
