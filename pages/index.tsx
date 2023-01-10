@@ -3,7 +3,7 @@ import React from 'react';
 import Page from 'components/Page';
 import Link from 'next/link';
 import Image from 'next/image';
-import gaathaLogo from 'resources/banner.jpg';
+// import gaathaLogo from 'public/logo.jpg';
 
 import styles from './styles.module.css';
 
@@ -16,7 +16,7 @@ function Home() {
         >
             <Image
                 className={styles.logo}
-                src={gaathaLogo}
+                src="logo.jpg"
                 alt="Togglecorp"
                 width={800}
                 height={580}
