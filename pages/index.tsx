@@ -3,7 +3,6 @@ import React from 'react';
 import Page from 'components/Page';
 import Link from 'next/link';
 import Image from 'next/image';
-// import gaathaLogo from 'public/logo.jpg';
 
 import styles from './styles.module.css';
 
@@ -17,9 +16,9 @@ function Home() {
             <Image
                 className={styles.logo}
                 src="logo.jpg"
-                alt="Togglecorp"
-                width={800}
-                height={580}
+                alt="Gaatha"
+                width={700}
+                height={500}
             />
             <div className={styles.routes}>
                 <Link
