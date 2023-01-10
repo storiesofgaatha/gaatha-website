@@ -49,7 +49,7 @@
     --spacing-extra-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier));
     --spacing-super-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     
-    --spacing-contact-list: calc(var(--spacing-base) * var(--multiplier) *var(--multiplier) * var(--multiplier) * var(--multiplier)* var(--multiplier) * var(--multiplier));
+    --spacing-contact-list: calc(var(--spacing-base) * var(--multiplier) *var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     --border-radius: 50%;
 }
 

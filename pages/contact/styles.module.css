@@ -2,10 +2,16 @@
     .mainContent {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         justify-content: space-evenly;
         padding: var(--spacing-extra-large);
         gap: var(--spacing-super-large);
+
+        @media screen and (max-width: 1100px) {
+            padding: 0;
+        }
     }
+    
     .map {
         display: block;
         filter: saturate(0%);
@@ -19,6 +25,12 @@
             height: 40rem;
             text-align: right;
 
+            @media screen and (max-width: 1100px) {
+                border-radius: 0;
+                width: 24rem;
+                height: 24rem;
+            }
+
             .gmapCanvas {
                 transition: .3s border-radius ease-in-out;
                 border-radius: var(--border-radius);
@@ -26,6 +38,12 @@
                 width: 35rem;
                 height: 35rem;
                 overflow: hidden;
+
+                @media screen and (max-width: 1100px) {
+                    border-radius: 0;
+                    width: 24rem;
+                    height: 24rem;
+                }
             }
         }
         &:hover {
@@ -37,9 +55,21 @@
         flex-direction: column;
         gap: var(--spacing-contact-list);
 
+        @media screen and (max-width: 1100px) {
+            gap: var(--spacing-large);
+        }
+
         .contactDetail {
             text-align: right;
             font-size: var(--font-size-small);
+
+            .email {
+                text-decoration: underline;
+            }
         }
+    }
+    .hear {
+        font-size: var(--font-size-heading-small);
+        font-weight: var(--font-weight-bold);
     }
 }

@@ -1,3 +1,5 @@
 .labelValue {
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-extra-small);
 }

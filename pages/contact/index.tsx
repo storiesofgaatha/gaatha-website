@@ -72,6 +72,7 @@ function Contact() {
                         label="Enquiries"
                         value={(
                             <a
+                                className={styles.email}
                                 target="_blank"
                                 href="mailto:studio@storiesofgaatha.com"
                                 rel="noreferrer noopener"
@@ -86,6 +87,7 @@ function Contact() {
                         label="Jobs"
                         value={(
                             <a
+                                className={styles.email}
                                 target="_blank"
                                 href="mailto:recruit@storiesofgaatha.com"
                                 rel="noreferrer noopener"
@@ -102,14 +104,14 @@ function Contact() {
                             <>
                                 <p>
                                     <Link
-                                        href="/"
+                                        href="https://www.instagram.com/_gaatha_/?hl=en"
                                     >
                                         Instagram
                                     </Link>
                                 </p>
                                 <p>
                                     <Link
-                                        href="/"
+                                        href="https://www.linkedin.com/in/gaatha-admin-3b14a421b/"
                                     >
                                         LinkedIn
                                     </Link>
@@ -117,6 +119,11 @@ function Contact() {
                             </>
                         )}
                     />
+                </div>
+                <div className={styles.hear}>
+                    We
+                    <span> &apos; </span>
+                    d love to hear from you.
                 </div>
             </div>
         </Page>
