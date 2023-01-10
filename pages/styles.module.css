@@ -1,9 +1,22 @@
 .home {
     .mainContent {
         display: flex;
-        align-content: flex-start;
-        flex-wrap: wrap;
+        flex-direction: column;
         padding: var(--spacing-extra-large);
         gap: var(--spacing-extra-large);
+    }
+
+    .logo {
+        display: flex;
+        margin: auto;
+    }
+
+    .routes {
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: var(--spacing-small);
+        text-align: center;
     }
 }
