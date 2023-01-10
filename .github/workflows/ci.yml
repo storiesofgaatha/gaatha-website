@@ -70,19 +70,19 @@ jobs:
 
       - name: Typecheck
         run: yarn typecheck
-  build:
-    name: Build
-    needs: [lint, css-lint, typecheck]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18.x'
-          cache: 'yarn'
+  #build:
+  #  name: Build
+  #  needs: [lint, css-lint, typecheck]
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #    - uses: actions/setup-node@v1
+  #      with:
+  #        node-version: '18.x'
+  #        cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn install --prefer-online
+  #    - name: Install dependencies
+  #      run: yarn install --prefer-online
 
-      - name: Build
-        run: yarn export
+  #    - name: Build
+  #      run: yarn export

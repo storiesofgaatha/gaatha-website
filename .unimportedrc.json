@@ -8,6 +8,7 @@
     "rootDir": "./src",
     "aliases": {
         "components/*": ["./components/*"],
+        "utils/*": ["./utils/*"],
         "styles/*": ["./styles/*"]
     }
 }
