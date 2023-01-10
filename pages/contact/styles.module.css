@@ -1,0 +1,45 @@
+.contact {
+    .mainContent {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: var(--spacing-extra-large);
+        gap: var(--spacing-super-large);
+    }
+    .map {
+        display: block;
+        filter: saturate(0%);
+        transition: .2s filter ease-in-out;
+
+        .mapOuter {
+            position: relative;
+            transition: .3s border-radius ease-in-out;
+            border-radius: var(--border-radius);
+            width: 40rem;
+            height: 40rem;
+            text-align: right;
+
+            .gmapCanvas {
+                transition: .3s border-radius ease-in-out;
+                border-radius: var(--border-radius);
+                background: none;
+                width: 35rem;
+                height: 35rem;
+                overflow: hidden;
+            }
+        }
+        &:hover {
+            filter: saturate(100%);
+        }
+    }
+    .contact {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-contact-list);
+
+        .contactDetail {
+            text-align: right;
+            font-size: var(--font-size-small);
+        }
+    }
+}
