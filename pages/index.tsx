@@ -3,7 +3,7 @@ import React from 'react';
 import Page from 'components/Page';
 import Link from 'next/link';
 import Image from 'next/image';
-import gaathaLogo from 'resources/banner_logo.jpg';
+import gaathaLogo from 'resources/banner.jpg';
 
 import styles from './styles.module.css';
 

@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { _cs } from '@togglecorp/fujs';
+
+import Navbar from 'components/Navbar';
 import Footer from 'components/Footer';
 
 import styles from './styles.module.css';
@@ -24,6 +26,7 @@ function Page(props: Props) {
             <Head>
                 {pageTitle}
             </Head>
+            <Navbar className={styles.navbar} />
             <div className={_cs(styles.content, contentClassName)}>
                 {children}
             </div>
