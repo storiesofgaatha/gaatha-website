@@ -5,7 +5,6 @@ import Link from 'next/link';
 import styles from './styles.module.css';
 
 const mapLink = 'https://maps.google.com/maps?q=gaatha&t=&z=15&ie=UTF8&iwloc=&output=embed';
-const mapAnchorLink = 'https://www.whatismyip-address.com';
 
 function Contact() {
     return (
@@ -18,17 +17,13 @@ function Contact() {
                 <div className={styles.mapOuter}>
                     <div className={styles.gmapCanvas}>
                         <iframe
+                            className={styles.gmapIframe}
                             title="gaathaMap"
                             width={600}
                             height={600}
                             id="gmap_canvas"
                             src={mapLink}
                         />
-                        <a
-                            href={mapAnchorLink}
-                        >
-                            Gaatha Location
-                        </a>
                     </div>
                 </div>
             </div>
@@ -121,9 +116,7 @@ function Contact() {
                     />
                 </div>
                 <div className={styles.hear}>
-                    We
-                    <span> &apos; </span>
-                    d love to hear from you.
+                    We&apos;d love to hear from you.
                 </div>
             </div>
         </Page>

@@ -7,9 +7,8 @@
         gap: var(--spacing-super-large);
 
         @media screen and (max-width: 720px) {
+            align-items: end;
             flex-direction: column;
-            justify-content: left;
-            padding: 0;
         }
     }
     
@@ -22,33 +21,53 @@
             position: relative;
             transition: .3s border-radius ease-in-out;
             border-radius: var(--border-radius);
-            width: 40rem;
-            height: 40rem;
+            width: 41rem;
+            height: 41rem;
             text-align: right;
 
             @media screen and (max-width: 720px) {
                 border-radius: 0;
-                width: 24rem;
-                height: 24rem;
             }
 
             .gmapCanvas {
                 transition: .3s border-radius ease-in-out;
                 border-radius: var(--border-radius);
                 background: none;
-                width: 35rem;
-                height: 35rem;
+                width: 37rem;
+                height: 37rem;
                 overflow: hidden;
 
                 @media screen and (max-width: 720px) {
                     border-radius: 0;
-                    width: 24rem;
-                    height: 24rem;
+                }
+            }
+            .gmapIframe {
+                @media screen and (max-width: 720px) {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
                 }
             }
         }
         &:hover {
-            filter: saturate(100%);
+            .mapouter {
+                border-radius: 0%;
+            }
+            .gmapCanvas {
+                border-radius: 0%;
+            }
+            .gmapIframe {
+                border-radius: 0%;
+            }
+        }
+
+        @media screen and (max-width: 720px) {
+            position: relative;
+            width: 100%;
+            height: 22rem;
+            overflow: hidden;
         }
     }
     .contact {
@@ -70,6 +89,7 @@
         }
     }
     .hear {
+        text-align: right;
         font-size: var(--font-size-heading-small);
         font-weight: var(--font-weight-bold);
     }
