@@ -1,4 +1,15 @@
 .sideNavbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: var(--color-foreground);
-    padding: var(--spacing-large) var(--spacing-super-large);
+
+    .routes {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: var(--spacing-extra-large);
+        gap: var(--spacing-small);
+        text-align: center;
+    }
 }

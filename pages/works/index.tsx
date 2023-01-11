@@ -1,6 +1,12 @@
+import Page from 'components/Page';
+
 function Works() {
     return (
-        <h1>This is work page</h1>
+        <Page
+            pageTitle="Works"
+        >
+            <h2>This is work page</h2>
+        </Page>
     );
 }
 

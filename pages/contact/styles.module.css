@@ -11,7 +11,7 @@
             flex-direction: column;
         }
     }
-    
+
     .map {
         display: block;
         filter: saturate(0%);
@@ -41,6 +41,7 @@
                     border-radius: 0;
                 }
             }
+
             .gmapIframe {
                 @media screen and (max-width: 720px) {
                     position: absolute;
@@ -70,6 +71,7 @@
             overflow: hidden;
         }
     }
+
     .contact {
         display: flex;
         flex-direction: column;
@@ -88,6 +90,7 @@
             }
         }
     }
+
     .hear {
         text-align: right;
         font-size: var(--font-size-heading-small);

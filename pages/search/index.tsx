@@ -1,6 +1,12 @@
+import Page from 'components/Page';
+
 function Search() {
     return (
-        <h1>This is Search Page</h1>
+        <Page
+            pageTitle="Search"
+        >
+            <h2>This is search page</h2>
+        </Page>
     );
 }
 
