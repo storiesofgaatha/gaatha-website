@@ -1,5 +1,5 @@
-import Page from 'components/Page';
 import LabelValue from 'components/Page/LabelValue';
+import PageWithSideBar from 'components/PageWithSideBar';
 import Link from 'next/link';
 
 import styles from './styles.module.css';
@@ -8,7 +8,7 @@ const mapLink = 'https://maps.google.com/maps?q=gaatha&t=&z=15&ie=UTF8&iwloc=&ou
 
 function Contact() {
     return (
-        <Page
+        <PageWithSideBar
             pageTitle="Contact"
             className={styles.contact}
             contentClassName={styles.mainContent}
@@ -119,7 +119,7 @@ function Contact() {
                     We&apos;d love to hear from you.
                 </div>
             </div>
-        </Page>
+        </PageWithSideBar>
     );
 }
 

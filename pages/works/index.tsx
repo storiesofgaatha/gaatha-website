@@ -1,12 +1,12 @@
-import Page from 'components/Page';
+import PageWithSideBar from 'components/PageWithSideBar';
 
 function Works() {
     return (
-        <Page
+        <PageWithSideBar
             pageTitle="Works"
         >
             <h2>This is work page</h2>
-        </Page>
+        </PageWithSideBar>
     );
 }
 

@@ -10,6 +10,14 @@
         flex-wrap: wrap;
         padding: var(--spacing-extra-large);
         gap: var(--spacing-small);
-        text-align: center;
+        font-size: var(--spacing-medium);
+
+        .nonActive {
+            color: var(--color-text-grey);
+        }
+
+        .active {
+            color: var(--color-text);
+        }
     }
 }

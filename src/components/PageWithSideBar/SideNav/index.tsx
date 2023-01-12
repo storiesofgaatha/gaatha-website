@@ -1,16 +1,22 @@
 import { _cs } from '@togglecorp/fujs';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import styles from './styles.module.css';
 
 interface Props {
     className?: string;
 }
+
 function SideNavbar(props: Props) {
     const {
         className,
     } = props;
+
+    const router = useRouter();
+    const currentRoute = router.pathname;
+
     return (
         <nav
             className={_cs(styles.sideNavbar, className)}
@@ -28,25 +34,33 @@ function SideNavbar(props: Props) {
             <div className={styles.routes}>
                 <Link
                     href="/works"
-                    passHref
+                    className={currentRoute === '/works'
+                        ? styles.active
+                        : styles.nonActive}
                 >
                     Works
                 </Link>
                 <Link
                     href="/studio"
-                    passHref
+                    className={currentRoute === '/studio'
+                        ? styles.active
+                        : styles.nonActive}
                 >
                     Studio
                 </Link>
                 <Link
                     href="/contact"
-                    passHref
+                    className={currentRoute === '/contact'
+                        ? styles.active
+                        : styles.nonActive}
                 >
                     Contact
                 </Link>
                 <Link
                     href="/search"
-                    passHref
+                    className={currentRoute === '/search'
+                        ? styles.active
+                        : styles.nonActive}
                 >
                     Search
                 </Link>

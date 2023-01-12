@@ -1,12 +1,12 @@
-import Page from 'components/Page';
+import PageWithSideBar from 'components/PageWithSideBar';
 
 function Search() {
     return (
-        <Page
+        <PageWithSideBar
             pageTitle="Search"
         >
             <h2>This is search page</h2>
-        </Page>
+        </PageWithSideBar>
     );
 }
 

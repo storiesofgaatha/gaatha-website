@@ -14,7 +14,7 @@
 
     /* Colors */
     --color-text: #ffffff;
-    --color-text-light: #7a7a7a;
+    --color-text-grey: #808080;
     --color-text-on-dark: #f7f7f7;
     --color-text-on-dark-light: #b3b3b3;
 
@@ -48,8 +48,7 @@
     --spacing-large: calc(var(--spacing-base) * var(--multiplier));
     --spacing-extra-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier));
     --spacing-super-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier));
-    
+
     --spacing-contact-list: calc(var(--spacing-base) * var(--multiplier) *var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     --border-radius: 50%;
 }
-
