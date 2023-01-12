@@ -45,6 +45,7 @@ function Contact() {
                 </div>
                 <div className={styles.contactDetail}>
                     <LabelValue
+                        label="Telephone"
                         value={(
                             <>
                                 <p>
@@ -59,7 +60,6 @@ function Contact() {
                                 </p>
                             </>
                         )}
-                        label="Telephone"
                     />
                 </div>
                 <div className={styles.contactDetail}>
@@ -115,7 +115,7 @@ function Contact() {
                         )}
                     />
                 </div>
-                <div className={styles.hear}>
+                <div className={styles.contactquote}>
                     We&apos;d love to hear from you.
                 </div>
             </div>
