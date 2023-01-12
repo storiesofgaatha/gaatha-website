@@ -13,7 +13,7 @@ interface Props {
 function Page(props: Props) {
     const {
         className,
-        pageTitle = 'Next',
+        pageTitle = 'Gaatha',
         children,
         contentClassName,
     } = props;

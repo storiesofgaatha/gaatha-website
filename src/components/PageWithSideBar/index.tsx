@@ -14,7 +14,7 @@ interface Props {
 function PageWithSideBar(props: Props) {
     const {
         className,
-        pageTitle = 'Next',
+        pageTitle = 'Gaatha',
         children,
         contentClassName,
     } = props;

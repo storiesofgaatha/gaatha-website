@@ -115,7 +115,7 @@ function Contact() {
                         )}
                     />
                 </div>
-                <div className={styles.contactquote}>
+                <div className={styles.contactQuote}>
                     We&apos;d love to hear from you.
                 </div>
             </div>
