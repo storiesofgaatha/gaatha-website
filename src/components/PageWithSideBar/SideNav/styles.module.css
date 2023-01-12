@@ -1,0 +1,23 @@
+.sideNavbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-foreground);
+
+    .routes {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: var(--spacing-extra-large);
+        gap: var(--spacing-small);
+        font-size: var(--spacing-medium);
+
+        .nonActive {
+            color: var(--color-text-grey);
+        }
+
+        .active {
+            color: var(--color-text);
+        }
+    }
+}

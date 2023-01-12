@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { _cs } from '@togglecorp/fujs';
+import SideNavbar from './SideNav';
 
 import styles from './styles.module.css';
 
@@ -10,7 +11,7 @@ interface Props {
     contentClassName?: string;
 }
 
-function Page(props: Props) {
+function PageWithSideBar(props: Props) {
     const {
         className,
         pageTitle = 'Gaatha',
@@ -24,6 +25,7 @@ function Page(props: Props) {
                 {pageTitle}
             </Head>
             <div className={styles.sideNavbar}>
+                <SideNavbar className={styles.navbar} />
                 <div className={_cs(styles.content, contentClassName)}>
                     {children}
                 </div>
@@ -32,4 +34,4 @@ function Page(props: Props) {
     );
 }
 
-export default Page;
+export default PageWithSideBar;

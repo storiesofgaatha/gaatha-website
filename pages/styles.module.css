@@ -18,5 +18,6 @@
         flex-wrap: wrap;
         gap: var(--spacing-small);
         text-align: center;
+        font-size: var(--spacing-medium);
     }
 }
