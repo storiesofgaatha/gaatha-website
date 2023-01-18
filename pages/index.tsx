@@ -1,16 +1,33 @@
 import React from 'react';
+import { _cs } from '@togglecorp/fujs';
+import { GetStaticProps } from 'next';
 
 import Page from 'components/Page';
 import Link from 'next/link';
 import Image from 'next/image';
+import { request, gql } from 'graphql-request';
 
+import envVariables from 'utils/common';
 import styles from './styles.module.css';
 
-function Home() {
+interface Props {
+    className?: string;
+    works?: unknown;
+}
+
+function Home(props: Props) {
+    const {
+        className,
+        works,
+    } = props;
+
+    // NOTE: This needs removal. This is only a test
+    console.warn(works);
+
     return (
         <Page
             pageTitle="Home"
-            className={styles.home}
+            className={_cs(styles.home, className)}
             contentClassName={styles.mainContent}
         >
             <Image
@@ -49,5 +66,28 @@ function Home() {
         </Page>
     );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+    const query = gql`
+        query Works{
+            works {
+                id
+                title
+                duration
+                description
+            }
+        }
+    `;
+
+    // FIXME: setup typescript typings
+    const value = await request(envVariables.graphqlEndpoint, query);
+
+    return ({
+        props: {
+            className: 'home',
+            works: value.works,
+        },
+    });
+};
 
 export default Home;
