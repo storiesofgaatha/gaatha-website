@@ -53,7 +53,7 @@
             }
         }
         &:hover {
-            .mapouter {
+            .mapOuter {
                 border-radius: 0%;
             }
             .gmapCanvas {
