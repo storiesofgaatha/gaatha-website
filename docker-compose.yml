@@ -7,7 +7,8 @@ services:
     image: gaatha-next
     command: sh -c 'yarn install && yarn dev'
     environment:
-      NEXT_APP_GRAPHQL_ENDPOINT: ${NEXT_APP_GRAPHQL_ENDPOINT}
+      GRAPHQL_CODEGEN_ENDPOINT: ${GRAPHQL_CODEGEN_ENDPOINT:-http://server:8020/graphql/}
+      NEXT_APP_GRAPHQL_ENDPOINT: ${NEXT_APP_GRAPHQL_ENDPOINT:-http://server:8020/graphql/}
 
     volumes:
       - .:/code
@@ -45,7 +46,7 @@ services:
       - ./server/:/code
       - media:/media
     ports:
-      - '8000:8000'
+      - '8020:8020'
     depends_on:
       - db
 
