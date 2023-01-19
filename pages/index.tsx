@@ -5,9 +5,9 @@ import { GetStaticProps } from 'next';
 import Page from 'components/Page';
 import Link from 'next/link';
 import Image from 'next/image';
-import { request, gql } from 'graphql-request';
+import { gql } from 'graphql-request';
 
-import envVariables from 'utils/common';
+import { gaathaRequest } from 'utils/common';
 import styles from './styles.module.css';
 
 interface Props {
@@ -79,8 +79,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         }
     `;
 
-    // FIXME: setup typescript typings
-    const value = await request(envVariables.graphqlEndpoint, query);
+    const value = await gaathaRequest(query);
 
     return ({
         props: {
