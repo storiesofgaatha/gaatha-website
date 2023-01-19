@@ -48,6 +48,17 @@ function SideNavbar(props: Props) {
                 >
                     Studio
                 </Link>
+                {
+                    // TODO: Remove this after studio page is created
+                }
+                <Link
+                    href="/people"
+                    className={currentRoute === '/people'
+                        ? styles.active
+                        : styles.nonActive}
+                >
+                    People
+                </Link>
                 <Link
                     href="/contact"
                     className={currentRoute === '/contact'

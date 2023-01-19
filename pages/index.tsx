@@ -58,6 +58,15 @@ function Home(props: Props) {
                 >
                     Contact
                 </Link>
+                {
+                    // TODO: Remove this after studio page is created
+                }
+                <Link
+                    href="/people"
+                    passHref
+                >
+                    People
+                </Link>
                 <Link
                     href="/search"
                     passHref
