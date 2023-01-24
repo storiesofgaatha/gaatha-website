@@ -1,0 +1,16 @@
+overwrite: true
+schema:
+  # - 'schema.graphql'
+  - ${GRAPHQL_CODEGEN_ENDPOINT}
+documents:
+  - "pages/**/*.tsx"
+  - "pages/**/*.ts"
+generates:
+  ./generated/types.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-graphql-request"
+  ./generated/schema.json:
+    plugins:
+      - "introspection"

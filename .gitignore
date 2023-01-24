@@ -33,3 +33,6 @@ pnpm-debug.log*
 
 # Server repo
 server/
+
+# generated types
+generated/

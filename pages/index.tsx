@@ -8,11 +8,13 @@ import Image from 'next/image';
 import { gql } from 'graphql-request';
 
 import { gaathaRequest } from 'utils/common';
+// NOTE: This import will be fixed when generated folder is moved inside src folder
+import { WorksQuery } from '../generated/types';
 import styles from './styles.module.css';
 
 interface Props {
     className?: string;
-    works?: unknown;
+    works?: WorksQuery;
 }
 
 function Home(props: Props) {
