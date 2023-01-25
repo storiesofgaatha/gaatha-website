@@ -43,3 +43,10 @@ docker-compose --profile test run --rm checks
 ```bash
 docker-compose exec next bash -c 'yarn export'
 ```
+
+## FAQ
+- Image are not loading in development mode
+    - You need to add this to your `/etc/hosts`
+      ```
+      127.0.0.1 gaatha-server
+      ```

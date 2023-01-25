@@ -34,7 +34,7 @@ function Home(props: Props) {
         >
             <Image
                 className={styles.logo}
-                src="logo.jpg"
+                src="/logo.jpg"
                 alt="Gaatha"
                 width={700}
                 height={500}

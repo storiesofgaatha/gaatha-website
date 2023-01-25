@@ -16,7 +16,7 @@
         "strict": 1,
 
         "@typescript-eslint/indent": ["error", 4, { "SwitchCase": 1 }],
-
+        "react/destructuring-assignment": "off",
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
         "react/jsx-filename-extension": ["error", { "extensions": [".js", ".ts", ".jsx", ".tsx"] }],
