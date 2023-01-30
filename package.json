@@ -9,7 +9,7 @@
         "export": "next build && next export && next-export-optimize-images",
         "generate": "graphql-codegen --config codegen.yml",
         "lint": "next lint",
-        "css-lint": "stylelint 'pages/**/*.css' 'components/**/*.css'",
+        "css-lint": "stylelint 'pages/**/*.css' 'src/**/*.css'",
         "typecheck": "tsc",
         "check-unused": "unimported"
     },

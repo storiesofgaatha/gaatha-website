@@ -16,6 +16,12 @@ git clone git@github.com:toggle-corp/gaatha-server.git server
 docker-compose up
 ```
 
+
+All runs
+```bash
+docker-compose --profile test run --rm checks
+```
+
 ```bash
 # Generate graphql files
 yarn generate

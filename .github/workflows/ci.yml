@@ -20,9 +20,15 @@ jobs:
           node-version: '18.x'
           cache: 'yarn'
 
+      # Pre-commit
+      - uses: actions/setup-python@v4
+      - name: Install pre-commit
+        run: pip install pre-commit
+
       - name: Pull submodules (Server)
         env:
           SSH_KEY_FOR_SUBMODULE: ${{secrets.GH_GAATHA_SERVER_SSH_KEY}}
+        # TODO: Use depth 1 for git submodule update if not already
         run: |
           mkdir $HOME/.ssh &&
           echo "$SSH_KEY_FOR_SUBMODULE" > $HOME/.ssh/id_rsa &&
@@ -31,31 +37,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --prefer-online
+
+      - name: Yarn generate
         run: yarn generate
 
-      - name: Check unused files
-        id: unused_files
-        continue-on-error: true
-        run: yarn check-unused
-
-      - name: Lint
-        continue-on-error: true
-        id: js_lint
-        run: yarn lint
-
-      - name: Css Lint
-        continue-on-error: true
-        id: css_lint
-        run: yarn css-lint
-
-      - name: Typecheck
-        continue-on-error: true
-        id: typecheck
-        run: yarn typecheck
-
-      - name: Check on failures
-        if: steps.unused_files.outcome != 'success' || steps.js_lint.outcome != 'success' || steps.css_lint.outcome != 'success' || steps.typecheck.outcome != 'success'
-        run: exit 1
+      - name: Check
+        run: pre-commit run -vvv --all-files
 
      # - name: Build
      #   run: yarn export
