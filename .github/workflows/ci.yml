@@ -31,16 +31,17 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --prefer-online
+        run: yarn generate
 
       - name: Check unused files
         id: unused_files
         continue-on-error: true
-        run: yarn generate && yarn check-unused
+        run: yarn check-unused
 
       - name: Lint
         continue-on-error: true
         id: js_lint
-        run: yarn generate && yarn lint
+        run: yarn lint
 
       - name: Css Lint
         continue-on-error: true
@@ -50,7 +51,7 @@ jobs:
       - name: Typecheck
         continue-on-error: true
         id: typecheck
-        run: yarn generate && yarn typecheck
+        run: yarn typecheck
 
       - name: Check on failures
         if: steps.unused_files.outcome != 'success' || steps.js_lint.outcome != 'success' || steps.css_lint.outcome != 'success' || steps.typecheck.outcome != 'success'
