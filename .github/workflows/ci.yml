@@ -10,8 +10,8 @@ env:
   GITHUB_WORKFLOW: true
 
 jobs:
-  unimported:
-    name: Find unimported files
+  ci:
+    name: Lint + Type Checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
