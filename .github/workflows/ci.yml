@@ -14,75 +14,47 @@ jobs:
     name: Find unimported files
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v1
         with:
           node-version: '18.x'
           cache: 'yarn'
+
+      - name: Pull submodules (Server)
+        env:
+          SSH_KEY_FOR_SUBMODULE: ${{secrets.GH_GAATHA_SERVER_SSH_KEY}}
+        run: |
+          mkdir $HOME/.ssh &&
+          echo "$SSH_KEY_FOR_SUBMODULE" > $HOME/.ssh/id_rsa &&
+          chmod 600 $HOME/.ssh/id_rsa &&
+          git submodule update --init --recursive
 
       - name: Install dependencies
         run: yarn install --prefer-online
 
       - name: Check unused files
-        run: yarn check-unused
-  lint:
-    name: Lint JS
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18.x'
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --prefer-online
+        id: unused_files
+        continue-on-error: true
+        run: yarn generate && yarn check-unused
 
       - name: Lint
-        run: yarn lint
-  css-lint:
-    name: Lint CSS
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18.x'
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --prefer-online
+        continue-on-error: true
+        id: js_lint
+        run: yarn generate && yarn lint
 
       - name: Css Lint
+        continue-on-error: true
+        id: css_lint
         run: yarn css-lint
-  typecheck:
-    name: Typecheck
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18.x'
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --prefer-online
 
       - name: Typecheck
-        run: yarn typecheck
-  #build:
-  #  name: Build
-  #  needs: [lint, css-lint, typecheck]
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - uses: actions/checkout@v2
-  #    - uses: actions/setup-node@v1
-  #      with:
-  #        node-version: '18.x'
-  #        cache: 'yarn'
+        continue-on-error: true
+        id: typecheck
+        run: yarn generate && yarn typecheck
 
-  #    - name: Install dependencies
-  #      run: yarn install --prefer-online
+      - name: Check on failures
+        if: steps.unused_files.outcome != 'success' || steps.js_lint.outcome != 'success' || steps.css_lint.outcome != 'success' || steps.typecheck.outcome != 'success'
+        run: exit 1
 
-  #    - name: Build
-  #      run: yarn export
+     # - name: Build
+     #   run: yarn export

@@ -7,7 +7,6 @@ services:
     image: gaatha-next
     command: sh -c 'yarn install && yarn dev'
     environment:
-      GRAPHQL_CODEGEN_ENDPOINT: ${GRAPHQL_CODEGEN_ENDPOINT:-http://server:8020/graphql/}
       NEXT_APP_GRAPHQL_ENDPOINT: ${NEXT_APP_GRAPHQL_ENDPOINT:-http://server:8020/graphql/}
 
     volumes:
