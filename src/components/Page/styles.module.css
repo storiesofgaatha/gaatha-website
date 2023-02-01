@@ -9,16 +9,8 @@
         flex-wrap: wrap;
         min-height: 100vh;
 
-        .navbar {
-            flex-shrink: 0;
-        }
-
         .content {
             flex-grow: 1;
-        }
-
-        .footer {
-            flex-shrink: 0;
         }
     }
 }
