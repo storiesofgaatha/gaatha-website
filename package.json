@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "export": "next build && next export && next-export-optimize-images",
-        "generate": "graphql-codegen --config codegen.yml",
+        "generate": "graphql-codegen --config codegen.yml && eslint --fix src/generated/types.ts",
         "lint": "next lint",
         "css-lint": "stylelint 'pages/**/*.css' 'src/**/*.css'",
         "typecheck": "tsc",
@@ -24,7 +24,6 @@
     "devDependencies": {
         "@graphql-codegen/cli": "^2.16.4",
         "@graphql-codegen/introspection": "^2.2.3",
-        "@graphql-codegen/typescript-graphql-request": "^4.5.8",
         "@graphql-codegen/typescript-operations": "^2.5.12",
         "@types/node": "^18.11.9",
         "@types/react": "^18.0.25",

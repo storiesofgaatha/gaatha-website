@@ -9,7 +9,7 @@ import { gql } from 'graphql-request';
 
 import { gaathaRequest } from 'utils/common';
 // NOTE: This import will be fixed when generated folder is moved inside src folder
-import { WorksQuery } from '../generated/types';
+import { WorksQuery } from 'generated/types';
 import styles from './styles.module.css';
 
 interface Props {
@@ -23,7 +23,7 @@ function Home(props: Props) {
         works,
     } = props;
 
-    // NOTE: This needs removal. This is only a test
+    // eslint-disable-next-line no-console
     console.warn(works);
 
     return (
