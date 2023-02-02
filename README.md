@@ -1,38 +1,45 @@
-## Gaatha version 2
+## Gaatha v2
 
-Client side Next app for Gaatha
+Frontend application for Gaatha
+
+## Clone
+
+Clone repository: https://github.com/toggle-corp/gaatha-v2
+
+```bash
+git clone --recurse-submodules git@github.com:toggle-corp/gaatha-server.git server
+```
 
 ## Development
 
-Before you start, copy `.env.example` as `.env` and set the env variables.
+Before you start, create `.env` file and set the environment variables for both client and server.
 
-Clone [gaatha server](https://github.com/toggle-corp/gaatha-server) into server
-
-```bash
-git clone git@github.com:toggle-corp/gaatha-server.git server
+```
+bash
+cp .env.example .env
 ```
 
-```bash
-docker-compose up
-```
+## Running
 
 ```bash
-# Generate graphql files
-yarn generate
+# Run backend
+docker-compose up server
 
-# Build web app
-yarn build
+# Generate typings for the first time
+docker-compose run --rm next bash -c 'yarn generate'
 
-# Typescript check
-yarn typecheck
-
-# Eslint check
-yarn eslint
-
-# Check unused files
-yarn check-unused
-
-# Run tests
-yarn test
+# Run frontend
+docker-compose up next
 ```
 
+## Run checks
+
+```bash
+docker-compose --profile test run --rm checks
+```
+
+## Building
+
+```bash
+docker-compose exec next bash -c 'yarn export'
+```

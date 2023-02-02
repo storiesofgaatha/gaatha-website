@@ -9,6 +9,7 @@
     "aliases": {
         "components/*": ["./components/*"],
         "utils/*": ["./utils/*"],
-        "styles/*": ["./styles/*"]
+        "styles/*": ["./styles/*"],
+        "generated/*": ["./generated/*"]
     }
 }
