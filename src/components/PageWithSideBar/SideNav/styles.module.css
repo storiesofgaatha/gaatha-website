@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--color-foreground);
+    background-color: var(--color-background);
 
     .routes {
         display: flex;
@@ -12,12 +12,16 @@
         gap: var(--spacing-small);
         font-size: var(--spacing-medium);
 
-        .nonActive {
-            color: var(--color-text-grey);
+        .active {
+            color: var(--color-text-on-dark-alt);
         }
+    }
+
+    &.light {
+        background-color: var(--color-background-light);
 
         .active {
-            color: var(--color-text);
+            color: var(--color-text-on-light-alt);
         }
     }
 }

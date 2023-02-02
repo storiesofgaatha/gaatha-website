@@ -4,7 +4,7 @@ function Studio() {
     return (
         <PageWithSideBar
             pageTitle="Studio"
-            mode="light"
+            lightMode
         >
             <h2>This is studio page</h2>
         </PageWithSideBar>

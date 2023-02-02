@@ -1,18 +1,26 @@
+import { isDefined } from '@togglecorp/fujs';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
-import { request, gql } from 'graphql-request';
+import { gql } from 'graphql-request';
 
-import envVariables from 'utils/common';
+import { gaathaRequest } from 'utils/common';
+import { WorkListQuery } from 'generated/types';
 
 import PageWithSideBar from 'components/PageWithSideBar';
 
 import styles from './styles.module.css';
 
+type WorkItemType = NonNullable<NonNullable<WorkListQuery['works']>[number]>;
+
 interface Props {
-    works?: unknown;
+    works: WorkItemType[];
 }
 
-function Works(props: any) {
+function Works(props: Props) {
+    const {
+        works,
+    } = props;
+
     return (
         <PageWithSideBar
             className={styles.work}
@@ -20,14 +28,16 @@ function Works(props: any) {
         >
             <div className={styles.grid}>
                 <div className={styles.sectionOne}>
-                    {props.works.map((work) => (
-                        <Image
-                            key={work.id}
-                            src={work.coverImage.url}
-                            alt="idk"
-                            width={700}
-                            height={500}
-                        />
+                    {works.map((work) => (
+                        isDefined(work.coverImage) && (
+                            <Image
+                                key={work.id}
+                                src={work.coverImage.url}
+                                alt="cover image"
+                                width={700}
+                                height={500}
+                            />
+                        )
                     ))}
                 </div>
             </div>
@@ -36,7 +46,7 @@ function Works(props: any) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const WORKS_LIST = gql`
+    const workList = gql`
         query WorkList {
             works {
                 area
@@ -62,9 +72,12 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         }
     `;
 
-    // FIXME: setup typescript typings
-    const value = await request(envVariables.graphqlEndpoint, WORKS_LIST);
-    return { props: { works: value.works } };
+    const value = await gaathaRequest(workList);
+    return ({
+        props: {
+            works: value.works,
+        },
+    });
 };
 
 export default Works;

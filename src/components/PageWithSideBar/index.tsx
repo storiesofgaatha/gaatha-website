@@ -9,29 +9,33 @@ interface Props {
     pageTitle?: string;
     children: React.ReactNode;
     contentClassName?: string;
-    mode: 'dark' | 'light';
+    lightMode?: boolean;
 }
 
 function PageWithSideBar(props: Props) {
     const {
-        mode,
         className,
         pageTitle = 'Gaatha',
         children,
         contentClassName,
+        lightMode = false,
     } = props;
 
     return (
         <div className={_cs(
             styles.page,
             className,
-            mode === 'dark' ? styles.dark : styles.light,
-            )}>
+            lightMode && styles.light,
+        )}
+        >
             <Head>
                 {pageTitle}
             </Head>
             <div className={styles.sideNavbar}>
-                <SideNavbar className={styles.navbar} />
+                <SideNavbar
+                    className={styles.navbar}
+                    lightMode={lightMode}
+                />
                 <div className={_cs(styles.content, contentClassName)}>
                     {children}
                 </div>

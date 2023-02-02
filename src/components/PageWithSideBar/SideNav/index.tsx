@@ -7,11 +7,13 @@ import styles from './styles.module.css';
 
 interface Props {
     className?: string;
+    lightMode: boolean;
 }
 
 function SideNavbar(props: Props) {
     const {
         className,
+        lightMode,
     } = props;
 
     const router = useRouter();
@@ -19,32 +21,44 @@ function SideNavbar(props: Props) {
 
     return (
         <nav
-            className={_cs(styles.sideNavbar, className)}
+            className={_cs(
+                styles.sideNavbar,
+                className,
+                lightMode && styles.light,
+            )}
         >
             <Link
                 href="/"
             >
-                <Image
-                    src="logo.jpg"
-                    alt="Gaatha"
-                    width={200}
-                    height={150}
-                />
+                <div>
+                    {lightMode
+                        ? (
+                            <Image
+                                src="logo-dark.png"
+                                alt="Gaatha"
+                                width={200}
+                                height={150}
+                            />
+                        ) : (
+                            <Image
+                                src="logo-light.png"
+                                alt="Gaatha"
+                                width={200}
+                                height={150}
+                            />
+                        )}
+                </div>
             </Link>
             <div className={styles.routes}>
                 <Link
                     href="/works"
-                    className={currentRoute === '/works'
-                        ? styles.active
-                        : styles.nonActive}
+                    className={_cs(currentRoute === '/works' && styles.active)}
                 >
                     Works
                 </Link>
                 <Link
                     href="/studio"
-                    className={currentRoute === '/studio'
-                        ? styles.active
-                        : styles.nonActive}
+                    className={_cs(currentRoute === '/studio' && styles.active)}
                 >
                     Studio
                 </Link>
@@ -53,25 +67,19 @@ function SideNavbar(props: Props) {
                 }
                 <Link
                     href="/people"
-                    className={currentRoute === '/people'
-                        ? styles.active
-                        : styles.nonActive}
+                    className={_cs(currentRoute === '/people' && styles.active)}
                 >
                     People
                 </Link>
                 <Link
                     href="/contact"
-                    className={currentRoute === '/contact'
-                        ? styles.active
-                        : styles.nonActive}
+                    className={_cs(currentRoute === '/contact' && styles.active)}
                 >
                     Contact
                 </Link>
                 <Link
                     href="/search"
-                    className={currentRoute === '/search'
-                        ? styles.active
-                        : styles.nonActive}
+                    className={_cs(currentRoute === '/search' && styles.active)}
                 >
                     Search
                 </Link>

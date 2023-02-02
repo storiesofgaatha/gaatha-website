@@ -1,15 +1,14 @@
 import React from 'react';
 import { _cs } from '@togglecorp/fujs';
 import { GetStaticProps } from 'next';
-
-import Page from 'components/Page';
+import { gql } from 'graphql-request';
 import Link from 'next/link';
 import Image from 'next/image';
-import { gql } from 'graphql-request';
 
+import Page from 'components/Page';
 import { gaathaRequest } from 'utils/common';
-// NOTE: This import will be fixed when generated folder is moved inside src folder
 import { WorksQuery } from 'generated/types';
+
 import styles from './styles.module.css';
 
 interface Props {
@@ -34,7 +33,7 @@ function Home(props: Props) {
         >
             <Image
                 className={styles.logo}
-                src="/logo.jpg"
+                src="logo-light.png"
                 alt="Gaatha"
                 width={700}
                 height={500}
