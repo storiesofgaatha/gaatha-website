@@ -1,0 +1,40 @@
+.page {
+    display: flex;
+    padding: var(--spacing-super-large);
+    .people {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding-top: var(--spacing-super-large);
+
+        .listingContainer {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            width: 30vw;
+            height: 50vh;
+            overflow: auto;
+            gap: var(--spacing-medium);
+        }
+        .artworkContainer {
+            display: flex;
+            align-items: flex-end;
+            flex-grow: 1;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .artworkWrapper {
+                display: flex;
+                position: relative;
+                width: 140px;
+                height: 140px;
+                overflow: hidden;
+
+                .artwork {
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+        }
+    }
+}

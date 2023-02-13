@@ -1,0 +1,11 @@
+.work {
+    .grid {
+        padding: var(--spacing-super-large);
+
+        .sectionOne {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}

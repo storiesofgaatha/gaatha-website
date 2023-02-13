@@ -1,8 +1,14 @@
 .page {
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color);
+    background-color: var(--color-background);
     min-height: 100vh;
+    color: var(--color-text-on-dark);
+
+    &.light {
+        background-color: var(--color-background-light);
+        color: var(--color-text-on-light);
+    }
 
     .sideNavbar {
         display: flex;
