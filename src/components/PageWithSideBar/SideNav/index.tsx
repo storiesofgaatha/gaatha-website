@@ -8,12 +8,14 @@ import styles from './styles.module.css';
 interface Props {
     className?: string;
     lightMode: boolean;
+    hideGaathaLogo?: boolean;
 }
 
 function SideNavbar(props: Props) {
     const {
         className,
         lightMode,
+        hideGaathaLogo = false,
     } = props;
 
     const router = useRouter();
@@ -25,30 +27,33 @@ function SideNavbar(props: Props) {
                 styles.sideNavbar,
                 className,
                 lightMode && styles.light,
+                hideGaathaLogo && styles.noLogo,
             )}
         >
-            <Link
-                href="/"
-            >
-                <div>
-                    {lightMode
-                        ? (
-                            <Image
-                                src="logo-dark.png"
-                                alt="Gaatha"
-                                width={200}
-                                height={150}
-                            />
-                        ) : (
-                            <Image
-                                src="logo-light.png"
-                                alt="Gaatha"
-                                width={200}
-                                height={150}
-                            />
-                        )}
-                </div>
-            </Link>
+            {!hideGaathaLogo && (
+                <Link
+                    href="/"
+                >
+                    <div>
+                        {lightMode
+                            ? (
+                                <Image
+                                    src="/logo-dark.png"
+                                    alt="Gaatha"
+                                    width={150}
+                                    height={110}
+                                />
+                            ) : (
+                                <Image
+                                    src="/logo-light.png"
+                                    alt="Gaatha"
+                                    width={150}
+                                    height={110}
+                                />
+                            )}
+                    </div>
+                </Link>
+            )}
             <div className={styles.routes}>
                 <Link
                     href="/works"

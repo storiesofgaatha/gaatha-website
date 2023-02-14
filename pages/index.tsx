@@ -1,29 +1,20 @@
 import React from 'react';
 import { _cs } from '@togglecorp/fujs';
-import { GetStaticProps } from 'next';
-import { gql } from 'graphql-request';
 import Link from 'next/link';
 import Image from 'next/image';
 
 import Page from 'components/Page';
-import { gaathaRequest } from 'utils/common';
-import { WorksQuery } from 'generated/types';
 
 import styles from './styles.module.css';
 
 interface Props {
     className?: string;
-    works?: WorksQuery;
 }
 
 function Home(props: Props) {
     const {
         className,
-        works,
     } = props;
-
-    // eslint-disable-next-line no-console
-    console.warn(works);
 
     return (
         <Page
@@ -33,10 +24,10 @@ function Home(props: Props) {
         >
             <Image
                 className={styles.logo}
-                src="logo-light.png"
+                src="/logo-light.png"
                 alt="Gaatha"
-                width={700}
-                height={500}
+                width={400}
+                height={300}
             />
             <div className={styles.routes}>
                 <Link
@@ -76,27 +67,5 @@ function Home(props: Props) {
         </Page>
     );
 }
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-    const query = gql`
-        query Works{
-            works {
-                id
-                title
-                duration
-                description
-            }
-        }
-    `;
-
-    const value = await gaathaRequest(query);
-
-    return ({
-        props: {
-            className: 'home',
-            works: value.works,
-        },
-    });
-};
 
 export default Home;

@@ -4,6 +4,7 @@
         flex-direction: column;
         padding: var(--spacing-extra-large);
         gap: var(--spacing-extra-large);
+        font-size: var(--font-size-medium);
     }
 
     .logo {
@@ -18,6 +19,6 @@
         flex-wrap: wrap;
         gap: var(--spacing-small);
         text-align: center;
-        font-size: var(--spacing-medium);
+        font-size: var(--font-size-medium);
     }
 }

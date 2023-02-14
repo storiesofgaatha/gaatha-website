@@ -1,0 +1,8 @@
+.richTextOutput {
+    p {
+        margin: var(--spacing-extra-small) 0;
+    }
+    a {
+        text-decoration: underline;
+    }
+}

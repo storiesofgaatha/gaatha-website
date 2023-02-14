@@ -1,11 +1,37 @@
 .work {
-    .grid {
-        padding: var(--spacing-super-large);
+    --width-grid-image: 24rem;
+    display: flex;
+    gap: var(--spacing-medium);
 
-        .sectionOne {
+    .buckets {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-super-large);
+        gap: var(--spacing-medium);
+
+        .grid {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--spacing-medium);
+
+            .imageContainer {
+                display: flex;
+                position: relative;
+                width: var(--width-grid-image);
+                height: 13rem;
+
+                .coverImage {
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                &:nth-child(12),
+                &:nth-child(11),
+                &:nth-child(6),
+                &:nth-child(5) {
+                    width: calc(2 * var(--width-grid-image) + var(--spacing-medium));
+                }
+            }
         }
     }
 }

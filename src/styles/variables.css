@@ -55,4 +55,6 @@
 
     --spacing-contact-list: calc(var(--spacing-base) * var(--multiplier) *var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     --border-radius: 50%;
+
+    --width-navbar: 10rem;
 }
