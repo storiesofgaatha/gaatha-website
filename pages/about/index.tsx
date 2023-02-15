@@ -1,11 +1,10 @@
 import { _cs } from '@togglecorp/fujs';
 import SideNavbar from 'components/PageWithSideBar/SideNav';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import styles from './styles.module.css';
 
-function Studio() {
+function About() {
     return (
         <div className={_cs(
             styles.studio,
@@ -29,17 +28,17 @@ function Studio() {
                         }}
                     />
                 </div>
-                <div>
+                <div className={styles.rightBackground}>
                     <Image
                         alt="Right Image"
-                        src="about_right.png"
+                        src="office-desk.png"
                         placeholder="blur"
                         quality={100}
-                        width={736}
-                        height={900}
+                        width={700}
+                        height={1000}
                         sizes="100vw"
                         style={{
-                            objectFit: 'cover',
+                            objectFit: 'contain',
                         }}
                     />
                 </div>
@@ -51,32 +50,27 @@ function Studio() {
                         height={100}
                     />
                     <div className={styles.studioDescription}>
-                        Based in Kathmandu, Gaatha (Nepali: गाथा), translating to stories, started
-                        with a young group of collaborative professionals aligned together
-                        in creating a studio where ideas are valued to reinforce better solutions
-                        in architectural practice. Our studio incorporates a
-                        team constantly striving to enhance the built environment with the
-                        same care and detail in all works of
-                        architecture, planning, landscape, art, graphics and research. Exploring,
-                        creating and documenting stories with a team from diverse disciplines across
-                        the globe, our practice has remained true to its core values ever since.
+                        While our workspace follows basic fundamentals and layouts of
+                        any design office, the studio isn’t just limited to that but expands
+                        to our working site and related collaboration offices working together
+                        in a regulated structure. We have organized our workspace such that there
+                        are events of critical brainstorming and planning
+                        while having interactive sessions within the team building up connections
+                        and unity, all adding up to create a
+                        joyful experience and story of its own.
                     </div>
                     <div className={styles.studioRoutes}>
-                        <Link
-                            href="/about"
-                        >
-                            studio
-                        </Link>
-                        <Link
-                            href="/design"
-                        >
-                            design
-                        </Link>
-                        <Link
-                            href="/collaboration"
-                        >
-                            collaboration
-                        </Link>
+                        <div className={styles.studioDescription}>
+                            <h4>
+                                studio
+                            </h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Corrupti praesentium
+                                impedit libero voluptatum officiis. Vero
+                                iure cumque inventore. Animi, sit?
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,4 +78,4 @@ function Studio() {
     );
 }
 
-export default Studio;
+export default About;

@@ -28,4 +28,17 @@
     &.noLogo {
         justify-content: flex-end;
     }
+    &.transparentMode {
+        position: absolute;
+        background-color: transparent;
+        height: 100%;
+
+        >* {
+            color: var(--color-text-grey);
+        }
+
+        .active {
+            color: var(--color-text-on-light-alt);
+        }
+    }
 }

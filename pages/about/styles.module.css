@@ -1,0 +1,54 @@
+.studio {
+    background-color: var(--color-background-light);
+
+    .bgWrap {
+        display: flex;
+        position: fixed;
+        background-color: #ffffff;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+
+        .leftBackground {
+            width: 70%;
+        }
+        .rightBackground{
+            width: 30%;
+        }
+
+        .studioContent {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            flex-direction: column;
+            gap: var(--spacing-base);
+            margin: var(--spacing-studio-logo);
+            text-align: center;
+            color: var(--color-text-on-light-alt);
+
+            .studioDescription {
+                display: flex;
+                max-width: 46%;
+                font-size: var(--font-size-small);
+
+                @media screen and (max-width: 720px) {
+                    max-width: 100%;
+                }
+            }
+
+            .studioRoutes {
+                display: flex;
+                flex-direction: column;
+                margin: 17% 0 0 46%;
+                text-align: right;
+                color: var(--color-text-on-light-alt);
+                font-size: var(--font-size-large);
+
+                .studioDescription {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

@@ -7,8 +7,9 @@ import styles from './styles.module.css';
 
 interface Props {
     className?: string;
-    lightMode: boolean;
     hideGaathaLogo?: boolean;
+    lightMode?: boolean;
+    transparentMode?: boolean;
 }
 
 function SideNavbar(props: Props) {
@@ -16,6 +17,7 @@ function SideNavbar(props: Props) {
         className,
         lightMode,
         hideGaathaLogo = false,
+        transparentMode = false,
     } = props;
 
     const router = useRouter();
@@ -28,6 +30,7 @@ function SideNavbar(props: Props) {
                 className,
                 lightMode && styles.light,
                 hideGaathaLogo && styles.noLogo,
+                transparentMode && styles.transparentMode,
             )}
         >
             {!hideGaathaLogo && (
