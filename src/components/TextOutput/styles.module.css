@@ -1,0 +1,18 @@
+--spacing-between-lines: 0.3rem;
+
+.textOutput {
+    display: flex;
+    color: var(--color-text-on-light);
+    gap: var(--spacing-between-lines);
+
+    &.multiline {
+        flex-direction: column;
+    }
+
+    .label {
+        font-weight: var(--font-weight-bold);
+    }
+    .value {
+        font-weight: var(--font-weight-medium);
+    }
+}

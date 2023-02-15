@@ -31,7 +31,7 @@ function PageWithSideBar(props: Props) {
             <Head>
                 {pageTitle}
             </Head>
-            <div className={styles.sideNavbar}>
+            <div className={styles.pageContent}>
                 <SideNavbar
                     className={styles.navbar}
                     lightMode={lightMode}

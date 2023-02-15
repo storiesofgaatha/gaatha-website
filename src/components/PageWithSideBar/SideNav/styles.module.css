@@ -3,14 +3,15 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--color-background);
+    padding: var(--spacing-large);
+    width: var(--width-navbar);
 
     .routes {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        padding: var(--spacing-extra-large);
         gap: var(--spacing-small);
-        font-size: var(--spacing-medium);
+        font-size: var(--font-size-medium);
 
         .active {
             color: var(--color-text-on-dark-alt);
@@ -23,5 +24,8 @@
         .active {
             color: var(--color-text-on-light-alt);
         }
+    }
+    &.noLogo {
+        justify-content: flex-end;
     }
 }
