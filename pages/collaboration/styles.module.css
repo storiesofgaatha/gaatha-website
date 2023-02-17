@@ -1,53 +1,68 @@
 .studio {
+    display: flex;
     background-color: var(--color-background-light);
 
     .bgWrap {
         display: flex;
-        position: fixed;
-        background-color: #ffffff;
+        position: relative;
         width: 100vw;
         height: 100vh;
         overflow: hidden;
 
+        .navbar {
+            z-index: 1;
+        }
+
         .leftBackground {
-            width: 70%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70vw;
+            height: 100vh;
+            .image {
+                position: absolute;
+                object-fit: cover;
+                object-position: center;
+            }
         }
         .rightBackground{
-            width: 30%;
+            position: absolute;
+            right: 0;
+            width: 30vw;
+            height: 100vh;
+            .image {
+                position: absolute;
+                object-fit: cover;
+                object-position: right;
+            }
         }
 
         .studioContent {
             display: flex;
-            position: absolute;
+            position: relative;
             align-items: center;
             flex-direction: column;
-            gap: var(--spacing-base);
-            margin: var(--spacing-studio-logo);
+            z-index: 1;
+            margin: auto;
+            height: 80vh;
             text-align: center;
             color: var(--color-text-on-light-alt);
+            gap: calc(var(--spacing-extra-large) * 2);
 
-            .studioDescription {
-                display: flex;
-                max-width: 46%;
-                font-size: var(--font-size-small);
-
-                @media screen and (max-width: 720px) {
-                    max-width: 100%;
-                }
+            .storiesBlock {
+                align-self: flex-end;
+                flex-grow: 1;
+                width: 42rem;
             }
 
             .studioRoutes {
                 display: flex;
+                align-self: flex-end;
                 flex-direction: column;
-                margin: 17% 0 0 46%;
+                max-width: 25rem;
                 text-align: right;
                 color: var(--color-text-on-light-alt);
-                font-size: var(--font-size-large);
-
-                .studioDescription {
-                    display: flex;
-                    flex-direction: column;
-                }
+                font-size: var(--font-size-small);
             }
         }
     }
