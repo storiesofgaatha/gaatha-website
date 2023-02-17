@@ -17,7 +17,7 @@ function StoriesBlock(props: Props) {
             className,
             styles.storiesBlock,
             semiTransparent && styles.semiTransparent,
-            )}
+        )}
         >
             <span className={styles.stories}>Stories</span>
             <div>

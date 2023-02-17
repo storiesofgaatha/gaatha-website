@@ -47,6 +47,7 @@
                     width: 100%;
                 }
             }
+
             .studioContent {
                 display: flex;
                 align-items: center;
@@ -59,50 +60,43 @@
                 color: var(--color-text-on-light-alt);
                 gap: calc(var(--spacing-extra-large) * 2);
 
-                .descriptionContainer {
-                    display: flex;
+                .storiesBlock {
                     align-self: flex-end;
-                    flex-direction: column;
                     flex-grow: 1;
-                    gap: calc(var(--spacing-extra-large) * 2);
-
-                    .studioDescription {
-                        display: flex;
-                        max-width: 42rem;
-                        font-size: var(--font-size-small);
-                    }
+                    width: 42rem;
                 }
 
                 .studioRoutes {
                     display: flex;
                     align-self: flex-end;
                     flex-direction: column;
+                    max-width: 25rem;
                     text-align: right;
-                    text-decoration: underline;
                     color: var(--color-text-on-light-alt);
-                    font-size: var(--font-size-large);
+                    font-size: var(--font-size-small);
                 }
-            }
-            .rightBackground {
-                display: flex;
-                position: relative;
-                align-self: flex-end;
-                flex-shrink: 0;
-                z-index: 1;
-                width: 100%;
-                max-width: 30vw;
-                height: 100vh;
-                .image {
-                    position: absolute;
-                    object-fit: cover;
-                    object-position: right;
-                }
-
-                @media screen and (max-width: 960px) {
-                    display: none;
-                }
-
             }
         }
+
+        .rightBackground{
+            display: flex;
+            position: relative;
+            align-self: flex-end;
+            flex-shrink: 0;
+            z-index: 1;
+            width: 100%;
+            max-width: 30vw;
+            height: 100vh;
+            .image {
+                position: absolute;
+                object-fit: cover;
+                object-position: left;
+            }
+
+            @media screen and (max-width: 960px) {
+                display: none;
+            }
+        }
+
     }
 }
