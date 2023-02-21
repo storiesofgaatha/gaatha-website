@@ -84,6 +84,7 @@
             align-self: flex-end;
             flex-shrink: 0;
             z-index: 1;
+            background-color: var(--color-background-light);
             width: 100%;
             max-width: 30vw;
             height: 100vh;

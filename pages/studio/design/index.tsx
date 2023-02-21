@@ -45,10 +45,13 @@ function Design() {
                         </div>
                     </div>
                     <div className={styles.rightBackground}>
+                        {
+                            // TODO: Add image after receiving it from clients
+                        }
                         <Image
                             className={styles.image}
                             alt="Right Image"
-                            src="/dummy.png"
+                            src="https://images.unsplash.com/photo-1676808527792-2c6937102a99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                             placeholder="blur"
                             fill
                         />
