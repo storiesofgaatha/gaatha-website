@@ -4,7 +4,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { gql } from 'graphql-request';
 
-import { gaathaRequest } from 'utils/common';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/mousewheel';
+import {
+    Mousewheel,
+} from 'swiper';
+
+import {
+    gaathaRequest,
+    bucketify,
+} from 'utils/common';
 import { WorkListQuery } from 'generated/types';
 
 import PageWithSideBar from 'components/PageWithSideBar';
@@ -23,27 +33,22 @@ function Works(props: Props) {
         works,
     } = props;
 
-    let noOfBuckets = Math.floor(works.length / BUCKET_SIZE);
-    if (works.length % BUCKET_SIZE !== 0) {
-        noOfBuckets += 1;
-    }
-    const buckets = [];
-    while (buckets.length < noOfBuckets) {
-        buckets.push(works.slice(
-            buckets.length * BUCKET_SIZE,
-            buckets.length * BUCKET_SIZE + BUCKET_SIZE,
-        ));
-    }
+    const workBuckets = bucketify(BUCKET_SIZE, works);
 
     return (
         <PageWithSideBar
             className={styles.work}
+            contentClassName={styles.content}
             pageTitle="Works"
             navbar="work"
         >
-            <div className={styles.buckets}>
-                {buckets.map((bucket, index) => (
-                    <div
+            <Swiper
+                className={styles.buckets}
+                modules={[Mousewheel]}
+                mousewheel
+            >
+                {workBuckets.map((bucket, index) => (
+                    <SwiperSlide
                         // eslint-disable-next-line react/no-array-index-key
                         key={index}
                         className={styles.grid}
@@ -61,12 +66,15 @@ function Works(props: Props) {
                                         alt="cover image"
                                         layout="fill"
                                     />
+                                    <div className={styles.title}>
+                                        {work.title}
+                                    </div>
                                 </Link>
                             )
                         ))}
-                    </div>
+                    </SwiperSlide>
                 ))}
-            </div>
+            </Swiper>
         </PageWithSideBar>
     );
 }
