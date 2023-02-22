@@ -62,7 +62,7 @@ function People(props: Props) {
                 </Swiper>
                 <div className={styles.artworkContainer}>
                     {people?.map((item) => (
-                        isDefined(item.artWork) && (
+                        isDefined(item.artWork) && isDefined(item.artWork.url) && (
                             <div className={styles.artworkWrapper}>
                                 <Image
                                     className={styles.artwork}

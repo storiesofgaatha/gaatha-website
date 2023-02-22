@@ -1,0 +1,47 @@
+.page {
+    display: flex;
+
+    .content {
+        display: flex;
+        flex-grow: 1;
+        gap: var(--spacing-medium);
+
+        .imagesContainer {
+            display: flex;
+            flex-grow: 1;
+
+            .imageWrapper {
+                position: relative;
+                width: 20%;
+                height: 100vh;
+
+                .image {
+                    object-fit: cover;
+                    filter: grayscale(100%);
+                    transition: filter ease 1s;
+                }
+                &:hover {
+                    .image {
+                        filter: grayscale(0);
+                    }
+                }
+            }
+        }
+        .infoContainer {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            justify-content: flex-end;
+            padding-bottom: var(--spacing-super-large);
+            width: 20vw;
+
+            .projectTitle {
+                text-transform: uppercase;
+                line-height: 1;
+                color: var(--color-text-on-light-alt);
+                font-size: var(--font-size-heading-extra-large);
+                font-weight: var(--font-weight-bold);
+            }
+        }
+    }
+}
