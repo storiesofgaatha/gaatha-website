@@ -30,3 +30,18 @@ export function gaathaRequest<T = any, V extends Variables = Variables>(
 ): Promise<T> {
     return request(graphqlEndpoint, document, ...variablesAndRequestHeaders);
 }
+
+export function bucketify<T>(bucketSize: number, data: T[]) {
+    let noOfBuckets = Math.floor(data.length / bucketSize);
+    if (data.length % bucketSize !== 0) {
+        noOfBuckets += 1;
+    }
+    const buckets = [];
+    while (buckets.length < noOfBuckets) {
+        buckets.push(data.slice(
+            buckets.length * bucketSize,
+            buckets.length * bucketSize + bucketSize,
+        ));
+    }
+    return buckets;
+}

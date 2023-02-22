@@ -9,12 +9,14 @@
 
         .listingContainer {
             display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
+            margin: unset;
             width: 30vw;
-            height: 50vh;
-            overflow: auto;
             gap: var(--spacing-medium);
+
+            .slide {
+                display: flex;
+                flex-direction: column;
+            }
         }
         .artworkContainer {
             display: flex;

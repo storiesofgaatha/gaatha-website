@@ -3,10 +3,19 @@ import { isDefined } from '@togglecorp/fujs';
 import { GetStaticProps } from 'next';
 import { gql } from 'graphql-request';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/mousewheel';
+import {
+    Mousewheel,
+} from 'swiper';
 
 import PageWithSideBar from 'components/PageWithSideBar';
 import PeopleItem from 'components/PeopleItem';
-import { gaathaRequest } from 'utils/common';
+import {
+    gaathaRequest,
+    bucketify,
+} from 'utils/common';
 import { PeopleQuery } from 'generated/types';
 
 import styles from './styles.module.css';
@@ -22,6 +31,8 @@ function People(props: Props) {
         people,
     } = props;
 
+    const peopleBuckets = bucketify(3, people);
+
     return (
         <PageWithSideBar
             pageTitle="People"
@@ -30,13 +41,25 @@ function People(props: Props) {
             lightMode
         >
             <div className={styles.people}>
-                <div className={styles.listingContainer}>
-                    {people?.map((item) => (
-                        <PeopleItem
-                            people={item}
-                        />
+                <Swiper
+                    className={styles.listingContainer}
+                    modules={[Mousewheel]}
+                    mousewheel
+                >
+                    {peopleBuckets.map((bucket, index) => (
+                        <SwiperSlide
+                            // eslint-disable-next-line react/no-array-index-key
+                            key={index}
+                            className={styles.slide}
+                        >
+                            {bucket.map((person) => (
+                                <PeopleItem
+                                    people={person}
+                                />
+                            ))}
+                        </SwiperSlide>
                     ))}
-                </div>
+                </Swiper>
                 <div className={styles.artworkContainer}>
                     {people?.map((item) => (
                         isDefined(item.artWork) && (
