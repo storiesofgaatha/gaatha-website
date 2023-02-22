@@ -5,8 +5,14 @@
     background-color: var(--color-background);
     padding: var(--spacing-large);
     width: var(--width-navbar);
+    height: 100vh;
 
-    .routes {
+    .linkContainer {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing-super-large) * 2);
+    }
+    .routes, .subRoutes {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -30,7 +36,6 @@
     }
     &.transparentMode {
         background-color: transparent;
-        height: 100vh;
 
         >* {
             color: var(--color-text-grey);

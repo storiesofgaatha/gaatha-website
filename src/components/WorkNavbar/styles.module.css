@@ -6,7 +6,12 @@
     padding: var(--spacing-large);
     width: var(--width-navbar);
 
-    .routes {
+    .linkContainer {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing-super-large) * 2);
+    }
+    .routes, .categories, .tags{
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;

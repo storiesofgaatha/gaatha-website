@@ -39,6 +39,7 @@ function Works(props: Props) {
         <PageWithSideBar
             className={styles.work}
             pageTitle="Works"
+            navbar="work"
         >
             <div className={styles.buckets}>
                 {buckets.map((bucket, index) => (

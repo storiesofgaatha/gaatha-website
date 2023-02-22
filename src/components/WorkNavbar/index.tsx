@@ -12,7 +12,7 @@ interface Props {
     transparentMode?: boolean;
 }
 
-function SideNavbar(props: Props) {
+function WorkNavbar(props: Props) {
     const {
         className,
         lightMode,
@@ -57,33 +57,43 @@ function SideNavbar(props: Props) {
                     </div>
                 </Link>
             )}
-            <div className={styles.routes}>
-                <Link
-                    href="/works"
-                    className={_cs(currentRoute === '/works' && styles.active)}
-                >
-                    Works
-                </Link>
-                <Link
-                    href="/studio"
-                    className={_cs(currentRoute === '/studio' && styles.active)}
-                >
-                    Studio
-                </Link>
-                <Link
-                    href="/contact"
-                    className={_cs(currentRoute === '/contact' && styles.active)}
-                >
-                    Contact
-                </Link>
-                <Link
-                    href="/search"
-                    className={_cs(currentRoute === '/search' && styles.active)}
-                >
-                    Search
-                </Link>
+            <div className={styles.linkContainer}>
+                {/*
+                    // TODO: Populate the tags and categories through props
+                <div className={styles.tags}>
+                </div>
+                <div className={styles.categories}>
+                </div>
+                  */}
+                <div className={styles.routes}>
+                    <Link
+                        href="/works"
+                        className={_cs(currentRoute === '/works' && styles.active)}
+                    >
+                        Works
+                    </Link>
+                    <Link
+                        href="/studio"
+                        className={_cs(currentRoute === '/studio' && styles.active)}
+                    >
+                        Studio
+                    </Link>
+                    <Link
+                        href="/contact"
+                        className={_cs(currentRoute === '/contact' && styles.active)}
+                    >
+                        Contact
+                    </Link>
+                    <Link
+                        href="/search"
+                        className={_cs(currentRoute === '/search' && styles.active)}
+                    >
+                        Search
+                    </Link>
+                </div>
             </div>
         </nav>
     );
 }
-export default SideNavbar;
+
+export default WorkNavbar;

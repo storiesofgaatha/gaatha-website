@@ -26,6 +26,7 @@ function People(props: Props) {
         <PageWithSideBar
             pageTitle="People"
             contentClassName={styles.page}
+            navbar="studio"
             lightMode
         >
             <div className={styles.people}>
