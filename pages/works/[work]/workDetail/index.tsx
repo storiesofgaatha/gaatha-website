@@ -48,7 +48,7 @@ function WorkDetail(props: Props) {
             <div className={styles.content}>
                 <div className={styles.left}>
                     <div className={styles.artworkContainer}>
-                        {isDefined(work.artWork) && (
+                        {isDefined(work.artWork) && isDefined(work.artWork.url) && (
                             <Image
                                 className={styles.artwork}
                                 src={work.artWork.url}
@@ -76,14 +76,14 @@ function WorkDetail(props: Props) {
                             draggable
                         >
                             {galleryImages?.map((image) => (
-                                isDefined(image.image) && (
+                                isDefined(image.image) && isDefined(image.image.url) && (
                                     <SwiperSlide
                                         className={styles.imageWrapper}
                                     >
                                         <Image
                                             className={styles.image}
                                             src={image.image.url}
-                                            alt={image.image.name}
+                                            alt="carousel image"
                                             fill
                                         />
                                     </SwiperSlide>

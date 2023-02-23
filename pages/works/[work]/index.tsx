@@ -41,7 +41,7 @@ function WorkItem(props: Props) {
             {!nextPageButtonClicked && (
                 <>
                     <div className={styles.imageWrapper}>
-                        {isDefined(work.coverImage) && (
+                        {isDefined(work.coverImage) && isDefined(work.coverImage.url) && (
                             <Image
                                 className={styles.image}
                                 src={work.coverImage.url}
@@ -56,7 +56,7 @@ function WorkItem(props: Props) {
                                 {work.title}
                             </div>
                             <div className={styles.artwork}>
-                                {isDefined(work.artWork) && (
+                                {isDefined(work.artWork) && isDefined(work.artWork.url) && (
                                     <Image
                                         className={styles.image}
                                         src={work.artWork.url}

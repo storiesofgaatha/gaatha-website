@@ -23,14 +23,19 @@ import styles from './styles.module.css';
 
 const BUCKET_SIZE = 12;
 type WorkItemType = NonNullable<NonNullable<WorkListQuery['works']>[number]>;
+// type FilterChoiceType = NonNullable<WorkListQuery['filterChoices']>;
+// type CategoryType = NonNullable<FilterChoiceType['workCategory']>[number];
+// type TagType = NonNullable<FilterChoiceType['workTag']>[number];
 
 interface Props {
     works: WorkItemType[];
+    // filterChoices: FilterChoiceType;
 }
 
 function Works(props: Props) {
     const {
         works,
+        // filterChoices,
     } = props;
 
     const workBuckets = bucketify(BUCKET_SIZE, works);
@@ -54,7 +59,7 @@ function Works(props: Props) {
                         className={styles.grid}
                     >
                         {bucket.map((work) => (
-                            isDefined(work.coverImage) && (
+                            isDefined(work.coverImage) && isDefined(work.coverImage.url) && (
                                 <Link
                                     key={work.id}
                                     href={`works/${work.id}`}
@@ -99,6 +104,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
                     url
                 }
             }
+            filterChoices {
+                workCategory {
+                    id
+                    name
+                }
+                workTag {
+                    id
+                    name
+                }
+            }
         }
     `;
 
@@ -106,6 +121,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     return ({
         props: {
             works: value.works,
+            filterChoices: value.filterChoices,
         },
     });
 };

@@ -21,7 +21,8 @@ function PeopleItem(props: Props) {
         <div className={styles.item}>
             <div className={styles.top}>
                 <div className={styles.profilePicture}>
-                    {isDefined(people?.profilePicture) && (
+                    {isDefined(people.profilePicture)
+                        && isDefined(people.profilePicture.url) && (
                         <Image
                             className={styles.picture}
                             src={people?.profilePicture?.url}

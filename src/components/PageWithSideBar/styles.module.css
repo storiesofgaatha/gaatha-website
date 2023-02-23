@@ -13,6 +13,7 @@
     .pageContent {
         display: flex;
         height: 100vh;
+        gap: var(--spacing-medium);
 
         .navbar {
             flex-shrink: 0;

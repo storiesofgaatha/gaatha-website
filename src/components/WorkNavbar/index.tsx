@@ -10,6 +10,7 @@ interface Props {
     hideGaathaLogo?: boolean;
     lightMode?: boolean;
     transparentMode?: boolean;
+    subNavigations?: React.ReactNode;
 }
 
 function WorkNavbar(props: Props) {
@@ -18,6 +19,7 @@ function WorkNavbar(props: Props) {
         lightMode,
         hideGaathaLogo = false,
         transparentMode = false,
+        subNavigations,
     } = props;
 
     const router = useRouter();
@@ -65,6 +67,18 @@ function WorkNavbar(props: Props) {
                 <div className={styles.categories}>
                 </div>
                   */}
+                {subNavigations}
+                <div className={styles.mid}>
+                    <Link
+                        href="/works/visualizations"
+                        className={_cs(
+                            currentRoute === '/works/visualizations'
+                            && styles.active,
+                        )}
+                    >
+                        Graphics + Visualizations
+                    </Link>
+                </div>
                 <div className={styles.routes}>
                     <Link
                         href="/works"
