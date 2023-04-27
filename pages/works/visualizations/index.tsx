@@ -6,25 +6,29 @@ import { gql } from 'graphql-request';
 
 import PageWithSideBar from 'components/PageWithSideBar';
 import { gaathaRequest } from 'utils/common';
-import { FeaturedWorksQuery } from 'generated/types';
+import {
+    FeaturedWorksQuery,
+} from 'generated/types';
 import styles from './styles.module.css';
 
 type ProjectType = NonNullable<NonNullable<FeaturedWorksQuery['projects']>[number]>;
+// type FilterChoiceType = NonNullable<FeaturedWorksQuery['filterChoices']>;
 
 interface Props {
     projects: ProjectType[];
+    // filterChoices: FilterChoiceType;
 }
 
 function GraphicsAndVisualizations(props: Props) {
     const {
         projects,
+        // filterChoices,
     } = props;
 
     const [selectedProjectId, setSelectedProjectId] = useState<string | undefined>(undefined);
-
     const handleMouseHover = useCallback((projectId: string) => {
         setSelectedProjectId(projectId);
-    }, [selectedProjectId]);
+    }, []);
 
     const selectedProject = useMemo(() => projects.find(
         (project) => project.id === selectedProjectId,
@@ -38,6 +42,7 @@ function GraphicsAndVisualizations(props: Props) {
             className={styles.page}
             contentClassName={styles.content}
             pageTitle="Works"
+            navbarClassName={styles.navbar}
             navbar="work"
             lightMode
         >
@@ -60,7 +65,7 @@ function GraphicsAndVisualizations(props: Props) {
                 <span className={styles.projectTitle}>
                     {selectedProject?.title}
                 </span>
-                <span className={styles.location}>
+                <span>
                     {selectedProject?.location}
                 </span>
             </div>

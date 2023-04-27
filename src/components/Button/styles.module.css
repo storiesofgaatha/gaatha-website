@@ -1,0 +1,105 @@
+.button {
+    --padding: var(--spacing-extra-small) var(--spacing-large);
+    --border-color: transparent;
+    --background: var(--color-background);
+    --color: var(--color-text-on-light);
+
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+    border: var(--width-separator-thin) solid var(--border-color);
+    border-radius: var(--radius-button);
+    background-color: var(--background);
+    cursor: pointer;
+    padding: var(--padding);
+    width: fit-content;
+    overflow: hidden;
+    line-height: 1;
+    color: var(--color);
+    font-family: inherit;
+    font-size: var(--font-size-button);
+    font-weight: var(--font-weight-bold);
+    gap: var(--spacing-small);
+
+    .icons {
+        display: flex;
+        align-items: center;
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+    }
+
+    .children {
+        display: flex;
+        align-items: center;
+    }
+
+    &.default {
+        --background: none;
+        --padding: 0;
+        color: var(--color-primary);
+        font-weight: var(--font-weight-bold);
+    }
+
+    &.primary {
+        --background: var(--color-primary);
+        --color: var(--color-text-on-dark);
+    }
+
+    &.primaryActive {
+        --background: var(--color-primary-active);
+        --color: var(--color-text-on-dark);
+    }
+
+    &.tab {
+        --background: transparent;
+        --color: var(--color-secondary);
+        border-bottom: var(--width-separator-medium) solid transparent;
+        border-radius: unset;
+        font-size: var(--font-size-large);
+        font-weight: var(--font-weight-normal);
+    }
+
+    &.tabActive {
+        --background: transparent;
+        --color: var(--color-primary);
+        border-bottom: var(--width-separator-medium) solid var(--color-primary);
+        border-radius: unset;
+        font-size: var(--font-size-large);
+        font-weight: var(--font-weight-normal);
+    }
+
+    &.outline {
+        --background: var(--color-surface-white);
+        --border-color: rgba(0, 0, 0, 0.1);
+        border-radius: var(--outline-button-border-radius);
+        font-weight: var(--font-weight-normal);
+    }
+
+    &.outlineActive {
+        --background: var(--color-surface-white);
+        --border-color: var(--color-primary);
+        --color: var(--color-primary);
+        border-radius: var(--outline-button-border-radius);
+        font-weight: var(--font-weight-normal);
+    }
+
+    &.transparent {
+        --background: transparent;
+        border-radius: unset;
+        --padding: 0;
+        font-weight: var(--font-weight-normal);
+
+        &:hover {
+            color: var(--color-text-on-dark-alt);
+        }
+    }
+
+    &.disabled {
+        opacity: var(--opacity-disabled-element);
+        cursor: not-allowed;
+    }
+}

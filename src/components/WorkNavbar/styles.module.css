@@ -4,14 +4,14 @@
     justify-content: space-between;
     background-color: var(--color-background);
     padding: var(--spacing-large);
-    width: var(--width-navbar);
+    width: 13rem;
 
     .linkContainer {
         display: flex;
         flex-direction: column;
-        gap: calc(var(--spacing-super-large) * 2);
+        gap: var(--spacing-super-large);
     }
-    .routes, .categories, .tags{
+    .routes {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;

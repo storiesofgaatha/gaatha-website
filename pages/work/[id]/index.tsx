@@ -12,6 +12,7 @@ import {
     WorkMiniListQuery,
 } from 'generated/types';
 
+// FIXME: do not create a separate component
 import WorkDetail from './workDetail';
 
 import styles from './styles.module.css';
@@ -124,13 +125,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
     `;
 
-    const value = await gaathaRequest(work, { id: params?.work });
+    const value = await gaathaRequest(work, { id: params?.id });
     const props = { work: value.work };
 
     return { props };
 };
 
 type WorkMiniItem = NonNullable<WorkMiniListQuery['works']>[number];
+
 export const getStaticPaths: GetStaticPaths = async () => {
     const workMiniList = gql`
         query WorkMiniList {
@@ -143,7 +145,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const value = await gaathaRequest(workMiniList);
     const pathsWithParams = value.works.map((project: WorkMiniItem) => ({
-        params: { work: project.id },
+        params: { id: project.id },
     }));
 
     return {

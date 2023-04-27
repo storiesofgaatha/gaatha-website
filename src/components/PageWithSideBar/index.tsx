@@ -13,6 +13,9 @@ interface Props {
     contentClassName?: string;
     lightMode?: boolean;
     navbar?: 'studio' | 'work';
+    subRoutes?: React.ReactNode;
+    subRoutesClassName?: string;
+    navbarClassName?: string;
 }
 
 function PageWithSideBar(props: Props) {
@@ -23,6 +26,9 @@ function PageWithSideBar(props: Props) {
         contentClassName,
         lightMode = false,
         navbar,
+        navbarClassName,
+        subRoutes,
+        subRoutesClassName,
     } = props;
 
     return (
@@ -38,20 +44,22 @@ function PageWithSideBar(props: Props) {
             <div className={styles.pageContent}>
                 {isNotDefined(navbar) && (
                     <SideNavbar
-                        className={styles.navbar}
+                        className={_cs(navbarClassName, styles.navbar)}
                         lightMode={lightMode}
                     />
                 )}
                 {navbar === 'studio' && (
                     <StudioNavbar
-                        className={styles.navbar}
+                        className={_cs(navbarClassName, styles.navbar)}
                         lightMode={lightMode}
                     />
                 )}
                 {navbar === 'work' && (
                     <WorkNavbar
-                        className={styles.navbar}
+                        className={_cs(navbarClassName, styles.navbar)}
                         lightMode={lightMode}
+                        subRoutes={subRoutes}
+                        subRoutesClassName={subRoutesClassName}
                     />
                 )}
                 <div className={_cs(styles.content, contentClassName)}>

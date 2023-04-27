@@ -1,21 +1,20 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { _cs } from '@togglecorp/fujs';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import Link from 'next/link';
 import { gql } from 'graphql-request';
 
 import {
     gaathaRequest,
 } from 'utils/common';
-import WorkGrid from 'components/WorkGrid';
 import { WorkListQuery } from 'generated/types';
 
 import PageWithSideBar from 'components/PageWithSideBar';
+import WorkGrid, { WorkItemType } from 'components/WorkGrid';
 import Button from 'components/Button';
 
 import styles from './styles.module.css';
 
-type WorkItemType = NonNullable<NonNullable<WorkListQuery['works']>[number]>;
 type FilterChoiceType = NonNullable<WorkListQuery['filterChoices']>;
 
 interface Props {
@@ -29,22 +28,10 @@ function Works(props: Props) {
         filterChoices,
     } = props;
 
-    // const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
     const [selectedTag, setSelectedTag] = useState<string | undefined>(undefined);
 
     const categories = filterChoices.workCategory;
     const tags = filterChoices.workTag;
-
-    const allTags = useMemo(() => {
-        const tempTags = [
-            {
-                id: '0',
-                name: 'All',
-            },
-            ...(tags ?? []),
-        ];
-        return tempTags;
-    }, []);
 
     const subRoutes = (
         <>
@@ -52,7 +39,7 @@ function Works(props: Props) {
                 {categories?.map((cat) => (
                     <Link
                         key={cat.id}
-                        href={`works/categories/${cat.id}`}
+                        href={`/works/categories/${cat.id}`}
                         className={_cs(
                             styles.link,
                         )}
@@ -62,7 +49,7 @@ function Works(props: Props) {
                 ))}
             </div>
             <div className={styles.tags}>
-                {allTags.map((tag) => (
+                {tags?.map((tag) => (
                     <Button
                         name={tag.id}
                         className={_cs(
@@ -96,7 +83,7 @@ function Works(props: Props) {
     );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     const workList = gql`
         query WorkList (
             $categoryId: ID,
@@ -141,7 +128,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     `;
 
     const variables = {
-        categoryId: undefined,
+        categoryId: params?.id,
         tagId: undefined,
     };
 
@@ -153,6 +140,31 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
             filterChoices: value.filterChoices,
         },
     });
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const meta = gql`
+        query Meta {
+            filterChoices {
+                workCategory {
+                    id
+                    name
+                }
+            }
+        }
+    `;
+
+    const metaResponse = await gaathaRequest(meta);
+    const categories = metaResponse.filterChoices.workCategory;
+
+    const pathsWithParams = categories.map((category: unknown) => ({
+        params: { id: category.id },
+    }));
+
+    return {
+        paths: pathsWithParams,
+        fallback: 'blocking',
+    };
 };
 
 export default Works;
