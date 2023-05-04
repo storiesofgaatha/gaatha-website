@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
 import { _cs } from '@togglecorp/fujs';
+import Image from 'next/image';
+import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { gql } from 'graphql-request';
@@ -8,6 +10,8 @@ import {
     gaathaRequest,
 } from 'utils/common';
 import WorkGrid from 'components/WorkGrid';
+import WorkNavbar from 'components/WorkNavbar';
+import GaathaLogo from 'components/GaathaLogo';
 import { WorkListQuery } from 'generated/types';
 
 import PageWithSideBar from 'components/PageWithSideBar';
@@ -80,19 +84,26 @@ function Works(props: Props) {
     );
 
     return (
-        <PageWithSideBar
-            className={styles.work}
-            contentClassName={styles.content}
-            pageTitle="Works"
-            navbar="work"
-            subRoutes={subRoutes}
-            subRoutesClassName={styles.subroutes}
-        >
-            <WorkGrid
-                works={works}
-                selectedTag={selectedTag}
-            />
-        </PageWithSideBar>
+        <div className={styles.works}>
+            <Head>
+                Works
+            </Head>
+            <div className={styles.topContainer}>
+                <GaathaLogo variant="small" />
+            </div>
+            <div className={styles.content}>
+                <WorkNavbar
+                    className={styles.navbar}
+                    subRoutes={subRoutes}
+                    subRoutesClassName={styles.subroutes}
+                    hideGaathaLogo
+                />
+                <WorkGrid
+                    works={works}
+                    selectedTag={selectedTag}
+                />
+            </div>
+        </div>
     );
 }
 

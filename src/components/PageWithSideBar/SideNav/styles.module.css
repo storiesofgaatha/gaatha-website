@@ -10,7 +10,7 @@
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        font-size: var(--font-size-medium);
+        font-size: var(--font-size-small);
         gap: var(--spacing-super-small);
 
         .active {
@@ -25,9 +25,11 @@
             color: var(--color-text-on-light-alt);
         }
     }
+
     &.noLogo {
         justify-content: flex-end;
     }
+
     &.transparentMode {
         background-color: transparent;
         height: 100vh;

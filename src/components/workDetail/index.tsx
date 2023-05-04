@@ -16,6 +16,7 @@ import { isDefined } from '@togglecorp/fujs';
 
 import SideNavbar from 'components/PageWithSideBar/SideNav';
 import TextOutput from 'components/TextOutput';
+import GaathaLogo from 'components/GaathaLogo';
 import HTMLOutput from 'components/HTMLOutput';
 import { WorkItemQuery } from 'generated/types';
 
@@ -92,14 +93,11 @@ function WorkDetail(props: Props) {
                         </Swiper>
                     )}
                     <div className={styles.rightPane}>
-                        <Link href="/" className={styles.logoWrapper}>
-                            <Image
-                                className={styles.logo}
-                                src="/logo-dark.png"
-                                alt="Gaatha"
-                                fill
-                            />
-                        </Link>
+                        <GaathaLogo
+                            variant="small"
+                            className={styles.logo}
+                            lightMode
+                        />
                         <div className={styles.extraInfo}>
                             <TextOutput
                                 label="Area"

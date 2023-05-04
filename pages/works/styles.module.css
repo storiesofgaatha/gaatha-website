@@ -1,7 +1,18 @@
-.work {
+.works {
     --width-grid-image: 24rem;
     display: flex;
+    flex-direction: column;
     gap: var(--spacing-medium);
+    height: 100vh;
+
+    .topContainer {
+        flex-shrink: 0;
+        padding: var(--spacing-small);
+
+        .logo {
+            object-fit: contain;
+        }
+    }
 
     .subroutes {
         display: flex;
@@ -17,6 +28,7 @@
 
     .content {
         display: flex;
-        align-items: center;
+        flex-grow: 1;
+        overflow-y: auto;
     }
 }

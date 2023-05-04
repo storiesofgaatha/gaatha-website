@@ -102,12 +102,6 @@ function WorkNavbar(props: Props) {
                     >
                         Contact
                     </Link>
-                    <Link
-                        href="/search"
-                        className={_cs(currentRoute === '/search' && styles.active)}
-                    >
-                        Search
-                    </Link>
                 </div>
             </div>
         </nav>

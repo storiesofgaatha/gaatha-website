@@ -103,15 +103,8 @@
                 flex-shrink: 0;
                 justify-content: space-between;
 
-                .logoWrapper {
-                    position: relative;
+                .logo {
                     align-self: flex-end;
-                    width: 10rem;
-                    height: 8rem;
-
-                    .logo {
-                        object-fit: contain;
-                    }
                 }
 
                 .extraInfo {

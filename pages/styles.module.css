@@ -9,6 +9,7 @@
 
     .logo {
         display: flex;
+        object-fit: contain;
         margin: auto;
     }
 
@@ -20,5 +21,13 @@
         gap: var(--spacing-small);
         text-align: center;
         font-size: var(--font-size-medium);
+
+        .route {
+            color: var(--color-text-grey);
+
+            &:hover {
+                color: var(--color-text);
+            }
+        }
     }
 }

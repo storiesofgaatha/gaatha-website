@@ -78,30 +78,6 @@ function StudioNavbar(props: Props) {
                     >
                         People
                     </Link>
-                    {/*
-                    NOTE: To be added when these pages are made
-                    <Link
-                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        href="#"
-                        className={styles.disabled}
-                    >
-                        Activities
-                    </Link>
-                    <Link
-                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        href="#"
-                        className={styles.disabled}
-                    >
-                        Recruit
-                    </Link>
-                    <Link
-                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        href="#"
-                        className={styles.disabled}
-                    >
-                        Blog
-                    </Link>
-                      */}
                 </div>
                 <div className={styles.routes}>
                     <Link
@@ -121,12 +97,6 @@ function StudioNavbar(props: Props) {
                         className={_cs(currentRoute === '/contact' && styles.active)}
                     >
                         Contact
-                    </Link>
-                    <Link
-                        href="/search"
-                        className={_cs(currentRoute === '/search' && styles.active)}
-                    >
-                        Search
                     </Link>
                 </div>
             </div>

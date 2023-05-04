@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import Page from 'components/Page';
+import GaathaLogo from 'components/GaathaLogo';
 
 import styles from './styles.module.css';
 
@@ -22,37 +23,28 @@ function Home(props: Props) {
             className={_cs(styles.home, className)}
             contentClassName={styles.mainContent}
         >
-            <Image
-                className={styles.logo}
-                src="/logo-light.png"
-                alt="Gaatha"
-                width={400}
-                height={300}
-            />
+            <GaathaLogo variant="large" className={styles.logo} />
             <div className={styles.routes}>
                 <Link
+                    className={styles.route}
                     href="/works"
                     passHref
                 >
                     Works
                 </Link>
                 <Link
+                    className={styles.route}
                     href="/studio"
                     passHref
                 >
                     Studio
                 </Link>
                 <Link
+                    className={styles.route}
                     href="/contact"
                     passHref
                 >
                     Contact
-                </Link>
-                <Link
-                    href="/search"
-                    passHref
-                >
-                    Search
                 </Link>
             </div>
         </Page>

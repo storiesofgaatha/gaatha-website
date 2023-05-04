@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { isDefined } from '@togglecorp/fujs';
 import { IoChevronDownCircleOutline } from 'react-icons/io5';
@@ -12,8 +12,8 @@ import {
     WorkMiniListQuery,
 } from 'generated/types';
 
-// FIXME: do not create a separate component
-import WorkDetail from './workDetail';
+import GaathaLogo from 'components/GaathaLogo';
+import WorkDetail from 'components/workDetail';
 
 import styles from './styles.module.css';
 
@@ -28,67 +28,42 @@ function WorkItem(props: Props) {
         work,
     } = props;
 
-    const [
-        nextPageButtonClicked,
-        setNextPageButtonClicked,
-    ] = useState<Boolean>(false);
-
-    const handleClick = () => {
-        setNextPageButtonClicked(true);
-    };
-
     return (
         <div className={styles.page}>
-            {!nextPageButtonClicked && (
-                <>
-                    <div className={styles.imageWrapper}>
-                        {isDefined(work.coverImage) && isDefined(work.coverImage.url) && (
+            <div className={styles.imageWrapper}>
+                {isDefined(work.coverImage) && isDefined(work.coverImage.url) && (
+                    <Image
+                        className={styles.image}
+                        src={work.coverImage.url}
+                        alt="cover image"
+                        layout="fill"
+                    />
+                )}
+            </div>
+            <div className={styles.header}>
+                <div className={styles.left}>
+                    <div className={work.isCoverImageDark && styles.dark}>
+                        {work.title}
+                    </div>
+                    <div className={styles.artwork}>
+                        {isDefined(work.artWork) && isDefined(work.artWork.url) && (
                             <Image
                                 className={styles.image}
-                                src={work.coverImage.url}
-                                alt="cover image"
+                                src={work.artWork.url}
+                                alt="artwork"
                                 layout="fill"
                             />
                         )}
                     </div>
-                    <div className={styles.header}>
-                        <div className={styles.left}>
-                            <div>
-                                {work.title}
-                            </div>
-                            <div className={styles.artwork}>
-                                {isDefined(work.artWork) && isDefined(work.artWork.url) && (
-                                    <Image
-                                        className={styles.image}
-                                        src={work.artWork.url}
-                                        alt="artwork"
-                                        layout="fill"
-                                    />
-                                )}
-                            </div>
-                        </div>
-                        <Link href="/" className={styles.right}>
-                            <Image
-                                className={styles.image}
-                                src="/logo-dark.png"
-                                alt="Gaatha"
-                                layout="fill"
-                            />
-                        </Link>
-                    </div>
-                    <div className={styles.buttonContainer}>
-                        <IoChevronDownCircleOutline
-                            className={styles.nextPageButton}
-                            onClick={handleClick}
-                        />
-                    </div>
-                </>
-            )}
-            {nextPageButtonClicked && (
-                <WorkDetail
-                    work={work}
+                </div>
+                <GaathaLogo
+                    variant="small"
+                    lightMode={!work.isCoverImageDark}
                 />
-            )}
+            </div>
+            <WorkDetail
+                work={work}
+            />
         </div>
     );
 }
@@ -106,6 +81,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 duration
                 location
                 status
+                isCoverImageDark
                 artWork {
                     name
                     url

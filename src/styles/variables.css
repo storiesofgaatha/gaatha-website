@@ -2,7 +2,7 @@
     /* Constants  */
     --multiplier: 1.2599; /* Major third scale */
 
-    --font-size-base: 1rem;
+    --font-size-base: 0.9rem;
     --font-size-heading-base: 2rem;
     --spacing-base: 1.25rem;
     --spacing-studio-logo: 8rem;
@@ -60,4 +60,9 @@
     --border-radius: 50%;
 
     --width-navbar: 10rem;
+
+    --color-background-scrollbar: #ffffff;
+    --radius-scrollbar-border: 0.25rem;
+    --color-foreground-scrollbar: #cccccc;
+    --width-scrollbar: 0.5rem;
 }
