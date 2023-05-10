@@ -72,12 +72,13 @@ function WorkNavbar(props: Props) {
                 <div className={subRoutesClassName}>
                     {subRoutes}
                 </div>
-                <div>
+                <div className={styles.additionalRoutes}>
                     <Link
                         href="/works/visualizations"
                         className={_cs(
                             currentRoute === '/works/visualizations'
                             && styles.active,
+                            styles.link
                         )}
                     >
                         Graphics + Visualizations

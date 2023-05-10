@@ -22,6 +22,7 @@
         .categories, .tags {
             display: flex;
             flex-direction: column;
+            font-size: var(--font-size-small);
             gap: var(--spacing-extra-small);
         }
     }

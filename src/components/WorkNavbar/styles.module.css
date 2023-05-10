@@ -10,18 +10,39 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing-super-large);
-    }
-    .routes {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        font-size: var(--font-size-small);
-        gap: var(--spacing-super-small);
 
-        .active {
-            color: var(--color-text-on-dark-alt);
+        .routes {
+            display: flex;
+            flex-direction: column;
+            font-size: var(--font-size-small);
+            gap: var(--spacing-super-small);
+
+            .active {
+                color: var(--color-text-on-dark-alt);
+            }
+        }
+
+        .additionalRoutes {
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease-in;
+            color: var(--color-text-on-dark);
+            font-size: var(--font-size-small);
+            gap: var(--spacing-super-small);
+
+            &:hover {
+                .link {
+                    color: var(--color-text-on-dark-alt);
+                }
+            }
+
+            &.active {
+                color: var(--color-text-on-dark-alt);
+            }
         }
     }
+
+
 
     &.light {
         background-color: var(--color-background-light);
