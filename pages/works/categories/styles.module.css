@@ -1,22 +1,27 @@
-.work {
+.works {
     --width-grid-image: 24rem;
     display: flex;
+    flex-direction: column;
+    padding-right: var(--width-navbar);
     gap: var(--spacing-medium);
+    height: 100vh;
 
-    .subroutes {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-medium);
+    @media screen and (max-width: 900px) {
+        padding-right: unset;
+    }
 
-        .categories, .tags {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-extra-small);
-        }
+    .topContainer {
+        flex-shrink: 0;
+        padding: var(--spacing-small);
     }
 
     .content {
         display: flex;
-        align-items: center;
+        flex-grow: 1;
+        overflow-y: auto;
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
+        }
     }
 }

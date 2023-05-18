@@ -2,9 +2,15 @@ import Head from 'next/head';
 import { isNotDefined, _cs } from '@togglecorp/fujs';
 import StudioNavbar from 'components/StudioNavbar';
 import WorkNavbar from 'components/WorkNavbar';
+import GaathaLogo from 'components/GaathaLogo';
 import SideNavbar from './SideNav';
 
 import styles from './styles.module.css';
+
+interface Category {
+    id: string;
+    name: string;
+}
 
 interface Props {
     className?: string;
@@ -13,8 +19,7 @@ interface Props {
     contentClassName?: string;
     lightMode?: boolean;
     navbar?: 'studio' | 'work';
-    subRoutes?: React.ReactNode;
-    subRoutesClassName?: string;
+    categories?: Category[] | undefined;
     navbarClassName?: string;
 }
 
@@ -27,8 +32,7 @@ function PageWithSideBar(props: Props) {
         lightMode = false,
         navbar,
         navbarClassName,
-        subRoutes,
-        subRoutesClassName,
+        categories,
     } = props;
 
     return (
@@ -42,6 +46,11 @@ function PageWithSideBar(props: Props) {
                 {pageTitle}
             </Head>
             <div className={styles.pageContent}>
+                <GaathaLogo
+                    className={styles.responsiveLogo}
+                    variant="small"
+                    lightMode={lightMode}
+                />
                 {isNotDefined(navbar) && (
                     <SideNavbar
                         className={_cs(navbarClassName, styles.navbar)}
@@ -58,8 +67,7 @@ function PageWithSideBar(props: Props) {
                     <WorkNavbar
                         className={_cs(navbarClassName, styles.navbar)}
                         lightMode={lightMode}
-                        subRoutes={subRoutes}
-                        subRoutesClassName={subRoutesClassName}
+                        categories={categories ?? []}
                     />
                 )}
                 <div className={_cs(styles.content, contentClassName)}>

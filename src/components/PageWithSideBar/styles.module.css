@@ -10,13 +10,33 @@
         color: var(--color-text-on-light);
     }
 
+    .responsiveLogo {
+        display: none;
+
+        @media screen and (max-width: 900px) {
+            display: flex;
+            order: 1;
+        }
+    }
+
     .pageContent {
         display: flex;
         height: 100vh;
         gap: var(--spacing-medium);
+        overflow: auto;
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
+        }
 
         .navbar {
             flex-shrink: 0;
+
+            @media screen and (max-width: 900px) {
+                flex-shrink: 0;
+                width: 100%;
+                height: unset;
+            }
         }
 
         .content {

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
@@ -100,21 +99,25 @@ function WorkDetail(props: Props) {
                         />
                         <div className={styles.extraInfo}>
                             <TextOutput
+                                className={styles.info}
                                 label="Area"
                                 value={work.area}
                                 multiline
                             />
                             <TextOutput
+                                className={styles.info}
                                 label="Status"
                                 value={work.status}
                                 multiline
                             />
                             <TextOutput
+                                className={styles.info}
                                 label="Duration"
                                 value={work.duration}
                                 multiline
                             />
                             <TextOutput
+                                className={styles.info}
                                 label="Location"
                                 value={work.location}
                             />

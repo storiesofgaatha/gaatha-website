@@ -7,15 +7,15 @@ import styles from './styles.module.css';
 type LogoVariant = 'small' | 'medium' | 'large';
 
 const sizeByLogoVariant = {
-    'small': {
+    small: {
         width: 100,
         height: 80,
     },
-    'medium': {
+    medium: {
         width: 200,
         height: 160,
     },
-    'large': {
+    large: {
         width: 320,
         height: 200,
     },

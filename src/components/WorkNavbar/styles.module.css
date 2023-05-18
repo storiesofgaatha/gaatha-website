@@ -4,45 +4,150 @@
     justify-content: space-between;
     background-color: var(--color-background);
     padding: var(--spacing-large);
-    width: 13rem;
+    --width-navbar: 13rem;
+
+    @media screen and (max-width: 900px) {
+        --width-navbar: 100vw;
+        padding: 0;
+    }
+
+    .logo {
+        @media screen and (max-width: 900px) {
+            display: none;
+        }
+    }
 
     .linkContainer {
         display: flex;
         flex-direction: column;
         gap: var(--spacing-super-large);
 
-        .routes {
-            display: flex;
-            flex-direction: column;
-            font-size: var(--font-size-small);
-            gap: var(--spacing-super-small);
+        @media screen and (max-width: 900px) {
+            flex-direction: row;
+            justify-content: center;
+        }
 
-            .active {
+        .link {
+            transition: all 0.4s ease-in;
+            opacity: 0;
+            &:hover {
                 color: var(--color-text-on-dark-alt);
+            }
+
+            &.active {
+                opacity: 1;
+                color: var(--color-text-on-dark-alt);
+            }
+
+            @media screen and (max-width: 900px) {
+                opacity: 1;
             }
         }
 
-        .additionalRoutes {
+        .routes {
+            display: flex;
+            flex-direction: column;
+            color: var(--color-text-on-dark);
+            font-size: var(--font-size-small);
+            gap: var(--spacing-super-small);
+
+            .link {
+                opacity: 1;
+            }
+        }
+
+        .additionalRoutes, .subRoutes {
             display: flex;
             flex-direction: column;
             transition: all 0.4s ease-in;
             color: var(--color-text-on-dark);
             font-size: var(--font-size-small);
             gap: var(--spacing-super-small);
+        }
 
-            &:hover {
-                .link {
-                    color: var(--color-text-on-dark-alt);
-                }
-            }
+        @media screen and (max-width: 900px) {
+            display: none;
+        }
+    }
 
-            &.active {
-                color: var(--color-text-on-dark-alt);
+    &:hover {
+        .linkContainer {
+            .link {
+                opacity: 1;
             }
         }
     }
 
+    &.noLogo {
+        justify-content: flex-end;
+    }
 
+    .responsiveMenu {
+        --height-navbar: 3.2rem;
+        --height-arrow: 2.4rem;
+        display: none;
+        position: relative;
+        flex-direction: column;
+        z-index: 11111;
+        gap: var(--spacing-extra-large);
+
+        .routes {
+            display: flex;
+            z-index: 11;
+            background-color: var(--color-background);
+            padding: var(--spacing-small) var(--spacing-large);
+            height: var(--height-navbar);
+            color: var(--color-text-on-dark);
+            font-size: var(--font-size-medium);
+            gap: var(--spacing-extra-large);
+
+            .link {
+                flex-grow: 1;
+                text-align: center;
+            }
+        }
+
+        .subNavbarContainer {
+            position: absolute;
+            bottom: var(--height-navbar);
+            transform: translateY(calc(100% - var(--height-arrow)));
+            transition: all ease-in-out 0.2s;
+            z-index: 1;
+            border-top: #bbb solid 1px;
+            background-color: var(--color-background);
+            padding: 0 var(--spacing-large);
+            width: 100%;
+
+            .arrow {
+                display: flex;
+                justify-content: space-between;
+                padding: var(--spacing-medium) 0;
+                width: 100%;
+                height: var(--height-arrow);
+            }
+
+            .otherRoutes {
+                display: flex;
+                flex-direction: column;
+                padding: var(--spacing-small) 0;
+                color: var(--color-text-on-dark);
+                font-size: var(--font-size-small);
+                gap: var(--spacing-super-small);
+            }
+
+            &.unhide {
+                transform: translateY(0);
+            }
+        }
+
+        .active {
+            color: var(--color-text-on-dark-alt);
+        }
+
+        @media screen and (max-width: 900px) {
+            display: flex;
+        }
+    }
 
     &.light {
         background-color: var(--color-background-light);
@@ -50,20 +155,40 @@
         .active {
             color: var(--color-text-on-light-alt);
         }
-    }
-    &.noLogo {
-        justify-content: flex-end;
-    }
-    &.transparentMode {
-        background-color: transparent;
-        height: 100vh;
 
-        >* {
-            color: var(--color-text-grey);
+        .linkContainer {
+            .link {
+                &:hover {
+                    color: var(--color-text-on-light-alt);
+                }
+
+                &.active {
+                    color: var(--color-text-on-light-alt);
+                }
+            }
         }
 
-        .active {
-            color: var(--color-text-on-light-alt);
+        .responsiveMenu {
+            .routes {
+                background-color: var(--color-background-light);
+                color: var(--color-text-on-light);
+            }
+
+            .subNavbarContainer {
+                background-color: var(--color-background-light);
+
+                .arrow {
+                    color: var(--color-text-on-light-alt);
+                }
+
+                .otherRoutes {
+                    color: var(--color-text-on-light);
+                }
+            }
+
+            .active {
+                color: var(--color-text-on-light-alt);
+            }
         }
     }
 }

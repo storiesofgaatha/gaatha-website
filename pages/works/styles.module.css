@@ -2,34 +2,26 @@
     --width-grid-image: 24rem;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-medium);
+    padding-right: var(--width-navbar);
     height: 100vh;
+    gap: var(--spacing-medium);
+
+    @media screen and (max-width: 900px) {
+        padding-right: unset;
+    }
 
     .topContainer {
         flex-shrink: 0;
         padding: var(--spacing-small);
-
-        .logo {
-            object-fit: contain;
-        }
-    }
-
-    .subroutes {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-medium);
-
-        .categories, .tags {
-            display: flex;
-            flex-direction: column;
-            font-size: var(--font-size-small);
-            gap: var(--spacing-extra-small);
-        }
     }
 
     .content {
         display: flex;
         flex-grow: 1;
         overflow-y: auto;
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
+        }
     }
 }

@@ -2,6 +2,7 @@
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+    transition: color 0.4s ease-in-out;
     line-height: 0.9;
     gap: 0;
 

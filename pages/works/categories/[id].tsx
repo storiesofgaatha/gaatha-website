@@ -1,91 +1,62 @@
-import { useState } from 'react';
-import { _cs } from '@togglecorp/fujs';
+import React from 'react';
+import { isDefined } from '@togglecorp/fujs';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import Link from 'next/link';
+import Head from 'next/head';
 import { gql } from 'graphql-request';
 
 import {
     gaathaRequest,
 } from 'utils/common';
-import { WorkListQuery } from 'generated/types';
+import { WorkListForCategoryQuery } from 'generated/types';
 
-import PageWithSideBar from 'components/PageWithSideBar';
+import GaathaLogo from 'components/GaathaLogo';
 import WorkGrid, { WorkItemType } from 'components/WorkGrid';
-import Button from 'components/Button';
+import WorkNavbar from 'components/WorkNavbar';
 
 import styles from './styles.module.css';
 
-type FilterChoiceType = NonNullable<WorkListQuery['filterChoices']>;
+type FilterChoiceType = NonNullable<WorkListForCategoryQuery['filterChoices']>;
 
 interface Props {
     works: WorkItemType[];
     filterChoices: FilterChoiceType;
+    categoryId: string | undefined;
 }
 
 function Works(props: Props) {
     const {
         works,
         filterChoices,
+        categoryId,
     } = props;
 
-    const [selectedTag, setSelectedTag] = useState<string | undefined>(undefined);
-
-    const categories = filterChoices.workCategory;
-    const tags = filterChoices.workTag;
-
-    const subRoutes = (
-        <>
-            <div className={styles.categories}>
-                {categories?.map((cat) => (
-                    <Link
-                        key={cat.id}
-                        href={`/works/categories/${cat.id}`}
-                        className={_cs(
-                            styles.link,
-                        )}
-                    >
-                        {cat.name}
-                    </Link>
-                ))}
-            </div>
-            <div className={styles.tags}>
-                {tags?.map((tag) => (
-                    <Button
-                        name={tag.id}
-                        className={_cs(
-                            tag.id === selectedTag && styles.active,
-                            styles.link,
-                        )}
-                        onClick={setSelectedTag}
-                        variant="transparent"
-                    >
-                        {tag.name}
-                    </Button>
-                ))}
-            </div>
-        </>
-    );
+    const categories = filterChoices.workCategory?.filter((cat) => isDefined(cat.id));
 
     return (
-        <PageWithSideBar
-            className={styles.work}
-            contentClassName={styles.content}
-            pageTitle="Works"
-            navbar="work"
-            subRoutes={subRoutes}
-            subRoutesClassName={styles.subroutes}
-        >
-            <WorkGrid
-                works={works}
-                selectedTag={selectedTag}
-            />
-        </PageWithSideBar>
+        <div className={styles.works}>
+            <Head>
+                Works
+            </Head>
+            <div className={styles.topContainer}>
+                <GaathaLogo variant="small" />
+            </div>
+            <div className={styles.content}>
+                <WorkNavbar
+                    activeCategory={categoryId}
+                    categories={categories ?? []}
+                    hideGaathaLogo
+                />
+                <WorkGrid
+                    works={works}
+                />
+            </div>
+        </div>
     );
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     const workList = gql`
-        query WorkList (
+        query WorkListForCategory (
             $categoryId: ID,
             $tagId: ID,
         ) {
@@ -119,16 +90,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
                     id
                     name
                 }
-                workTag {
-                    id
-                    name
-                }
             }
         }
     `;
 
     const variables = {
-        categoryId: params?.id,
+        categoryId: params?.id as (string | undefined),
         tagId: undefined,
     };
 
@@ -138,9 +105,13 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
         props: {
             works: value.works,
             filterChoices: value.filterChoices,
+            // FIXME: don't cast
+            categoryId: params?.id as (string | undefined),
         },
     });
 };
+
+type CategoryItem = NonNullable<FilterChoiceType['workCategory']>[number];
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const meta = gql`
@@ -157,7 +128,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const metaResponse = await gaathaRequest(meta);
     const categories = metaResponse.filterChoices.workCategory;
 
-    const pathsWithParams = categories.map((category: unknown) => ({
+    const pathsWithParams = categories.map((category: CategoryItem) => ({
         params: { id: category.id },
     }));
 

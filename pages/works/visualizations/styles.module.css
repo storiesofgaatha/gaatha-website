@@ -12,14 +12,29 @@
         gap: var(--spacing-medium);
         padding: 0 var(--spacing-super-large);
 
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            padding: 0;
+        }
+
         .imagesContainer {
             display: flex;
             flex-grow: 1;
+
+            @media screen and (max-width: 900px) {
+                flex-direction: column;
+            }
 
             .imageWrapper {
                 position: relative;
                 width: 13rem;
                 height: 100vh;
+
+                @media screen and (max-width: 900px) {
+                    flex-grow: 1;
+                    width: 100vw;
+                    height: unset;
+                }
 
                 .image {
                     object-fit: cover;
@@ -47,6 +62,15 @@
                 color: var(--color-text-on-light-alt);
                 font-size: var(--font-size-heading-extra-large);
                 font-weight: var(--font-weight-bold);
+            }
+
+            @media screen and (max-width: 900px) {
+                justify-content: center;
+                height: 10rem;
+
+                .projectTitle {
+                    width: unset;
+                }
             }
         }
     }

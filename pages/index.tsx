@@ -1,7 +1,6 @@
 import React from 'react';
 import { _cs } from '@togglecorp/fujs';
 import Link from 'next/link';
-import Image from 'next/image';
 
 import Page from 'components/Page';
 import GaathaLogo from 'components/GaathaLogo';

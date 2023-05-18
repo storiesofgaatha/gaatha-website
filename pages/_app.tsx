@@ -9,8 +9,10 @@ function MyApp(props: AppProps) {
         pageProps,
     } = props;
 
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Component {...pageProps} />;
+    return (
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        <Component {...pageProps} />
+    );
 }
 
 export default MyApp;

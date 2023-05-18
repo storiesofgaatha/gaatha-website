@@ -6,19 +6,38 @@
     color: var(--color-text-on-light);
     font-size: var(--font-size-small);
 
+    @media screen and (max-width: 900px) {
+        flex-direction: column;
+        height: unset;
+    }
+
     .workTitle {
         position: absolute;
         padding: var(--spacing-large);
         font-size: var(--font-size-heading-extra-small);
         font-weight: var(--font-weight-bold);
+        @media screen and (max-width: 900px) {
+            position: relative;
+            order: 1;
+            width: calc(100% - 5rem);
+        }
     }
     .navbar {
         flex-shrink: 0;
+        @media screen and (max-width: 900px) {
+            order: 3;
+            width: unset;
+        }
     }
     .content {
         display: flex;
         flex-grow: 1;
         gap: var(--spacing-large);
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            order: 2;
+        }
 
         .left {
             display: flex;
@@ -27,15 +46,31 @@
             padding: calc(2 *var(--spacing-extra-large)) 0 var(--spacing-large);
             gap: var(--spacing-large);
 
+            @media screen and (max-width: 900px) {
+                order: 2;
+                padding: 0 var(--spacing-large);
+            }
+
             .artworkContainer {
                 position: relative;
                 align-self: center;
                 width: 100%;
                 height: 20rem;
 
+                @media screen and (max-width: 900px) {
+                    position: absolute;
+                    top: 0;
+                    right: 5px;
+                    width: 5rem;
+                    height: 4rem;
+                }
+
                 .artwork {
                     object-fit: contain;
                     object-position: bottom;
+                    @media screen and (max-width: 900px) {
+                        object-position: center;
+                    }
                 }
             }
             .description {
@@ -61,6 +96,13 @@
             width: 60vw;
             gap: var(--spacing-medium);
 
+            @media screen and (max-width: 900px) {
+                align-items: center;
+                flex-direction: column;
+                order: 1;
+                width: unset;
+            }
+
             .carousel {
                 flex-grow: 1;
             }
@@ -77,6 +119,11 @@
             :global {
                 .swiper {
                     position: unset;
+                    @media screen and (max-width: 900px) {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                    }
                 }
                 .swiper-slide {
                     opacity: 0 !important;
@@ -90,10 +137,21 @@
 
                 .swiper-wrapper {
                     height: 100vh;
+                    @media screen and (max-width: 900px) {
+                        height: 500px;
+                        overflow: hidden;
+                    }
                 }
                 .swiper-pagination {
                     position: absolute;
                     right: var(--spacing-medium);
+                    @media screen and (max-width: 900px) {
+                        display: flex;
+                        position: unset;
+                        justify-content: center;
+                        margin: var(--spacing-medium) auto 0;
+                        gap: var(--spacing-extra-small);
+                    }
                 }
             }
 
@@ -103,8 +161,17 @@
                 flex-shrink: 0;
                 justify-content: space-between;
 
+                @media screen and (max-width: 900px) {
+                    flex-shrink: unset;
+                    justify-content: center;
+                    width: 100%;
+                }
+
                 .logo {
                     align-self: flex-end;
+                    @media screen and (max-width: 900px) {
+                        display: none;
+                    }
                 }
 
                 .extraInfo {
@@ -114,6 +181,18 @@
                     padding: var(--spacing-medium);
                     text-align: right;
                     gap: var(--spacing-extra-small);
+
+                    @media screen and (max-width: 900px) {
+                        align-self: stretch;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        padding: unset;
+                        text-align: center;
+
+                        .info {
+                            flex-grow: 1;
+                        }
+                    }
                 }
             }
         }

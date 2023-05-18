@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { primaryRoutes } from 'components/WorkNavbar';
 import styles from './styles.module.css';
 
 interface Props {
@@ -35,6 +36,7 @@ function SideNavbar(props: Props) {
         >
             {!hideGaathaLogo && (
                 <Link
+                    className={styles.logo}
                     href="/"
                 >
                     <div>
@@ -58,24 +60,17 @@ function SideNavbar(props: Props) {
                 </Link>
             )}
             <div className={styles.routes}>
-                <Link
-                    href="/works"
-                    className={_cs(currentRoute === '/works' && styles.active)}
-                >
-                    Works
-                </Link>
-                <Link
-                    href="/studio"
-                    className={_cs(currentRoute === '/studio' && styles.active)}
-                >
-                    Studio
-                </Link>
-                <Link
-                    href="/contact"
-                    className={_cs(currentRoute === '/contact' && styles.active)}
-                >
-                    Contact
-                </Link>
+                {primaryRoutes.map((item) => (
+                    <Link
+                        href={item.url}
+                        className={_cs(
+                            currentRoute.startsWith(item.url) && styles.active,
+                            styles.link,
+                        )}
+                    >
+                        {item.displayName}
+                    </Link>
+                ))}
             </div>
         </nav>
     );

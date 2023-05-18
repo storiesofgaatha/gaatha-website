@@ -1,3 +1,4 @@
+import { _cs } from '@togglecorp/fujs';
 import LabelValue from 'components/Page/LabelValue';
 import PageWithSideBar from 'components/PageWithSideBar';
 import Link from 'next/link';
@@ -10,7 +11,7 @@ function Contact() {
     return (
         <PageWithSideBar
             pageTitle="Contact"
-            className={styles.contact}
+            className={styles.page}
             contentClassName={styles.mainContent}
         >
             <div className={styles.map}>
@@ -49,14 +50,20 @@ function Contact() {
                         value={(
                             <>
                                 <p>
-                                    <a href="tel:+977-123456789">
+                                    <Link
+                                        href="tel:+977-123456789"
+                                        className={styles.link}
+                                    >
                                         +977-123456789
-                                    </a>
+                                    </Link>
                                 </p>
                                 <p>
-                                    <a href="tel:+01-1234567">
+                                    <Link
+                                        className={styles.link}
+                                        href="tel:+01-1234567"
+                                    >
                                         +1-1234567
-                                    </a>
+                                    </Link>
                                 </p>
                             </>
                         )}
@@ -66,14 +73,19 @@ function Contact() {
                     <LabelValue
                         label="Enquiries"
                         value={(
-                            <a
-                                className={styles.email}
-                                target="_blank"
-                                href="mailto:studio@storiesofgaatha.com"
-                                rel="noreferrer noopener"
-                            >
-                                studio@storiesofgaatha.com
-                            </a>
+                            <>
+                                <Link
+                                    className={_cs(styles.link, styles.email)}
+                                    target="_blank"
+                                    href="mailto:studio@storiesofgaatha.com"
+                                    rel="noreferrer noopener"
+                                >
+                                    studio@storiesofgaatha.com
+                                </Link>
+                                <p>
+                                    For business and general enquires
+                                </p>
+                            </>
                         )}
                     />
                 </div>
@@ -81,14 +93,19 @@ function Contact() {
                     <LabelValue
                         label="Jobs"
                         value={(
-                            <a
-                                className={styles.email}
-                                target="_blank"
-                                href="mailto:recruit@storiesofgaatha.com"
-                                rel="noreferrer noopener"
-                            >
-                                recruit@storiesofgaatha.com
-                            </a>
+                            <>
+                                <Link
+                                    className={_cs(styles.link, styles.email)}
+                                    target="_blank"
+                                    href="mailto:recruit@storiesofgaatha.com"
+                                    rel="noreferrer noopener"
+                                >
+                                    recruit@storiesofgaatha.com
+                                </Link>
+                                <p>
+                                    For job opportunities and internship related enquires
+                                </p>
+                            </>
                         )}
                     />
                 </div>
@@ -99,13 +116,17 @@ function Contact() {
                             <>
                                 <p>
                                     <Link
-                                        href="https://www.instagram.com/_gaatha_/?hl=en"
+                                        className={styles.link}
+                                        target="_blank"
+                                        href="https://www.instagram.com/_gaatha_/"
                                     >
                                         Instagram
                                     </Link>
                                 </p>
                                 <p>
                                     <Link
+                                        className={styles.link}
+                                        target="_blank"
                                         href="https://www.linkedin.com/in/gaatha-admin-3b14a421b/"
                                     >
                                         LinkedIn

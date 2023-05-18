@@ -1,31 +1,22 @@
-.swiperContainer {
+.responsive {
     display: flex;
+    flex-direction: column;
+    padding: var(--spacing-extra-large);
     width: 100%;
-    overflow: hidden;
-
-    @media screen and (max-width: 900px) {
-        display: none;
-    }
-}
-
-.buckets {
-    display: flex;
-    align-items: flex-start;
-    flex-grow: 1;
-    width: 100%;
-    gap: var(--spacing-medium);
+    overflow-y: auto;
+    gap: var(--spacing-extra-large);
 
     .grid {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        padding: var(--spacing-extra-large);
         gap: var(--spacing-extra-large);
 
         .imageContainer {
             display: flex;
             position: relative;
-            width: calc(100% / 4 - 3 * var(--spacing-extra-large) / 4);
+            width: calc(100% / 2 - var(--spacing-extra-large) / 2);
+            height: 12rem;
             max-height: 12rem;
 
             .coverImage {
@@ -40,39 +31,21 @@
             &:nth-child(11),
             &:nth-child(6),
             &:nth-child(5) {
-                width: calc(100% / 2 - var(--spacing-extra-large) / 2);
+                width: 100%;
             }
 
             .title {
                 position: absolute;
                 bottom: -1.5em;
                 transition: all ease 0.5s;
-                opacity: 0;
+                opacity: 1;
                 font-size: var(--font-size-extra-small);
             }
-
             &:hover {
                 .coverImage {
                     filter: grayscale(0%);
                 }
-                .title {
-                    opacity: 1;
-                }
             }
         }
-    }
-}
-
-.responsive {
-    --height-arrow: 2rem;
-    display: none;
-    flex-direction: column;
-    flex-grow: 1;
-    padding-bottom: var(--height-arrow);
-    width: 100%;
-    overflow: auto;
-
-    @media screen and (max-width: 900px) {
-        display: flex;
     }
 }

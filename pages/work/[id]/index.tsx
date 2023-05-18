@@ -1,9 +1,7 @@
 import React from 'react';
+import { isDefined, _cs } from '@togglecorp/fujs';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { isDefined } from '@togglecorp/fujs';
-import { IoChevronDownCircleOutline } from 'react-icons/io5';
 import Image from 'next/image';
-import Link from 'next/link';
 import { gql } from 'graphql-request';
 
 import { gaathaRequest } from 'utils/common';
@@ -42,7 +40,7 @@ function WorkItem(props: Props) {
             </div>
             <div className={styles.header}>
                 <div className={styles.left}>
-                    <div className={work.isCoverImageDark && styles.dark}>
+                    <div className={_cs(work.isCoverImageDark && styles.dark)}>
                         {work.title}
                     </div>
                     <div className={styles.artwork}>

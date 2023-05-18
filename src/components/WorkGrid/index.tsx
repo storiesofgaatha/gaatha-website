@@ -1,4 +1,4 @@
-import { isDefined } from '@togglecorp/fujs';
+import { _cs, isDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -13,66 +13,68 @@ import {
     bucketify,
 } from 'utils/common';
 import { WorkListQuery } from 'generated/types';
+import ResponsiveWorkGrid from 'components/ResponsiveWorkGrid';
 
 import styles from './styles.module.css';
 
 const BUCKET_SIZE = 12;
+
 export type WorkItemType = NonNullable<NonNullable<WorkListQuery['works']>[number]>;
 
 interface Props {
     works: WorkItemType[];
-    selectedTag?: string;
 }
 
 function WorkGrid(props: Props) {
     const {
         works,
-        selectedTag,
     } = props;
 
-
-    // const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
-
-    const filteredWorks = (isDefined(selectedTag) && selectedTag !== '0')
-        ? works.filter((work) => work.tag?.id === selectedTag)
-        : works;
-
-    const workBuckets = bucketify(BUCKET_SIZE, filteredWorks);
+    const workBuckets = bucketify(BUCKET_SIZE, works);
 
     return (
-        <Swiper
-            className={styles.buckets}
-            modules={[Mousewheel]}
-            mousewheel
-        >
-            {workBuckets.map((bucket, index) => (
-                <SwiperSlide
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={index}
-                    className={styles.grid}
+        <>
+            <div className={styles.swiperContainer}>
+                <Swiper
+                    className={styles.buckets}
+                    modules={[Mousewheel]}
+                    mousewheel
                 >
-                    {bucket.map((work) => (
-                        isDefined(work.coverImage) && isDefined(work.coverImage.url) && (
-                            <Link
-                                key={work.id}
-                                href={`work/${work.id}`}
-                                className={styles.imageContainer}
-                            >
-                                <Image
-                                    className={styles.coverImage}
-                                    src={work.coverImage.url}
-                                    alt="cover image"
-                                    layout="fill"
-                                />
-                                <div className={styles.title}>
-                                    {work.title}
-                                </div>
-                            </Link>
-                        )
+                    {workBuckets.map((bucket, index) => (
+                        <SwiperSlide
+                            // eslint-disable-next-line react/no-array-index-key
+                            key={index}
+                            className={styles.grid}
+                        >
+                            {bucket.map((work) => (
+                                isDefined(work.coverImage) && isDefined(work.coverImage.url) && (
+                                    <Link
+                                        key={work.id}
+                                        href={`/work/${work.id}`}
+                                        className={styles.imageContainer}
+                                    >
+                                        <Image
+                                            className={styles.coverImage}
+                                            src={work.coverImage.url}
+                                            alt="cover image"
+                                            layout="fill"
+                                        />
+                                        <div className={styles.title}>
+                                            {work.title}
+                                        </div>
+                                    </Link>
+                                )
+                            ))}
+                        </SwiperSlide>
                     ))}
-                </SwiperSlide>
-            ))}
-        </Swiper>
+                </Swiper>
+            </div>
+            <div className={_cs(styles.responsive)}>
+                <ResponsiveWorkGrid
+                    works={workBuckets}
+                />
+            </div>
+        </>
     );
 }
 

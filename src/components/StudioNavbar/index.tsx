@@ -1,9 +1,30 @@
+import { useMemo } from 'react';
 import { _cs } from '@togglecorp/fujs';
+import {
+    IoChevronDown,
+    IoChevronUp,
+} from 'react-icons/io5';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import Button from 'components/Button';
+import { primaryRoutes } from 'components/WorkNavbar';
+import useBooleanState from 'hooks/useBooleanState';
 import styles from './styles.module.css';
+
+const secondaryRoutes = [
+    {
+        key: 'about',
+        url: '/studio',
+        displayName: 'About',
+    },
+    {
+        key: 'people',
+        url: '/studio/people',
+        displayName: 'People',
+    },
+];
 
 interface Props {
     className?: string;
@@ -23,6 +44,21 @@ function StudioNavbar(props: Props) {
     const router = useRouter();
     const currentRoute = router.pathname;
 
+    const activeLink = useMemo(() => {
+        if (currentRoute === '/studio') {
+            return 'About';
+        }
+        return 'People';
+    }, [
+        currentRoute,
+    ]);
+
+    const [
+        additionalNavShown,
+        , , ,
+        toggleShowAdditionalNav,
+    ] = useBooleanState(false);
+
     return (
         <nav
             className={_cs(
@@ -35,6 +71,7 @@ function StudioNavbar(props: Props) {
         >
             {!hideGaathaLogo && (
                 <Link
+                    className={styles.logo}
                     href="/"
                 >
                     <div>
@@ -57,47 +94,70 @@ function StudioNavbar(props: Props) {
                     </div>
                 </Link>
             )}
+
             <div className={styles.linkContainer}>
                 <div className={styles.subRoutes}>
-                    <Link
-                        href="/studio"
-                        className={_cs(
-                            (
-                                currentRoute === '/studio'
-                                || currentRoute === '/studio/about'
-                                || currentRoute === '/studio/design'
-                                || currentRoute === '/studio/collaboration'
-                            ) && styles.active,
-                        )}
-                    >
-                        About
-                    </Link>
-                    <Link
-                        href="/studio/people"
-                        className={_cs(currentRoute === '/studio/people' && styles.active)}
-                    >
-                        People
-                    </Link>
+                    {secondaryRoutes.map((route) => (
+                        <Link
+                            href={route.url}
+                            className={_cs(currentRoute === route.url && styles.active)}
+                        >
+                            {route.displayName}
+                        </Link>
+                    ))}
                 </div>
                 <div className={styles.routes}>
-                    <Link
-                        href="/works"
-                        className={_cs(currentRoute === '/works' && styles.active)}
+                    {primaryRoutes.map((route) => (
+                        <Link
+                            href={route.url}
+                            className={_cs(currentRoute.startsWith(route.url) && styles.active)}
+                        >
+                            {route.displayName}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+            <div className={styles.responsiveMenu}>
+                <div
+                    className={_cs(
+                        styles.subNavbarContainer,
+                        additionalNavShown && styles.unhide,
+                    )}
+                >
+                    <Button
+                        className={styles.arrow}
+                        name={undefined}
+                        onClick={toggleShowAdditionalNav}
+                        actions={additionalNavShown ? <IoChevronDown /> : <IoChevronUp />}
                     >
-                        Works
-                    </Link>
-                    <Link
-                        href="/studio"
-                        className={_cs(currentRoute === '/studio' && styles.active)}
-                    >
-                        Studio
-                    </Link>
-                    <Link
-                        href="/contact"
-                        className={_cs(currentRoute === '/contact' && styles.active)}
-                    >
-                        Contact
-                    </Link>
+                        {activeLink}
+                    </Button>
+                    <div className={styles.otherRoutes}>
+                        {secondaryRoutes.map((route) => (
+                            <Link
+                                href={route.url}
+                                className={_cs(
+                                    currentRoute.startsWith(route.url) && styles.active,
+                                    styles.link,
+                                )}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+                <div className={styles.routes}>
+                    {primaryRoutes.map((route) => (
+                        <Link
+                            href={route.url}
+                            className={_cs(
+                                currentRoute.startsWith(route.url) && styles.active,
+                                styles.link,
+                            )}
+                        >
+                            {route.displayName}
+                        </Link>
+                    ))}
                 </div>
             </div>
         </nav>

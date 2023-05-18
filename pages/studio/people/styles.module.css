@@ -1,11 +1,16 @@
 .page {
     display: flex;
     padding: var(--spacing-super-large);
+
     .people {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
         padding-top: var(--spacing-super-large);
+
+        @media screen and (max-width: 900px) {
+            display: none;
+        }
 
         .listingContainer {
             display: flex;
@@ -18,25 +23,16 @@
                 flex-direction: column;
             }
         }
-        .artworkContainer {
+    }
+
+    .responsiveContent {
+        display: none;
+        flex-direction: column;
+        gap: var(--spacing-medium);
+
+        @media screen and (max-width: 900px) {
             display: flex;
-            align-items: flex-end;
-            flex-grow: 1;
-            flex-wrap: wrap;
-            justify-content: center;
-
-            .artworkWrapper {
-                display: flex;
-                position: relative;
-                width: 140px;
-                height: 140px;
-                overflow: hidden;
-
-                .artwork {
-                    object-fit: contain;
-                    object-position: center;
-                }
-            }
         }
     }
 }
+

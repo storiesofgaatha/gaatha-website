@@ -1,8 +1,6 @@
 import React from 'react';
-import { isDefined } from '@togglecorp/fujs';
 import { GetStaticProps } from 'next';
 import { gql } from 'graphql-request';
-import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
@@ -60,20 +58,13 @@ function People(props: Props) {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className={styles.artworkContainer}>
-                    {people?.map((item) => (
-                        isDefined(item.artWork) && isDefined(item.artWork.url) && (
-                            <div className={styles.artworkWrapper}>
-                                <Image
-                                    className={styles.artwork}
-                                    src={item.artWork.url}
-                                    alt="artwork"
-                                    layout="fill"
-                                />
-                            </div>
-                        )
-                    ))}
-                </div>
+            </div>
+            <div className={styles.responsiveContent}>
+                {people.map((person) => (
+                    <PeopleItem
+                        people={person}
+                    />
+                ))}
             </div>
         </PageWithSideBar>
     );

@@ -52,35 +52,5 @@
                 object-fit: contain;
             }
         }
-        .right {
-            display: flex;
-            position: relative;
-            align-self: flex-start;
-            width: 10rem;
-            height: 8rem;
-
-            .image {
-                object-fit: contain;
-            }
-        }
-    }
-
-    .buttonContainer {
-        display: flex;
-        position: relative;
-        justify-content: center;
-        cursor: pointer;
-        padding-bottom: var(--spacing-super-large);
-        font-size: var(--font-size-extra-large);
-
-        .nextPageButton {
-            animation: bounce-effect 2s infinite;
-        }
-
-        @keyframes bounce-effect {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-30px);}
-            60% {transform: translateY(-15px);}
-        }
     }
 }

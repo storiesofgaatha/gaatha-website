@@ -1,13 +1,18 @@
 .studio {
     display: flex;
     background-color: var(--color-background-white);
+    overflow: auto;
 
     .bgWrap {
         display: flex;
         position: relative;
         width: 100vw;
         height: 100vh;
-        overflow: hidden;
+        overflow: auto;
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
+        }
 
         .leftBackground {
             position: absolute;
@@ -15,6 +20,10 @@
             left: 0;
             width: 70vw;
             height: 100vh;
+
+            @media screen and (max-width: 900px) {
+                width: 100vw;
+            }
             .image {
                 position: absolute;
                 object-fit: cover;
@@ -23,14 +32,21 @@
         }
 
         .navbar {
+            align-self: flex-end;
             flex-shrink: 0;
-            z-index: 1;
+
+            @media screen and (max-width: 900px) {
+                flex-shrink: unset;
+                z-index: 11;
+                height: unset;
+            }
         }
 
         .content {
             display: flex;
             flex-grow: 1;
             gap: var(--spacing-medium);
+            overflow: auto;
 
             @media screen and (max-width: 960px) {
                 padding: var(--spacing-medium);
@@ -39,7 +55,7 @@
             .logoWrapper {
                 display: flex;
                 align-self: flex-end;
-                justify-content: center;
+                justify-content: flex-end;
                 width: 42rem;
 
                 @media screen and (max-width: 960px) {
@@ -68,19 +84,35 @@
 
                     .studioDescription {
                         display: flex;
+                        transition: all 0.4s ease-in-out;
                         max-width: 42rem;
+                        text-align: justify;
                         font-size: var(--font-size-small);
+
+                        &.hideDescription {
+                            opacity: 0;
+                        }
                     }
                 }
 
-                .studioRoutes {
+                .studioTopics {
                     display: flex;
                     align-self: flex-end;
                     flex-direction: column;
+                    transition: all 0.4s ease-in-out;
+                    max-width: 42rem;
                     text-align: right;
-                    text-decoration: underline;
                     color: var(--color-text-on-light-alt);
                     font-size: var(--font-size-large);
+
+                    .topic {
+                        text-decoration: underline;
+                    }
+                    .topicDescription {
+                        text-align: justify;
+                        font-size: var(--font-size-small);
+                    }
+
                 }
             }
             .rightBackground {

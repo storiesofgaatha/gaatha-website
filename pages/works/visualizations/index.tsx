@@ -12,19 +12,20 @@ import {
 import styles from './styles.module.css';
 
 type ProjectType = NonNullable<NonNullable<FeaturedWorksQuery['projects']>[number]>;
-// type FilterChoiceType = NonNullable<FeaturedWorksQuery['filterChoices']>;
+type FilterChoiceType = NonNullable<FeaturedWorksQuery['filterChoices']>;
 
 interface Props {
     projects: ProjectType[];
-    // filterChoices: FilterChoiceType;
+    filterChoices: FilterChoiceType;
 }
 
 function GraphicsAndVisualizations(props: Props) {
     const {
         projects,
-        // filterChoices,
+        filterChoices,
     } = props;
 
+    const categories = filterChoices.workCategory;
     const [selectedProjectId, setSelectedProjectId] = useState<string | undefined>(undefined);
     const handleMouseHover = useCallback((projectId: string) => {
         setSelectedProjectId(projectId);
@@ -44,6 +45,7 @@ function GraphicsAndVisualizations(props: Props) {
             pageTitle="Works"
             navbarClassName={styles.navbar}
             navbar="work"
+            categories={categories ?? undefined}
             lightMode
         >
             <div className={styles.imagesContainer}>
@@ -85,6 +87,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
                     url
                 }
             }
+            filterChoices {
+                workCategory {
+                    id
+                    name
+                }
+                workTag {
+                    id
+                    name
+                }
+            }
         }
     `;
 
@@ -93,6 +105,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     return ({
         props: {
             projects: value.projects,
+            filterChoices: value.filterChoices,
         },
     });
 };
