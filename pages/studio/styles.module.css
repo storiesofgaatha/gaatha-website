@@ -1,6 +1,7 @@
 .studio {
     display: flex;
     background-color: var(--color-background-white);
+    scrollbar-gutter: stable both-edges;
     overflow: auto;
 
     .bgWrap {
@@ -21,9 +22,6 @@
             width: 70vw;
             height: 100vh;
 
-            @media screen and (max-width: 900px) {
-                width: 100vw;
-            }
             .image {
                 position: absolute;
                 object-fit: cover;
@@ -34,10 +32,10 @@
         .navbar {
             align-self: flex-end;
             flex-shrink: 0;
+            z-index: 11;
 
             @media screen and (max-width: 900px) {
                 flex-shrink: unset;
-                z-index: 11;
                 height: unset;
             }
         }
@@ -71,9 +69,14 @@
                 z-index: 1;
                 margin: auto;
                 height: 80vh;
+                overflow: hidden;
                 text-align: center;
                 color: var(--color-text-on-light-alt);
                 gap: calc(var(--spacing-extra-large) * 2);
+
+                @media screen and (max-width: 900px) {
+                    overflow: auto;
+                }
 
                 .descriptionContainer {
                     display: flex;
@@ -91,6 +94,10 @@
 
                         &.hideDescription {
                             opacity: 0;
+
+                            @media screen and (max-width: 900px) {
+                                display: none;
+                            }
                         }
                     }
                 }

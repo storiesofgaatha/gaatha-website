@@ -68,6 +68,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
                 description
                 id
                 title
+                subTitle
                 category {
                     id
                     name

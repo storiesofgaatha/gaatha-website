@@ -1,9 +1,10 @@
 import React from 'react';
-import { _cs } from '@togglecorp/fujs';
+import { _cs, isDefined, isNotDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
 
 import Page from 'components/Page';
 import GaathaLogo from 'components/GaathaLogo';
+import { primaryRoutes } from 'components/WorkNavbar';
 
 import styles from './styles.module.css';
 
@@ -24,27 +25,17 @@ function Home(props: Props) {
         >
             <GaathaLogo variant="large" className={styles.logo} />
             <div className={styles.routes}>
-                <Link
-                    className={styles.route}
-                    href="/works"
-                    passHref
-                >
-                    Works
-                </Link>
-                <Link
-                    className={styles.route}
-                    href="/studio"
-                    passHref
-                >
-                    Studio
-                </Link>
-                <Link
-                    className={styles.route}
-                    href="/contact"
-                    passHref
-                >
-                    Contact
-                </Link>
+                {primaryRoutes.map((route) => (
+                    <Link
+                        href={isDefined(route.url) ? route.url : {}}
+                        className={_cs(
+                            isNotDefined(route.url) && styles.disabled,
+                            styles.route,
+                        )}
+                    >
+                        {route.displayName}
+                    </Link>
+                ))}
             </div>
         </Page>
     );

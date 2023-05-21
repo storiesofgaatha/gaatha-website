@@ -49,6 +49,10 @@
                 transition: all ease 0.5s;
                 opacity: 0;
                 font-size: var(--font-size-extra-small);
+
+                .bold {
+                    font-weight: var(--font-weight-bold);
+                }
             }
 
             &:hover {

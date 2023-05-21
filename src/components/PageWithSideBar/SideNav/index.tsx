@@ -1,4 +1,4 @@
-import { _cs } from '@togglecorp/fujs';
+import { _cs, isDefined } from '@togglecorp/fujs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -62,9 +62,11 @@ function SideNavbar(props: Props) {
             <div className={styles.routes}>
                 {primaryRoutes.map((item) => (
                     <Link
-                        href={item.url}
+                        href={isDefined(item.url) ? item.url : {}}
                         className={_cs(
-                            currentRoute.startsWith(item.url) && styles.active,
+                            isDefined(item.url)
+                                ? currentRoute.startsWith(item.url) && styles.active
+                                : styles.disabled,
                             styles.link,
                         )}
                     >

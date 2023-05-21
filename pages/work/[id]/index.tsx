@@ -10,6 +10,7 @@ import {
     WorkMiniListQuery,
 } from 'generated/types';
 
+import ProjectTitle from 'components/ProjectTitle';
 import GaathaLogo from 'components/GaathaLogo';
 import WorkDetail from 'components/workDetail';
 
@@ -40,9 +41,15 @@ function WorkItem(props: Props) {
             </div>
             <div className={styles.header}>
                 <div className={styles.left}>
-                    <div className={_cs(work.isCoverImageDark && styles.dark)}>
-                        {work.title}
-                    </div>
+                    <ProjectTitle
+                        className={_cs(
+                            styles.title,
+                            work.isCoverImageDark && styles.dark,
+                        )}
+                        title={work.title}
+                        subtitle={work.subTitle}
+                        size="medium"
+                    />
                     <div className={styles.artwork}>
                         {isDefined(work.artWork) && isDefined(work.artWork.url) && (
                             <Image
@@ -55,6 +62,7 @@ function WorkItem(props: Props) {
                     </div>
                 </div>
                 <GaathaLogo
+                    className={styles.logo}
                     variant="small"
                     lightMode={!work.isCoverImageDark}
                 />
@@ -74,6 +82,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             work(pk: $id) {
                 id
                 title
+                subTitle
                 description
                 area
                 duration
@@ -113,6 +122,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
             works {
                 id
                 title
+                subTitle
             }
         }
     `;

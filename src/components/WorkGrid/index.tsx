@@ -1,4 +1,4 @@
-import { _cs, isDefined } from '@togglecorp/fujs';
+import { _cs, isDefined, isTruthyString } from '@togglecorp/fujs';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -14,6 +14,7 @@ import {
 } from 'utils/common';
 import { WorkListQuery } from 'generated/types';
 import ResponsiveWorkGrid from 'components/ResponsiveWorkGrid';
+import ProjectTitle from 'components/ProjectTitle';
 
 import styles from './styles.module.css';
 
@@ -59,9 +60,11 @@ function WorkGrid(props: Props) {
                                             alt="cover image"
                                             layout="fill"
                                         />
-                                        <div className={styles.title}>
-                                            {work.title}
-                                        </div>
+                                        <ProjectTitle
+                                            className={styles.title}
+                                            title={work.title}
+                                            subtitle={work.subTitle}
+                                        />
                                     </Link>
                                 )
                             ))}

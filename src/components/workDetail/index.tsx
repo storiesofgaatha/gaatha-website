@@ -17,6 +17,7 @@ import SideNavbar from 'components/PageWithSideBar/SideNav';
 import TextOutput from 'components/TextOutput';
 import GaathaLogo from 'components/GaathaLogo';
 import HTMLOutput from 'components/HTMLOutput';
+import ProjectTitle from 'components/ProjectTitle';
 import { WorkItemQuery } from 'generated/types';
 
 import styles from './styles.module.css';
@@ -42,9 +43,12 @@ function WorkDetail(props: Props) {
                 lightMode
                 hideGaathaLogo
             />
-            <div className={styles.workTitle}>
-                {work.title}
-            </div>
+            <ProjectTitle
+                className={styles.workTitle}
+                title={work.title}
+                subtitle={work.subTitle}
+                size="medium"
+            />
             <div className={styles.content}>
                 <div className={styles.left}>
                     <div className={styles.artworkContainer}>

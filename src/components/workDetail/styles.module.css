@@ -14,8 +14,7 @@
     .workTitle {
         position: absolute;
         padding: var(--spacing-large);
-        font-size: var(--font-size-heading-extra-small);
-        font-weight: var(--font-weight-bold);
+
         @media screen and (max-width: 900px) {
             position: relative;
             order: 1;

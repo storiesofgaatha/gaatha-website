@@ -32,15 +32,21 @@
         height: 100vh;
         overflow: auto;
         font-size: var(--font-size-heading-extra-small);
-        font-weight: var(--font-weight-bold);
 
         .left {
             display: flex;
             flex-direction: column;
+            padding: var(--spacing-large) 0;
             gap: var(--spacing-medium);
 
-            .dark {
-                color: var(--color-text-on-dark-alt);
+            .title {
+                text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.4);
+                color: var(--color-text-on-light-alt);
+
+                &.dark {
+                    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+                    color: var(--color-text-on-dark-alt);
+                }
             }
         }
         .artwork {
@@ -51,6 +57,9 @@
             .image {
                 object-fit: contain;
             }
+        }
+        .logo {
+            align-self: flex-start;
         }
     }
 }

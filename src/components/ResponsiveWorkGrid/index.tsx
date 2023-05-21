@@ -2,6 +2,7 @@ import { _cs, isDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import ProjectTitle from 'components/ProjectTitle';
 import { WorkListQuery } from 'generated/types';
 import styles from './styles.module.css';
 
@@ -36,9 +37,11 @@ function ResponsiveWorkGrid(props: Props) {
                                     alt="cover image"
                                     layout="fill"
                                 />
-                                <div className={styles.title}>
-                                    {work.title}
-                                </div>
+                                <ProjectTitle
+                                    className={styles.title}
+                                    title={work.title}
+                                    subtitle={work.subTitle}
+                                />
                             </Link>
                         )
                     ))}

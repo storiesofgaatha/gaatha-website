@@ -59,7 +59,7 @@ function CollapsibleContent<N>(props: Props<N>) {
                 )}
             </div>
             <div className={_cs(styles.children, childrenClassName, isExpanded && styles.expanded)}>
-                {children}
+                <p>{children}</p>
             </div>
         </div>
     );

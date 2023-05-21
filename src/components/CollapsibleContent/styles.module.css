@@ -1,5 +1,6 @@
 .collapsibleContent{
     z-index: 1;
+
     .headerContainer {
         display: flex;
         align-items: center;
@@ -20,9 +21,17 @@
         opacity: 0;
         height: 0;
 
+        >* {
+            display: none;
+        }
+
         &.expanded {
             opacity: 1;
             height: 10rem;
+
+            >* {
+                display: block;
+            }
         }
     }
 }

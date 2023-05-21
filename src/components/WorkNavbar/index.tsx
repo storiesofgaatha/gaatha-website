@@ -28,6 +28,11 @@ export const primaryRoutes = [
         url: '/contact',
         displayName: 'Contact',
     },
+    {
+        key: 'search',
+        url: undefined,
+        displayName: 'Search',
+    },
 ];
 
 interface Category {
@@ -157,8 +162,13 @@ function WorkNavbar(props: Props) {
                 <div className={styles.routes}>
                     {primaryRoutes.map((route) => (
                         <Link
-                            href={route.url}
-                            className={_cs(currentRoute.startsWith(route.url) && styles.active)}
+                            href={isDefined(route.url) ? route.url : {}}
+                            className={_cs(
+                                isDefined(route.url)
+                                    ? currentRoute.startsWith(route.url) && styles.active
+                                    : styles.disabled,
+                                styles.link,
+                            )}
                         >
                             {route.displayName}
                         </Link>
@@ -216,9 +226,11 @@ function WorkNavbar(props: Props) {
                 <div className={styles.routes}>
                     {primaryRoutes.map((route) => (
                         <Link
-                            href={route.url}
+                            href={isDefined(route.url) ? route.url : {}}
                             className={_cs(
-                                currentRoute.startsWith(route.url) && styles.active,
+                                isDefined(route.url)
+                                    ? currentRoute.startsWith(route.url) && styles.active
+                                    : styles.disabled,
                                 styles.link,
                             )}
                         >

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { _cs } from '@togglecorp/fujs';
+import { _cs, isDefined } from '@togglecorp/fujs';
 import {
     IoChevronDown,
     IoChevronUp,
@@ -109,8 +109,13 @@ function StudioNavbar(props: Props) {
                 <div className={styles.routes}>
                     {primaryRoutes.map((route) => (
                         <Link
-                            href={route.url}
-                            className={_cs(currentRoute.startsWith(route.url) && styles.active)}
+                            href={isDefined(route.url) ? route.url : {}}
+                            className={_cs(
+                                isDefined(route.url)
+                                    ? currentRoute.startsWith(route.url) && styles.active
+                                    : styles.disabled,
+                                styles.link,
+                            )}
                         >
                             {route.displayName}
                         </Link>
@@ -149,9 +154,11 @@ function StudioNavbar(props: Props) {
                 <div className={styles.routes}>
                     {primaryRoutes.map((route) => (
                         <Link
-                            href={route.url}
+                            href={isDefined(route.url) ? route.url : {}}
                             className={_cs(
-                                currentRoute.startsWith(route.url) && styles.active,
+                                isDefined(route.url)
+                                    ? currentRoute.startsWith(route.url) && styles.active
+                                    : styles.disabled,
                                 styles.link,
                             )}
                         >

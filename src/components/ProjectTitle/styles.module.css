@@ -1,0 +1,15 @@
+.title {
+    letter-spacing: -1px;
+    font-size: var(--font-size-extra-small);
+
+    &.medium {
+        font-size: var(--font-size-small);
+    }
+    &.large {
+        font-size: var(--font-size-medium);
+    }
+
+    .bold {
+        font-weight: var(--font-weight-bold);
+    }
+}

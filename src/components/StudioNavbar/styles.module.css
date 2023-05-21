@@ -34,6 +34,10 @@
             color: var(--color-text-on-dark-alt);
         }
 
+        .disabled {
+            pointer-events: none;
+        }
+
         @media screen and (max-width: 900px) {
             display: none;
         }
