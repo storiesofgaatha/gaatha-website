@@ -3,6 +3,8 @@
     width: 100%;
     overflow: hidden;
 
+    --swiper-theme-color: #000;
+
     @media screen and (max-width: 900px) {
         display: none;
     }
@@ -16,17 +18,16 @@
     gap: var(--spacing-medium);
 
     .grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        padding: var(--spacing-extra-large);
-        gap: var(--spacing-extra-large);
+        display: grid;
+        column-gap: 1.5rem;
+        row-gap: 2.5rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        padding-bottom: var(--spacing-gigantic);
 
         .imageContainer {
             display: flex;
             position: relative;
-            width: calc(100% / 4 - 3 * var(--spacing-extra-large) / 4);
-            max-height: 12rem;
 
             .coverImage {
                 transition: all ease 1s;
@@ -34,25 +35,20 @@
                 filter: grayscale(100%);
                 object-fit: cover;
                 object-position: center;
+                mix-blend-mode: overlay;
             }
 
-            &:nth-child(12),
-            &:nth-child(11),
-            &:nth-child(6),
-            &:nth-child(5) {
-                width: calc(100% / 2 - var(--spacing-extra-large) / 2);
+            &:nth-child(6n),
+            &:nth-child(6n - 1) {
+                grid-column: auto / span 2;
             }
+
 
             .title {
                 position: absolute;
                 bottom: -1.5em;
                 transition: all ease 0.5s;
                 opacity: 0;
-                font-size: var(--font-size-extra-small);
-
-                .bold {
-                    font-weight: var(--font-weight-bold);
-                }
             }
 
             &:hover {
@@ -63,6 +59,29 @@
                     opacity: 1;
                 }
             }
+        }
+
+        .button {
+            color: #fff !important;
+        }
+    }
+    :global {
+        .swiper-button-prev, .swiper-button-next {
+            position: absolute;
+            top: calc(100% - 20px);
+            width: 12px;
+        }
+        .swiper-button-prev {
+            left: calc(100% - 25px);
+        }
+        .swiper-button-next {
+            right: 0;
+        }
+        .swiper-button-next::after{
+            content: "";
+        }
+        .swiper-button-prev::after {
+            content: "";
         }
     }
 }

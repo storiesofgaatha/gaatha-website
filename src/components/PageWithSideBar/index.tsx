@@ -21,6 +21,7 @@ interface Props {
     navbar?: 'studio' | 'work';
     categories?: Category[] | undefined;
     navbarClassName?: string;
+    hideGaathaLogo?: boolean;
 }
 
 function PageWithSideBar(props: Props) {
@@ -33,6 +34,7 @@ function PageWithSideBar(props: Props) {
         navbar,
         navbarClassName,
         categories,
+        hideGaathaLogo,
     } = props;
 
     return (
@@ -55,12 +57,14 @@ function PageWithSideBar(props: Props) {
                     <SideNavbar
                         className={_cs(navbarClassName, styles.navbar)}
                         lightMode={lightMode}
+                        hideGaathaLogo={hideGaathaLogo}
                     />
                 )}
                 {navbar === 'studio' && (
                     <StudioNavbar
                         className={_cs(navbarClassName, styles.navbar)}
                         lightMode={lightMode}
+                        hideGaathaLogo={hideGaathaLogo}
                     />
                 )}
                 {navbar === 'work' && (
@@ -68,6 +72,7 @@ function PageWithSideBar(props: Props) {
                         className={_cs(navbarClassName, styles.navbar)}
                         lightMode={lightMode}
                         categories={categories ?? []}
+                        hideGaathaLogo={hideGaathaLogo}
                     />
                 )}
                 <div className={_cs(styles.content, contentClassName)}>

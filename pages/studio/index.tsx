@@ -3,12 +3,13 @@ import { isDefined, _cs } from '@togglecorp/fujs';
 import StudioNavbar from 'components/StudioNavbar';
 import Image from 'next/image';
 
+import GaathaLogo from 'components/GaathaLogo';
 import StoriesBlock from 'components/StoriesBlock';
 import CollapsibleContent from 'components/CollapsibleContent';
 
 import styles from './styles.module.css';
 
-type Topic = 'studio' | 'design' | 'collaboration';
+type Topic = 'workspace' | 'design' | 'collaboration';
 function Studio() {
     const [
         selectedTopic,
@@ -26,7 +27,7 @@ function Studio() {
         if (selectedTopic === 'design') {
             return 'https://images.unsplash.com/photo-1676808527792-2c6937102a99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80';
         }
-        if (selectedTopic === 'studio') {
+        if (selectedTopic === 'workspace') {
             return 'https://images.unsplash.com/photo-1676909027980-4d01f76652e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80';
         }
         return 'https://images.unsplash.com/photo-1676834173767-e77528eebbb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=721&q=80';
@@ -45,12 +46,9 @@ function Studio() {
                 <div className={styles.content}>
                     <div className={styles.studioContent}>
                         <div className={styles.logoWrapper}>
-                            <Image
-                                className={styles.image}
-                                src="/logo-dark.png"
-                                alt="Gaatha"
-                                width={145}
-                                height={100}
+                            <GaathaLogo
+                                variant="small"
+                                lightMode
                             />
                         </div>
                         <div className={styles.descriptionContainer}>
@@ -59,16 +57,17 @@ function Studio() {
                                 isDefined(selectedTopic) && styles.hideDescription,
                             )}
                             >
-                                Based in Kathmandu, Gaatha (Nepali: गाथा), translating to s
-                                stories, started with a young group of collaborative
+                                Based in Kathmandu, Gaatha (Nepali: गाथा), translatang to
+                                &quot;stories,&quot; started with a young group of collaborative
                                 professionals aligned together in creating a studio where
                                 ideas are valued to reinforce better solutions in architectural
-                                practice. Our studio incorporates a team constantly striving
-                                to enhance the built environment with the same care and detail
-                                in all works of architecture, planning, landscape, art,
-                                graphics and research. Exploring, creating and documenting
-                                stories with a team from diverse disciplines across the globe,
-                                our practice has remained true to its core values ever since.
+                                practice. Our studio incorporates a team that constantly strives
+                                to enhance the built environment with the same care and
+                                attention to detail in all works of architecture, planning,
+                                landscape, art, graphics, and research. By exploring, creating,
+                                and documenting stories with a team from diverse disciplines
+                                across the globe, our practice has remained true to its core
+                                values since its inception.
                             </div>
                             <StoriesBlock
                                 semiTransparent={isDefined(selectedTopic)}
@@ -76,61 +75,101 @@ function Studio() {
                         </div>
                         <div className={styles.studioTopics}>
                             <CollapsibleContent
-                                name="studio"
-                                headerClassName={styles.topic}
+                                name="workspace"
+                                headerClassName={_cs(
+                                    styles.topic,
+                                    selectedTopic === 'workspace' && styles.active,
+                                )}
                                 onExpansionChange={handleExpansionChange}
-                                isExpanded={selectedTopic === 'studio'}
-                                header="studio"
+                                isExpanded={selectedTopic === 'workspace'}
+                                header="workspace"
                                 childrenClassName={styles.topicDescription}
                             >
-                                While our workspace follows basic fundamentals and layouts of
-                                any design office, the studio isn’t just limited to that but
-                                expands to our working site and related collaboration offices
-                                working together in a regulated structure. We have organized
-                                our workspace such that there are events of critical
-                                brainstorming and planning while having interactive sessions
-                                within the team building up connections and unity, all adding
-                                up to create a joyful experience and story of its own.
+                                <p>
+                                    Our studio is designed to promote collaboration, conversation,
+                                    and sharing of ideas. We have intentionally maintained a cozy,
+                                    homely environment where anyone feels comfortable being their
+                                    true self, which we believe would empower confident and
+                                    authentic designers to practice design freely. This value
+                                    is reflected in a non-hierarchial team structure where every
+                                    team member’s voice is heard and valued equally.
+                                </p>
+                                <p>
+                                    Although our workspace follows any design office&apos;s basic
+                                    fundamentals and layouts, our studio is not limited to just
+                                    that. Instead, it expands to our working site and related
+                                    collaboration offices, working together in a regulated
+                                    structure. We have organized our workspace in such a way
+                                    that critical brainstorming and planning events take place,
+                                    while interactive sessions within the team build connections
+                                    and unity, ultimately creating a joyful experience and a story
+                                    of its own.
+                                </p>
                             </CollapsibleContent>
                             <CollapsibleContent
                                 name="design"
-                                headerClassName={styles.topic}
+                                headerClassName={_cs(
+                                    styles.topic,
+                                    selectedTopic === 'design' && styles.active,
+                                )}
                                 onExpansionChange={handleExpansionChange}
                                 isExpanded={selectedTopic === 'design'}
                                 childrenClassName={styles.topicDescription}
                                 header="design"
                             >
-                                From the very first interaction to everything that comes
-                                along the process, everyone has a story, be that the clients,
-                                designers, field workers or the site itself. Collecting and
-                                expressing those experiences with us in the process along with
-                                theoretical and practical knowledge combined with the most
-                                abstract ideas enhance the design, ultimately adding to the
-                                experience. Moreover, the idea of multi-disciplinary thinking
-                                helps the design evolve in sense of material, aesthetics,
-                                functionality and purpose.
+                                <p>
+                                    We pride ourselves on balancing the act of being active
+                                    listeners to our clients and being master mediators
+                                    between client needs, design philosophies, practical
+                                    knowledge, nouveau ideas, and multidisciplinary design
+                                    thinking.  We see opportunities in how design interacts
+                                    with time, people, and emotions, and how it holds the
+                                    power to affect its surrounding. We see design as a
+                                    critical dent in the fabric of space and time and thus
+                                    craft our practice with the utmost sensitivity, care,
+                                    and respect.
+                                </p>
+                                <p>
+                                    From the very first interaction to everything that comes
+                                    along the process, everyone has a story - be it the clients,
+                                    designers, field workers, or the site itself. Collecting and
+                                    expressing those experiences with us throughout the process,
+                                    along with theoretical and practical knowledge, combined with
+                                    the most abstract ideas, enhances the design and ultimately
+                                    adds to the experience. Moreover, the idea of multi-disciplinary
+                                    thinking helps the design evolve in terms of material,
+                                    aesthetics, functionality, and purpose.
+                                </p>
+
                             </CollapsibleContent>
                             <CollapsibleContent
                                 name="collaboration"
-                                headerClassName={styles.topic}
+                                headerClassName={_cs(
+                                    styles.topic,
+                                    selectedTopic === 'collaboration' && styles.active,
+                                )}
                                 onExpansionChange={handleExpansionChange}
                                 isExpanded={selectedTopic === 'collaboration'}
                                 childrenClassName={styles.topicDescription}
                                 header="collaboration"
                             >
-                                We have valued our partnerships while collaborating with
-                                various engineering professionals, architects, artists,
-                                academicians, local communities and stakeholders aiding
-                                in useful and interactive problem-solving in the overall
-                                design and delivery process. Constant interaction with
-                                multiple disciplines inspires us into newer perspectives
-                                of approaching a subject while opening a window of
-                                opportunity to learn and grow. For instance, getting
-                                to know the material and construction techniques of
-                                natural building practice from the perspective of site
-                                personnel allows our team to experiment further on
-                                possibilities of design which ultimately opens up further
-                                conversation for innovation in the projects.
+                                <p>
+                                    We value our partnerships when collaborating with various
+                                    engineering professionals, architects, artists, academicians,
+                                    local communities, and stakeholders who aid in useful and
+                                    interactive problem-solving in the overall design and delivery
+                                    process. Constant interaction with multiple disciplines
+                                    inspires us to approach a subject from newer perspectives
+                                    while opening a window of opportunity for learning and growth.
+                                </p>
+                                <p>
+                                    For instance, getting to know the material and construction
+                                    techniques of natural building practices from the perspective
+                                    of site personnel allows our team to experiment further with
+                                    possibilities of design, ultimately opening up further
+                                    conversations for innovation in projects.
+                                </p>
+
                             </CollapsibleContent>
                         </div>
                     </div>

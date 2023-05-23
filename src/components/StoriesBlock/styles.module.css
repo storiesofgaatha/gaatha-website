@@ -7,7 +7,7 @@
     gap: 0;
 
     &.semiTransparent {
-        color: var(--color-text-on-dark);
+        color: #cbcbcb;
     }
 
     .stories {

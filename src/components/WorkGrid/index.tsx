@@ -1,12 +1,18 @@
-import { _cs, isDefined, isTruthyString } from '@togglecorp/fujs';
+import { _cs, isDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
 import Image from 'next/image';
+import {
+    AiFillCaretLeft,
+    AiFillCaretRight,
+} from 'react-icons/ai';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
+import 'swiper/css/navigation';
 import {
     Mousewheel,
+    Navigation,
 } from 'swiper';
 
 import {
@@ -38,7 +44,8 @@ function WorkGrid(props: Props) {
             <div className={styles.swiperContainer}>
                 <Swiper
                     className={styles.buckets}
-                    modules={[Mousewheel]}
+                    modules={[Mousewheel, Navigation]}
+                    navigation
                     mousewheel
                 >
                     {workBuckets.map((bucket, index) => (
@@ -68,6 +75,16 @@ function WorkGrid(props: Props) {
                                     </Link>
                                 )
                             ))}
+                            <div className="swiper-button-prev">
+                                <AiFillCaretLeft
+                                    className={styles.button}
+                                />
+                            </div>
+                            <div className="swiper-button-next">
+                                <AiFillCaretRight
+                                    className={styles.button}
+                                />
+                            </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>

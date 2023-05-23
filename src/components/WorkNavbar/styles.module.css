@@ -4,17 +4,12 @@
     justify-content: space-between;
     background-color: var(--color-background);
     padding: var(--spacing-large);
-    --width-navbar: 13rem;
+    padding-bottom: var(--spacing-gigantic);
+    width: var(--width-navbar);
 
     @media screen and (max-width: 900px) {
         --width-navbar: 100vw;
         padding: 0;
-    }
-
-    .logo {
-        @media screen and (max-width: 900px) {
-            display: none;
-        }
     }
 
     .linkContainer {
@@ -117,7 +112,6 @@
             transform: translateY(calc(100% - var(--height-arrow)));
             transition: all ease-in-out 0.2s;
             z-index: 1;
-            border-top: #bbb solid 1px;
             background-color: var(--color-background);
             padding: 0 var(--spacing-large);
             width: 100%;

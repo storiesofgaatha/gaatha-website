@@ -4,9 +4,13 @@ import Image from 'next/image';
 
 import styles from './styles.module.css';
 
-type LogoVariant = 'small' | 'medium' | 'large';
+type LogoVariant = 'extraSmall' | 'small' | 'medium' | 'large';
 
 const sizeByLogoVariant = {
+    extraSmall: {
+        width: 70,
+        height: 56,
+    },
     small: {
         width: 100,
         height: 80,

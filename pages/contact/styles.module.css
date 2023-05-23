@@ -2,23 +2,41 @@
     overflow: auto;
 
     .mainContent {
+        --spacing-right: var(--width-navbar);
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         justify-content: space-evenly;
         padding: var(--spacing-extra-large);
+        padding-right: var(--spacing-right);
         overflow-y: auto;
         gap: var(--spacing-super-large);
 
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            padding-right: unset;
+        }
+
         .map {
-            display: block;
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
             filter: saturate(0%);
             transition: .2s filter ease-in-out;
 
-            .mapOuter {
+            @media screen and (max-width: 900px) {
                 position: relative;
+                width: 100%;
+                height: 22rem;
+                overflow: hidden;
+            }
+
+            .mapOuter {
+                display: flex;
+                position: relative;
+                align-items: center;
+                justify-content: center;
                 transition: .3s border-radius ease-in-out;
-                border-radius: var(--border-radius);
                 width: 41rem;
                 height: 41rem;
                 overflow: hidden;
@@ -43,6 +61,7 @@
                 }
 
                 .gmapIframe {
+                    border: none;
                     @media screen and (max-width: 900px) {
                         position: absolute;
                         top: 0;
@@ -64,22 +83,18 @@
                 }
             }
 
-            @media screen and (max-width: 900px) {
-                position: relative;
-                width: 100%;
-                height: 22rem;
-                overflow: hidden;
-            }
         }
 
         .contact {
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
+            flex-shrink: 0;
             gap: var(--spacing-contact-list);
             overflow: auto;
+            color: var(--color-text-on-dark-alt);
 
             @media screen and (max-width: 900px) {
+                flex-shrink: unset;
                 gap: var(--spacing-large);
             }
 
@@ -95,10 +110,11 @@
 
         .link {
             transition: all 0.2s ease-in;
-            color: var(--color-text-on-dark);
+            color: var(--color-text-on-dark-alt);
 
             &:hover {
-                color: var(--color-text-on-dark-alt);
+                /* TODO: Change this color */
+                color: var(--color-text-on-dark);
             }
         }
 

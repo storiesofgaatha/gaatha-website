@@ -1,7 +1,7 @@
 .studio {
     display: flex;
     background-color: var(--color-background-white);
-    scrollbar-gutter: stable both-edges;
+    scrollbar-gutter: stable;
     overflow: auto;
 
     .bgWrap {
@@ -114,6 +114,12 @@
 
                     .topic {
                         text-decoration: underline;
+                        color: var(--color-text-on-light);
+                        &.active {
+                            text-decoration: unset;
+                            color: var(--color-text-on-light-alt);
+                            font-weight: var(--font-weight-bold);
+                        }
                     }
                     .topicDescription {
                         text-align: justify;
@@ -128,8 +134,7 @@
                 align-self: flex-end;
                 flex-shrink: 0;
                 z-index: 1;
-                width: 100%;
-                max-width: 30vw;
+                width: 30vw;
                 height: 100vh;
                 .image {
                     position: absolute;

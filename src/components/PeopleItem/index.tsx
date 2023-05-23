@@ -1,5 +1,5 @@
 import React from 'react';
-import { isDefined } from '@togglecorp/fujs';
+import { isDefined, _cs } from '@togglecorp/fujs';
 import Image from 'next/image';
 
 import { PeopleQuery } from 'generated/types';
@@ -10,15 +10,17 @@ type PeopleType = NonNullable<NonNullable<PeopleQuery['people']>[number]>;
 
 interface Props {
     people: PeopleType;
+    className?: string;
 }
 
 function PeopleItem(props: Props) {
     const {
+        className,
         people,
     } = props;
 
     return (
-        <div className={styles.item}>
+        <div className={_cs(className, styles.item)}>
             <div className={styles.top}>
                 <div className={styles.profilePicture}>
                     {isDefined(people.profilePicture)

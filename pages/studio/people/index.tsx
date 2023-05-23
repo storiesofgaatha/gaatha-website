@@ -1,18 +1,11 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import { gql } from 'graphql-request';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/mousewheel';
-import {
-    Mousewheel,
-} from 'swiper';
 
 import PageWithSideBar from 'components/PageWithSideBar';
 import PeopleItem from 'components/PeopleItem';
 import {
     gaathaRequest,
-    bucketify,
 } from 'utils/common';
 import { PeopleQuery } from 'generated/types';
 
@@ -29,7 +22,7 @@ function People(props: Props) {
         people,
     } = props;
 
-    const peopleBuckets = bucketify(3, people);
+    // const peopleBuckets = bucketify(3, people);
 
     return (
         <PageWithSideBar
@@ -39,29 +32,9 @@ function People(props: Props) {
             lightMode
         >
             <div className={styles.people}>
-                <Swiper
-                    className={styles.listingContainer}
-                    modules={[Mousewheel]}
-                    mousewheel
-                >
-                    {peopleBuckets.map((bucket, index) => (
-                        <SwiperSlide
-                            // eslint-disable-next-line react/no-array-index-key
-                            key={index}
-                            className={styles.slide}
-                        >
-                            {bucket.map((person) => (
-                                <PeopleItem
-                                    people={person}
-                                />
-                            ))}
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
-            <div className={styles.responsiveContent}>
                 {people.map((person) => (
                     <PeopleItem
+                        className={styles.person}
                         people={person}
                     />
                 ))}

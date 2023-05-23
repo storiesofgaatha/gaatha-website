@@ -2,7 +2,7 @@
     /* Constants  */
     --multiplier: 1.2599; /* Major third scale */
 
-    --font-size-base: 0.9rem;
+    --font-size-base: 1rem;
     --font-size-heading-base: 2rem;
     --spacing-base: 1.25rem;
     --spacing-studio-logo: 8rem;
@@ -16,16 +16,16 @@
     /* Colors */
     --color-text: #ffffff;
     --color-text-grey: #808080;
-    --color-text-on-dark: #a1a1a1;
-    --color-text-on-dark-alt: #f5f5f5;
-    --color-text-on-light: #808080;
-    --color-text-on-light-alt: #111111;
+    --color-text-on-dark: #3e3e3e;
+    --color-text-on-dark-alt: #f7f7f7;
+    --color-text-on-light: #707070;
+    --color-text-on-light-alt: #101010;
 
     --color-primary: #f5f5f5;
     --color-secondary: #111111;
 
-    --color-background: #111111;
-    --color-background-light: #f5f5f5;
+    --color-background: #101010;
+    --color-background-light: #fafafa;
     --color-background-white: #ffffff;
 
     /* Font weights */
@@ -55,11 +55,13 @@
     --spacing-large: calc(var(--spacing-base) * var(--multiplier));
     --spacing-extra-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier));
     --spacing-super-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier));
+    --spacing-mega-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
+    --spacing-gigantic: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
 
     --spacing-contact-list: calc(var(--spacing-base) * var(--multiplier) *var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     --border-radius: 50%;
 
-    --width-navbar: 10rem;
+    --width-navbar: 16rem;
 
     @media screen and (max-width: 900px) {
         --width-navbar: 100vw;

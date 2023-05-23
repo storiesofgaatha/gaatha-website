@@ -1,8 +1,8 @@
 import { _cs, isDefined } from '@togglecorp/fujs';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import GaathaLogo from 'components/GaathaLogo';
 import { primaryRoutes } from 'components/WorkNavbar';
 import styles from './styles.module.css';
 
@@ -35,29 +35,11 @@ function SideNavbar(props: Props) {
             )}
         >
             {!hideGaathaLogo && (
-                <Link
+                <GaathaLogo
                     className={styles.logo}
-                    href="/"
-                >
-                    <div>
-                        {lightMode
-                            ? (
-                                <Image
-                                    src="/logo-dark.png"
-                                    alt="Gaatha"
-                                    width={150}
-                                    height={110}
-                                />
-                            ) : (
-                                <Image
-                                    src="/logo-light.png"
-                                    alt="Gaatha"
-                                    width={150}
-                                    height={110}
-                                />
-                            )}
-                    </div>
-                </Link>
+                    variant="small"
+                    lightMode={lightMode}
+                />
             )}
             <div className={styles.routes}>
                 {primaryRoutes.map((item) => (

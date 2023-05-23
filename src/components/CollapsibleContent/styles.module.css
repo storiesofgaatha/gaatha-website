@@ -27,7 +27,7 @@
 
         &.expanded {
             opacity: 1;
-            height: 10rem;
+            height: auto;
 
             >* {
                 display: block;

@@ -4,34 +4,27 @@
 
     .people {
         display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+        align-content: flex-start;
+        flex-wrap: wrap;
         padding-top: var(--spacing-super-large);
-
-        @media screen and (max-width: 900px) {
-            display: none;
-        }
-
-        .listingContainer {
-            display: flex;
-            margin: unset;
-            width: 30vw;
-            gap: var(--spacing-medium);
-
-            .slide {
-                display: flex;
-                flex-direction: column;
-            }
-        }
-    }
-
-    .responsiveContent {
-        display: none;
-        flex-direction: column;
+        max-width: 900px;
+        height: 40rem;
+        overflow: auto;
         gap: var(--spacing-medium);
 
         @media screen and (max-width: 900px) {
-            display: flex;
+            align-content: unset;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+
+        .person {
+            flex-basis: 45%;
+            height: 12rem;
+
+            @media screen and (max-width: 900px) {
+                flex-basis: unset;
+            }
         }
     }
 }

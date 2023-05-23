@@ -40,32 +40,45 @@ function WorkItem(props: Props) {
                 )}
             </div>
             <div className={styles.header}>
-                <div className={styles.left}>
-                    <ProjectTitle
-                        className={_cs(
-                            styles.title,
-                            work.isCoverImageDark && styles.dark,
-                        )}
-                        title={work.title}
-                        subtitle={work.subTitle}
-                        size="medium"
-                    />
-                    <div className={styles.artwork}>
-                        {isDefined(work.artWork) && isDefined(work.artWork.url) && (
-                            <Image
-                                className={styles.image}
-                                src={work.artWork.url}
-                                alt="artwork"
-                                layout="fill"
-                            />
-                        )}
+                <div className={styles.top}>
+                    <div className={styles.left}>
+                        <ProjectTitle
+                            className={_cs(
+                                styles.title,
+                                work.isCoverImageDark && styles.dark,
+                            )}
+                            title={work.title}
+                            subtitle={work.subTitle}
+                            size="medium"
+                        />
+                        <div className={styles.artwork}>
+                            {isDefined(work.artWork) && isDefined(work.artWork.url) && (
+                                <Image
+                                    className={styles.image}
+                                    src={work.artWork.url}
+                                    alt="artwork"
+                                    layout="fill"
+                                />
+                            )}
+                        </div>
                     </div>
+
+                    <GaathaLogo
+                        className={styles.logo}
+                        variant="small"
+                        lightMode={!work.isCoverImageDark}
+                    />
                 </div>
-                <GaathaLogo
-                    className={styles.logo}
-                    variant="small"
-                    lightMode={!work.isCoverImageDark}
-                />
+                <div className={styles.responsiveArtwork}>
+                    {isDefined(work.artWork) && isDefined(work.artWork.url) && (
+                        <Image
+                            className={styles.image}
+                            src={work.artWork.url}
+                            alt="artwork"
+                            layout="fill"
+                        />
+                    )}
+                </div>
             </div>
             <WorkDetail
                 work={work}

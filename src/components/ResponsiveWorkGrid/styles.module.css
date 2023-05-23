@@ -10,13 +10,13 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        gap: var(--spacing-extra-large);
+        gap: calc(2 * var(--spacing-extra-large));
 
         .imageContainer {
             display: flex;
             position: relative;
-            width: calc(100% / 2 - var(--spacing-extra-large) / 2);
-            height: 12rem;
+            width: calc(100% / 2 - (2 * var(--spacing-extra-large)) / 2);
+            height: 6rem;
             max-height: 12rem;
 
             .coverImage {
@@ -36,7 +36,7 @@
 
             .title {
                 position: absolute;
-                bottom: -1.5em;
+                bottom: -2.5em;
                 transition: all ease 0.5s;
                 opacity: 1;
                 font-size: var(--font-size-extra-small);

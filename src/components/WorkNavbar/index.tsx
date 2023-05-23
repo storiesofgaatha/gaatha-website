@@ -1,15 +1,16 @@
 import { useMemo, useCallback } from 'react';
 import { _cs, isDefined } from '@togglecorp/fujs';
 import {
-    IoChevronDown,
-    IoChevronUp,
-} from 'react-icons/io5';
-import Image from 'next/image';
+    AiFillCaretUp,
+    AiFillCaretDown,
+} from 'react-icons/ai';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import GaathaLogo from 'components/GaathaLogo';
 import Button from 'components/Button';
 import useBooleanState from 'hooks/useBooleanState';
+
 import styles from './styles.module.css';
 
 export const primaryRoutes = [
@@ -100,29 +101,10 @@ function WorkNavbar(props: Props) {
             )}
         >
             {!hideGaathaLogo && (
-                <Link
-                    className={styles.logo}
-                    href="/"
-                >
-                    <div>
-                        {lightMode
-                            ? (
-                                <Image
-                                    src="/logo-dark.png"
-                                    alt="Gaatha"
-                                    width={150}
-                                    height={110}
-                                />
-                            ) : (
-                                <Image
-                                    src="/logo-light.png"
-                                    alt="Gaatha"
-                                    width={150}
-                                    height={110}
-                                />
-                            )}
-                    </div>
-                </Link>
+                <GaathaLogo
+                    variant="small"
+                    lightMode={lightMode}
+                />
             )}
             <div className={styles.linkContainer}>
                 <div className={styles.subRoutes}>
@@ -186,7 +168,7 @@ function WorkNavbar(props: Props) {
                         className={styles.arrow}
                         name={undefined}
                         onClick={toggleShowAdditionalNav}
-                        actions={additionalNavShown ? <IoChevronDown /> : <IoChevronUp />}
+                        actions={additionalNavShown ? <AiFillCaretDown /> : <AiFillCaretUp />}
                     >
                         {activeLink}
                     </Button>
