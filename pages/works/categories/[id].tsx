@@ -58,12 +58,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     const workList = gql`
         query WorkListForCategory (
             $categoryId: ID,
-            $tagId: ID,
         ) {
             works (
                 filters: {
                     category: $categoryId,
-                    tag: $tagId,
                 }
                 order: {
                     order: ASC
@@ -73,10 +71,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
                 id
                 title
                 category {
-                    id
-                    name
-                }
-                tag {
                     id
                     name
                 }
@@ -96,7 +90,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
     const variables = {
         categoryId: params?.id as (string | undefined),
-        tagId: undefined,
     };
 
     const value = await gaathaRequest(workList, variables);

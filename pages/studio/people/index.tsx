@@ -46,7 +46,9 @@ function People(props: Props) {
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const peopleList = gql`
         query People {
-            people {
+            people (order: {
+                order: ASC,
+            }) {
                 id
                 name
                 profilePicture {

@@ -92,10 +92,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
                     id
                     name
                 }
-                workTag {
-                    id
-                    name
-                }
             }
         }
     `;
