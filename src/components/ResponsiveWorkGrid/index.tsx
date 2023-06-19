@@ -35,12 +35,13 @@ function ResponsiveWorkGrid(props: Props) {
                                     className={styles.coverImage}
                                     src={work.coverImage.url}
                                     alt="cover image"
-                                    layout="fill"
+                                    fill
                                 />
                                 <ProjectTitle
                                     className={styles.title}
                                     title={work.title}
                                     subtitle={work.subTitle}
+                                    separateLines
                                 />
                             </Link>
                         )

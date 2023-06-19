@@ -10,7 +10,7 @@ import CollapsibleContent from 'components/CollapsibleContent';
 import styles from './styles.module.css';
 
 type Topic = 'workspace' | 'design' | 'collaboration';
-function Studio() {
+function About() {
     const [
         selectedTopic,
         setSelectedTopic,
@@ -47,7 +47,7 @@ function Studio() {
                     <div className={styles.studioContent}>
                         <div className={styles.logoWrapper}>
                             <GaathaLogo
-                                variant="small"
+                                variant="mediumSmall"
                                 lightMode
                             />
                         </div>
@@ -78,7 +78,8 @@ function Studio() {
                                 name="workspace"
                                 headerClassName={_cs(
                                     styles.topic,
-                                    selectedTopic === 'workspace' && styles.active,
+                                    selectedTopic === 'workspace' ? styles.active : styles.inactive,
+                                    !selectedTopic && styles.neutral,
                                 )}
                                 onExpansionChange={handleExpansionChange}
                                 isExpanded={selectedTopic === 'workspace'}
@@ -110,7 +111,8 @@ function Studio() {
                                 name="design"
                                 headerClassName={_cs(
                                     styles.topic,
-                                    selectedTopic === 'design' && styles.active,
+                                    selectedTopic === 'design' ? styles.active : styles.inactive,
+                                    !selectedTopic && styles.neutral,
                                 )}
                                 onExpansionChange={handleExpansionChange}
                                 isExpanded={selectedTopic === 'design'}
@@ -146,7 +148,8 @@ function Studio() {
                                 name="collaboration"
                                 headerClassName={_cs(
                                     styles.topic,
-                                    selectedTopic === 'collaboration' && styles.active,
+                                    selectedTopic === 'collaboration' ? styles.active : styles.inactive,
+                                    !selectedTopic && styles.neutral,
                                 )}
                                 onExpansionChange={handleExpansionChange}
                                 isExpanded={selectedTopic === 'collaboration'}
@@ -197,4 +200,4 @@ function Studio() {
     );
 }
 
-export default Studio;
+export default About;

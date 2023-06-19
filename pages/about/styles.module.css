@@ -24,8 +24,8 @@
 
             .image {
                 position: absolute;
-                object-fit: cover;
-                object-position: center;
+                object-fit: contain;
+                object-position: center left;
             }
         }
 
@@ -82,14 +82,14 @@
                     display: flex;
                     align-self: flex-end;
                     flex-direction: column;
-                    gap: calc(var(--spacing-extra-large) * 2);
+                    flex-shrink: 0;
+                    gap: var(--spacing-gigantic);
 
                     .studioDescription {
                         display: flex;
                         transition: all 0.4s ease-in-out;
                         max-width: 42rem;
-                        height: 12rem;
-                        text-align: justify;
+                        text-align: right;
                         font-size: var(--font-size-small);
 
                         &.hideDescription {
@@ -113,25 +113,35 @@
                     transition: all 0.4s ease-in-out;
                     max-width: 42rem;
                     text-align: right;
+                    gap: var(--spacing-mega-small);
                     color: var(--color-text-on-light-alt);
                     font-size: var(--font-size-large);
 
                     .topic {
                         text-decoration: underline;
-                        color: var(--color-text-on-light);
+                        color: var(--color-text-on-light-alt);
+
                         &.active {
                             text-decoration: unset;
                             color: var(--color-text-on-light-alt);
                             font-weight: var(--font-weight-bold);
                         }
+
+                        &.inactive {
+                            color: var(--color-text-on-light);
+                        }
+
+                        &.neutral {
+                            color: var(--color-text-on-light-alt);
+                        }
                     }
                     .topicDescription {
-                        text-align: justify;
+                        text-align: right;
                         font-size: var(--font-size-small);
                     }
-
                 }
             }
+
             .rightBackground {
                 display: flex;
                 position: relative;
@@ -149,7 +159,6 @@
                 @media screen and (max-width: 960px) {
                     display: none;
                 }
-
             }
         }
     }

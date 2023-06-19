@@ -20,9 +20,9 @@ export const primaryRoutes = [
         displayName: 'Works',
     },
     {
-        key: 'studio',
-        url: '/studio',
-        displayName: 'Studio',
+        key: 'about',
+        url: '/about',
+        displayName: 'About',
     },
     {
         key: 'contact',

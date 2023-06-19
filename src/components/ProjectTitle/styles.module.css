@@ -1,6 +1,8 @@
 .title {
-    letter-spacing: -1px;
     font-size: var(--font-size-extra-small);
+    .title {
+        font-weight: var(--font-weight-bold);
+    }
 
     &.medium {
         font-size: var(--font-size-small);
@@ -8,8 +10,9 @@
     &.large {
         font-size: var(--font-size-medium);
     }
-
-    .bold {
-        font-weight: var(--font-weight-bold);
+    &.block {
+        .subtitle, .title {
+            display: block;
+        }
     }
 }

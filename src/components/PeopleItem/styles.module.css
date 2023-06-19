@@ -1,10 +1,11 @@
 .item {
     display: flex;
     flex-direction: column;
+    gap: var(--spacing-super-small);
 
     .top {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         gap: var(--spacing-medium);
 
         .profilePicture {
@@ -22,6 +23,11 @@
         .name {
             transition: 1s ease-out;
             opacity: 0;
+            padding: var(--spacing-large) 0;
+            font-size: var(--font-size-small);
+            @media screen and (max-width: 900px) {
+                opacity: 1;
+            }
         }
     }
 
@@ -32,7 +38,6 @@
         font-size: var(--font-size-extra-small);
 
         .designation {
-            margin-bottom: var(--spacing-extra-small);
             font-weight: var(--font-weight-bold);
         }
     }

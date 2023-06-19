@@ -20,8 +20,8 @@ function Contact() {
                         <iframe
                             className={styles.gmapIframe}
                             title="gaathaMap"
-                            width={600}
-                            height={600}
+                            width={520}
+                            height={520}
                             id="gmap_canvas"
                             src={mapLink}
                         />
@@ -31,6 +31,7 @@ function Contact() {
             <div className={styles.contact}>
                 <div className={styles.contactDetail}>
                     <LabelValue
+                        className={styles.labelValue}
                         label="Address"
                         value={(
                             <>
@@ -46,6 +47,7 @@ function Contact() {
                 </div>
                 <div className={styles.contactDetail}>
                     <LabelValue
+                        className={styles.labelValue}
                         label="Telephone"
                         value={(
                             <>
@@ -71,6 +73,7 @@ function Contact() {
                 </div>
                 <div className={styles.contactDetail}>
                     <LabelValue
+                        className={styles.labelValue}
                         label="Enquiries"
                         value={(
                             <>
@@ -91,6 +94,7 @@ function Contact() {
                 </div>
                 <div className={styles.contactDetail}>
                     <LabelValue
+                        className={styles.labelValue}
                         label="Jobs"
                         value={(
                             <>
@@ -111,6 +115,7 @@ function Contact() {
                 </div>
                 <div className={styles.contactDetail}>
                     <LabelValue
+                        className={styles.labelValue}
                         label="Social Media"
                         value={(
                             <>

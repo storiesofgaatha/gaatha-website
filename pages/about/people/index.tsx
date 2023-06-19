@@ -23,6 +23,17 @@ function People(props: Props) {
     } = props;
 
     // const peopleBuckets = bucketify(3, people);
+    const founders = people.filter(
+        (person) => person.isFounder === true,
+    );
+    const currentMembers = people.filter(
+        (person) => person.isFounder === false
+        && person.isCurrentEmployee === true,
+    );
+    const pastMembers = people.filter(
+        (person) => person.isFounder === false
+        && person.isCurrentEmployee === false,
+    );
 
     return (
         <PageWithSideBar
@@ -32,12 +43,34 @@ function People(props: Props) {
             lightMode
         >
             <div className={styles.people}>
-                {people.map((person) => (
-                    <PeopleItem
-                        className={styles.person}
-                        people={person}
-                    />
-                ))}
+                <div className={styles.founders}>
+                    <span>Founding members</span>
+                    {founders.map((person) => (
+                        <PeopleItem
+                            className={styles.person}
+                            people={person}
+                        />
+                    ))}
+                </div>
+                <div className={styles.members}>
+                    <span>Team members</span>
+                    {currentMembers.length > 0 && currentMembers.map((person) => (
+                        <PeopleItem
+                            className={styles.person}
+                            people={person}
+                        />
+                    ))}
+                    {pastMembers.length > 0 && (
+                        <>
+                            <span>Past members</span>
+                            <div className={styles.pastMembers}>
+                                {pastMembers.map((person) => (
+                                    person.name
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
             </div>
         </PageWithSideBar>
     );
@@ -63,6 +96,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
                 designation
                 qualification
                 isCurrentEmployee
+                isFounder
                 instagramUrl
                 linkedinUrl
             }

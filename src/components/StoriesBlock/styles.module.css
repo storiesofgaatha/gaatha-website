@@ -15,6 +15,11 @@
         font-size: calc(1.3 * var(--font-size-extra-large));
         font-weight: var(--font-weight-bold);
     }
+
+    .areBestWhen {
+        font-size: var(--font-size-small);
+    }
+
     .together {
         padding-left: calc(var(--spacing-extra-small) / 3);
         text-transform: uppercase;

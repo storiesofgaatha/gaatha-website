@@ -6,9 +6,10 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        justify-content: space-evenly;
-        padding: var(--spacing-extra-large);
-        padding-right: var(--spacing-right);
+        justify-content: space-between;
+        padding: var(--spacing-extra-large) 0;
+        padding-right: calc(var(--spacing-right) + var(--spacing-gigantic));
+        padding-left: calc(var(--spacing-gigantic) * var(--multiplier) * var(--multiplier));
         overflow-y: auto;
         gap: var(--spacing-super-large);
 
@@ -20,7 +21,6 @@
         .map {
             display: flex;
             flex-grow: 1;
-            justify-content: center;
             filter: saturate(0%);
             transition: .2s filter ease-in-out;
 
@@ -37,8 +37,8 @@
                 align-items: center;
                 justify-content: center;
                 transition: .3s border-radius ease-in-out;
-                width: 41rem;
-                height: 41rem;
+                width: 520px;
+                height: 520px;
                 overflow: hidden;
                 text-align: right;
 
@@ -51,8 +51,8 @@
                     transition: .3s border-radius ease-in-out;
                     border-radius: var(--border-radius);
                     background: none;
-                    width: 37rem;
-                    height: 37rem;
+                    width: 520px;
+                    height: 520px;
                     overflow: hidden;
 
                     @media screen and (max-width: 900px) {
@@ -82,16 +82,19 @@
                     border-radius: 0%;
                 }
             }
-
         }
 
         .contact {
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
-            gap: var(--spacing-contact-list);
+            gap: var(--spacing-gigantic);
             overflow: auto;
             color: var(--color-text-on-dark-alt);
+
+            .labelValue {
+                font-size: var(--font-size-extra-small);
+            }
 
             @media screen and (max-width: 900px) {
                 flex-shrink: unset;
@@ -120,7 +123,7 @@
 
         .contactQuote {
             text-align: right;
-            font-size: var(--font-size-heading-small);
+            font-size: var(--font-size-heading-extra-small);
             font-weight: var(--font-weight-bold);
         }
 

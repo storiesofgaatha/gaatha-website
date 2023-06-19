@@ -6,6 +6,7 @@ interface Props {
     title: string;
     subtitle?: string;
     size?: 'small' | 'medium' | 'large';
+    separateLines?: boolean;
 }
 
 function ProjectTitle(props: Props) {
@@ -14,6 +15,7 @@ function ProjectTitle(props: Props) {
         subtitle,
         size = 'small',
         className,
+        separateLines,
     } = props;
 
     return (
@@ -22,19 +24,22 @@ function ProjectTitle(props: Props) {
             className,
             size === 'medium' && styles.medium,
             size === 'large' && styles.large,
+            separateLines && styles.block,
         )}
         >
-            <span className={styles.bold}>
+            <span className={styles.title}>
                 {title}
             </span>
-            {isTruthyString(subtitle) && (
-                <>
-                    &thinsp;
-                    <b> | </b>
-                    &thinsp;
-                    {subtitle}
-                </>
-            )}
+            <span className={styles.subtitle}>
+                {isTruthyString(subtitle) && (
+                    <>
+                        &thinsp;
+                        <b> | </b>
+                        &thinsp;
+                        {subtitle}
+                    </>
+                )}
+            </span>
         </div>
     );
 }

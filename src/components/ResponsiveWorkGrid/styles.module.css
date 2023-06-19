@@ -4,7 +4,7 @@
     padding: var(--spacing-extra-large);
     width: 100%;
     overflow-y: auto;
-    gap: var(--spacing-extra-large);
+    gap: calc(2 * var(--spacing-extra-large));
 
     .grid {
         display: flex;
@@ -36,7 +36,7 @@
 
             .title {
                 position: absolute;
-                bottom: -2.5em;
+                top: calc(100% + var(--spacing-super-small));
                 transition: all ease 0.5s;
                 opacity: 1;
                 font-size: var(--font-size-extra-small);

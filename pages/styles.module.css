@@ -2,7 +2,7 @@
     .mainContent {
         display: flex;
         flex-direction: column;
-        padding: var(--spacing-extra-large);
+        padding: 0 var(--spacing-extra-large);
         gap: var(--spacing-extra-large);
         font-size: var(--font-size-medium);
 
@@ -81,7 +81,8 @@
         align-content: center;
         flex-direction: column;
         flex-wrap: wrap;
-        gap: var(--spacing-small);
+        gap: var(--spacing-mega-small);
+        padding-bottom: var(--spacing-gigantic);
         text-align: center;
         font-size: var(--font-size-medium);
 

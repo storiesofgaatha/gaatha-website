@@ -1,0 +1,58 @@
+.page {
+    display: flex;
+    padding: var(--spacing-super-large);
+
+    @media screen and (max-width: 900px) {
+        padding: var(--spacing-medium);
+        margin-bottom: var(--spacing-gigantic);
+    }
+
+    .people {
+        display: flex;
+        flex-grow: 1;
+        padding-top: var(--spacing-super-large);
+        height: 42rem;
+        overflow: auto;
+        gap: var(--spacing-mega-large);
+
+        @media screen and (max-width: 900px) {
+            overflow: unset;
+            padding-top: 0;
+        }
+
+        @media screen and (max-width: 900px) {
+            align-content: unset;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+
+        .members, .founders {
+            display: flex;
+            flex-direction: column;
+            width: 25rem;
+            gap: var(--spacing-medium);
+            @media screen and (max-width: 900px) {
+                width: 100%;
+            }
+        }
+        .members {
+            overflow: auto;
+            @media screen and (max-width: 900px) {
+                overflow: unset;
+            }
+        }
+        .pastMembers {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-medium);
+            font-weight: var(--font-weight-bold);
+        }
+        .person {
+
+            @media screen and (max-width: 900px) {
+                flex-basis: unset;
+            }
+        }
+    }
+}
+

@@ -16,13 +16,13 @@ import styles from './styles.module.css';
 
 const secondaryRoutes = [
     {
-        key: 'about',
-        url: '/studio',
-        displayName: 'About',
+        key: 'studio',
+        url: '/about',
+        displayName: 'Studio',
     },
     {
         key: 'people',
-        url: '/studio/people',
+        url: '/about/people',
         displayName: 'People',
     },
 ];
@@ -46,8 +46,8 @@ function StudioNavbar(props: Props) {
     const currentRoute = router.pathname;
 
     const activeLink = useMemo(() => {
-        if (currentRoute === '/studio') {
-            return 'About';
+        if (currentRoute === '/about') {
+            return 'Studio';
         }
         return 'People';
     }, [

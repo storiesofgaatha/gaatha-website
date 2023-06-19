@@ -2,6 +2,7 @@ import { _cs } from '@togglecorp/fujs';
 import styles from './styles.module.css';
 
 interface Props {
+    className?: string;
     label: React.ReactNode;
     value: React.ReactNode;
     labelClassName?: string;
@@ -14,10 +15,11 @@ function LabelValue(props: Props) {
         value,
         labelClassName,
         valueClassName,
+        className,
     } = props;
 
     return (
-        <div className={styles.labelValue}>
+        <div className={_cs(styles.labelValue, className)}>
             <div className={_cs(styles.label, labelClassName)}>
                 {label}
             </div>

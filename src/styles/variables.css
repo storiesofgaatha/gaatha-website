@@ -24,8 +24,8 @@
     --color-primary: #f5f5f5;
     --color-secondary: #111111;
 
-    --color-background: #101010;
-    --color-background-light: #fafafa;
+    --color-background: #000000;
+    --color-background-light: #ffffff;
     --color-background-white: #ffffff;
 
     /* Font weights */
@@ -48,6 +48,7 @@
     --font-size-heading-extra-large: calc(var(--font-size-heading-base) * var(--multiplier) * var(--multiplier));
 
     /* Spacing */
+    --spacing-mega-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier)));
     --spacing-super-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier) * var(--multiplier)));
     --spacing-extra-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier)));
     --spacing-small: calc(var(--spacing-base) / var(--multiplier));
@@ -57,8 +58,6 @@
     --spacing-super-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     --spacing-mega-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     --spacing-gigantic: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
-
-    --spacing-contact-list: calc(var(--spacing-base) * var(--multiplier) *var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     --border-radius: 50%;
 
     --width-navbar: 16rem;
