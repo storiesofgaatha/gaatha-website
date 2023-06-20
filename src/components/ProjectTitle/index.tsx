@@ -20,7 +20,7 @@ function ProjectTitle(props: Props) {
 
     return (
         <div className={_cs(
-            styles.title,
+            styles.projectTitle,
             className,
             size === 'medium' && styles.medium,
             size === 'large' && styles.large,

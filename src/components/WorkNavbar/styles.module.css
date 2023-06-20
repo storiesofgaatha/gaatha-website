@@ -55,7 +55,7 @@
             }
         }
 
-        .additionalRoutes, .subRoutes {
+        .nestedRoutes, .subRoutes {
             display: flex;
             flex-direction: column;
             transition: all 0.2s ease-in;
@@ -149,6 +149,7 @@
 
     &.light {
         background-color: var(--color-background-light);
+        color: var(--color-text-on-light);
 
         .active {
             color: var(--color-text-on-light-alt);
@@ -156,6 +157,7 @@
 
         .linkContainer {
             .link {
+                color: var(--color-text-on-light);
                 &:hover {
                     color: var(--color-text-on-light-alt);
                 }

@@ -49,6 +49,7 @@
                 bottom: -1.5em;
                 transition: all ease 0.5s;
                 opacity: 0;
+                background-color: var(--color-background);
             }
 
             &:hover {
@@ -91,7 +92,7 @@
     display: none;
     flex-direction: column;
     flex-grow: 1;
-    padding-bottom: var(--height-arrow);
+    padding-bottom: calc(var(--height-arrow) * var(--multiplier));
     width: 100%;
     overflow: auto;
 

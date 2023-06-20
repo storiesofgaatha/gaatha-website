@@ -16,16 +16,12 @@ function Contact() {
         >
             <div className={styles.map}>
                 <div className={styles.mapOuter}>
-                    <div className={styles.gmapCanvas}>
-                        <iframe
-                            className={styles.gmapIframe}
-                            title="gaathaMap"
-                            width={520}
-                            height={520}
-                            id="gmap_canvas"
-                            src={mapLink}
-                        />
-                    </div>
+                    <iframe
+                        className={styles.gmapIframe}
+                        title="gaathaMap"
+                        id="gmap_canvas"
+                        src={mapLink}
+                    />
                 </div>
             </div>
             <div className={styles.contact}>

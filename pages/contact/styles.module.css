@@ -13,6 +13,20 @@
         overflow-y: auto;
         gap: var(--spacing-super-large);
 
+        @media screen and (max-width: 1600px) {
+            padding-right: var(--spacing-right);
+        }
+        @media screen and (max-width: 1500px) {
+            padding-right: var(--spacing-gigantic);
+            padding-left: calc(var(--spacing-gigantic) * var(--multiplier));
+        }
+        @media screen and (max-width: 1300px) {
+            padding: var(--spacing-extra-large);
+        }
+        @media screen and (max-width: 1000px) {
+            padding-right: var(--spacing-medium);
+            padding-left: 0;
+        }
         @media screen and (max-width: 900px) {
             flex-direction: column;
             padding-right: unset;
@@ -36,9 +50,8 @@
                 position: relative;
                 align-items: center;
                 justify-content: center;
-                transition: .3s border-radius ease-in-out;
-                width: 520px;
-                height: 520px;
+                width: 30vw;
+                height: 30vw;
                 overflow: hidden;
                 text-align: right;
 
@@ -47,39 +60,26 @@
                     width: 100%;
                 }
 
-                .gmapCanvas {
-                    transition: .3s border-radius ease-in-out;
-                    border-radius: var(--border-radius);
-                    background: none;
-                    width: 520px;
-                    height: 520px;
-                    overflow: hidden;
-
-                    @media screen and (max-width: 900px) {
-                        border-radius: 0;
-                    }
-                }
-
                 .gmapIframe {
+                    transition: .3s border-radius ease-in-out;
                     border: none;
+                    border-radius: 50%;
+                    aspect-ratio: 1/1;
+                    width: 100%;
                     @media screen and (max-width: 900px) {
                         position: absolute;
                         top: 0;
                         left: 0;
+                        border-radius: 0;
                         width: 100%;
                         height: 100%;
                     }
                 }
-            }
-            &:hover {
-                .mapOuter {
+                &:hover {
                     border-radius: 0%;
-                }
-                .gmapCanvas {
-                    border-radius: 0%;
-                }
-                .gmapIframe {
-                    border-radius: 0%;
+                    .gmapIframe {
+                        border-radius: 0%;
+                    }
                 }
             }
         }

@@ -3,8 +3,8 @@
     padding: var(--spacing-super-large);
 
     @media screen and (max-width: 900px) {
-        padding: var(--spacing-medium);
         margin-bottom: var(--spacing-gigantic);
+        padding: var(--spacing-medium);
     }
 
     .people {
@@ -16,8 +16,8 @@
         gap: var(--spacing-mega-large);
 
         @media screen and (max-width: 900px) {
-            overflow: unset;
             padding-top: 0;
+            overflow: unset;
         }
 
         @media screen and (max-width: 900px) {

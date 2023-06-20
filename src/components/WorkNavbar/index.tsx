@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from 'react';
-import { _cs, isDefined } from '@togglecorp/fujs';
+import { _cs, isDefined, isNotDefined } from '@togglecorp/fujs';
 import {
     AiFillCaretUp,
     AiFillCaretDown,
@@ -107,33 +107,45 @@ function WorkNavbar(props: Props) {
                 />
             )}
             <div className={styles.linkContainer}>
+                <div className={styles.nestedRoutes}>
+                    <Link
+                        href="/works/"
+                        className={_cs(
+                            (currentRoute === '/works' && isNotDefined(activeCategory))
+                            && styles.active,
+                            styles.link,
+                        )}
+                    >
+                        All
+                    </Link>
+                    {currentRoute.startsWith('/works') && (
+                        subRoutes.map((route) => (
+                            <Link
+                                href={route.url}
+                                className={_cs(
+                                    (activeCategory === route.key) && styles.active,
+                                    styles.link,
+                                )}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))
+                    )}
+                </div>
                 <div className={styles.subRoutes}>
                     <Link
                         href="/works/"
                         className={_cs(
-                            currentRoute === '/works' && styles.active,
+                            currentRoute.startsWith('/works') && styles.active,
                             styles.link,
                         )}
                     >
                         Architecture
                     </Link>
-                    {subRoutes.map((route) => (
-                        <Link
-                            href={route.url}
-                            className={_cs(
-                                (activeCategory === route.key) && styles.active,
-                                styles.link,
-                            )}
-                        >
-                            {route.displayName}
-                        </Link>
-                    ))}
-                </div>
-                <div className={styles.additionalRoutes}>
                     <Link
-                        href="/works/visualizations"
+                        href="/visualizations"
                         className={_cs(
-                            currentRoute === '/works/visualizations'
+                            currentRoute.startsWith('/visualizations')
                             && styles.active,
                             styles.link,
                         )}

@@ -29,14 +29,16 @@ function ResponsiveWorkGrid(props: Props) {
                             <Link
                                 key={work.id}
                                 href={`/work/${work.id}`}
-                                className={styles.imageContainer}
+                                className={styles.link}
                             >
-                                <Image
-                                    className={styles.coverImage}
-                                    src={work.coverImage.url}
-                                    alt="cover image"
-                                    fill
-                                />
+                                <div className={styles.imageContainer}>
+                                    <Image
+                                        className={styles.coverImage}
+                                        src={work.coverImage.url}
+                                        alt="cover image"
+                                        fill
+                                    />
+                                </div>
                                 <ProjectTitle
                                     className={styles.title}
                                     title={work.title}

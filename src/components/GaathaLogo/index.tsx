@@ -6,33 +6,6 @@ import styles from './styles.module.css';
 
 type LogoVariant = 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge' | 'mediumSmall';
 
-const sizeByLogoVariant = {
-    extraSmall: {
-        width: 70,
-        height: 56,
-    },
-    small: {
-        width: 100,
-        height: 80,
-    },
-    mediumSmall: {
-        width: 144,
-        height: 108,
-    },
-    medium: {
-        width: 200,
-        height: 160,
-    },
-    large: {
-        width: 240,
-        height: 200,
-    },
-    extraLarge: {
-        width: 320,
-        height: 200,
-    },
-};
-
 interface Props {
     className?: string;
     logoClassName?: string;
@@ -50,15 +23,23 @@ function GaathaLogo(props: Props) {
 
     return (
         <Link
-            className={className}
+            className={_cs(
+                className,
+                styles.logo,
+                variant === 'extraSmall' && styles.extraSmall,
+                variant === 'small' && styles.small,
+                variant === 'mediumSmall' && styles.mediumSmall,
+                variant === 'medium' && styles.medium,
+                variant === 'large' && styles.large,
+                variant === 'extraLarge' && styles.extraLarge,
+            )}
             href="/"
         >
             <Image
-                className={_cs(logoClassName, styles.logo)}
+                className={_cs(logoClassName, styles.image)}
                 src={lightMode ? '/logo-dark.png' : '/logo-light.png'}
                 alt="Gaatha"
-                width={sizeByLogoVariant[variant].width}
-                height={sizeByLogoVariant[variant].height}
+                fill
             />
         </Link>
     );

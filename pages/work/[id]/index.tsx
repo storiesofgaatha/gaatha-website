@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
+import { IoCaretDown } from 'react-icons/io5';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import { gql } from 'graphql-request';
@@ -13,6 +14,7 @@ import {
 import ProjectTitle from 'components/ProjectTitle';
 import GaathaLogo from 'components/GaathaLogo';
 import WorkDetail from 'components/workDetail';
+import Button from 'components/Button';
 
 import styles from './styles.module.css';
 
@@ -27,6 +29,14 @@ function WorkItem(props: Props) {
         work,
     } = props;
 
+    const divRef = useRef<HTMLDivElement>(null);
+
+    const handleClick = useCallback(() => {
+        divRef.current?.scrollIntoView({
+            behavior: 'smooth',
+        });
+    }, []);
+
     return (
         <div className={styles.page}>
             <div className={styles.imageWrapper}>
@@ -35,7 +45,7 @@ function WorkItem(props: Props) {
                         className={styles.image}
                         src={work.coverImage.url}
                         alt="cover image"
-                        layout="fill"
+                        fill
                     />
                 )}
             </div>
@@ -45,7 +55,6 @@ function WorkItem(props: Props) {
                         <ProjectTitle
                             className={_cs(
                                 styles.title,
-                                work.isCoverImageDark && styles.dark,
                             )}
                             title={work.title}
                             subtitle={work.subTitle}
@@ -57,7 +66,7 @@ function WorkItem(props: Props) {
                                     className={styles.image}
                                     src={work.artWork.url}
                                     alt="artwork"
-                                    layout="fill"
+                                    fill
                                 />
                             )}
                         </div>
@@ -75,12 +84,23 @@ function WorkItem(props: Props) {
                             className={styles.image}
                             src={work.artWork.url}
                             alt="artwork"
-                            layout="fill"
+                            fill
                         />
                     )}
                 </div>
+                <div className={styles.bottom}>
+                    <Button
+                        name={undefined}
+                        onClick={handleClick}
+                        className={styles.button}
+                    >
+                        <IoCaretDown />
+                    </Button>
+                </div>
             </div>
             <WorkDetail
+                elementRef={divRef}
+                className={styles.detail}
                 work={work}
             />
         </div>

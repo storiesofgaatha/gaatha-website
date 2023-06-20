@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { LegacyRef } from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -27,11 +28,15 @@ import styles from './styles.module.css';
 type WorkItemType = NonNullable<WorkItemQuery['work']>;
 interface Props {
     work: WorkItemType;
+    className?: string;
+    elementRef?: LegacyRef<HTMLDivElement>;
 }
 
 function WorkDetail(props: Props) {
     const {
         work,
+        className,
+        elementRef,
     } = props;
 
     const galleryImages = work.images;
@@ -44,7 +49,10 @@ function WorkDetail(props: Props) {
     const imagesShown = activeTab === 'image';
 
     return (
-        <div className={styles.page}>
+        <div
+            ref={elementRef}
+            className={_cs(styles.page, className)}
+        >
             <SideNavbar
                 className={styles.navbar}
                 lightMode
