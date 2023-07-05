@@ -1,21 +1,15 @@
-.swiperContainer {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-
-    --swiper-theme-color: #000;
-
-    @media screen and (max-width: 900px) {
-        display: none;
-    }
-}
-
 .buckets {
     display: flex;
     align-items: flex-start;
     flex-grow: 1;
     width: 100%;
     gap: var(--spacing-medium);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
 
     .grid {
         display: grid;
@@ -23,26 +17,27 @@
         row-gap: 2.5rem;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(4, 1fr);
+        width: 100%;
+        height: 100%;
+        flex-shrink: 0;
         padding-bottom: var(--spacing-gigantic);
+        scroll-snap-align: start;
 
         .imageContainer {
-            display: flex;
             position: relative;
 
             .coverImage {
                 transition: all ease 1s;
                 width: 100%;
-                filter: grayscale(100%);
                 object-fit: cover;
                 object-position: center;
-                mix-blend-mode: overlay;
+                filter: grayscale(100%);
             }
 
             &:nth-child(6n),
             &:nth-child(6n - 1) {
                 grid-column: auto / span 2;
             }
-
 
             .title {
                 position: absolute;
@@ -61,42 +56,5 @@
                 }
             }
         }
-
-        .button {
-            color: #fff !important;
-        }
-    }
-    :global {
-        .swiper-button-prev, .swiper-button-next {
-            position: absolute;
-            top: calc(100% - 20px);
-            width: 12px;
-        }
-        .swiper-button-prev {
-            left: calc(100% - 25px);
-        }
-        .swiper-button-next {
-            right: 0;
-        }
-        .swiper-button-next::after{
-            content: "";
-        }
-        .swiper-button-prev::after {
-            content: "";
-        }
-    }
-}
-
-.responsive {
-    --height-arrow: 2rem;
-    display: none;
-    flex-direction: column;
-    flex-grow: 1;
-    padding-bottom: calc(var(--height-arrow) * var(--multiplier));
-    width: 100%;
-    overflow: auto;
-
-    @media screen and (max-width: 900px) {
-        display: flex;
     }
 }

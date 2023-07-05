@@ -118,7 +118,7 @@ function WorkNavbar(props: Props) {
                     >
                         All
                     </Link>
-                    {currentRoute.startsWith('/works') && (
+                    {(
                         subRoutes.map((route) => (
                             <Link
                                 href={route.url}
@@ -131,17 +131,6 @@ function WorkNavbar(props: Props) {
                             </Link>
                         ))
                     )}
-                </div>
-                <div className={styles.subRoutes}>
-                    <Link
-                        href="/works/"
-                        className={_cs(
-                            currentRoute.startsWith('/works') && styles.active,
-                            styles.link,
-                        )}
-                    >
-                        Architecture
-                    </Link>
                     <Link
                         href="/visualizations"
                         className={_cs(
@@ -185,15 +174,6 @@ function WorkNavbar(props: Props) {
                         {activeLink}
                     </Button>
                     <div className={styles.otherRoutes}>
-                        <Link
-                            href="/works/"
-                            className={_cs(
-                                currentRoute === '/works' && styles.active,
-                                styles.link,
-                            )}
-                        >
-                            Architecture
-                        </Link>
                         {subRoutes.map((route) => (
                             <Link
                                 href={route.url}

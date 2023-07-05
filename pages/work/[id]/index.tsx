@@ -71,7 +71,6 @@ function WorkItem(props: Props) {
                             )}
                         </div>
                     </div>
-
                     <GaathaLogo
                         className={styles.logo}
                         variant="small"

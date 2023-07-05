@@ -2,18 +2,6 @@ import { useState } from 'react';
 import type { LegacyRef } from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/mousewheel';
-import {
-    EffectFade,
-    Pagination,
-    Mousewheel,
-    Autoplay,
-} from 'swiper';
 
 import SideNavbar from 'components/PageWithSideBar/SideNav';
 import TextOutput from 'components/TextOutput';
@@ -128,33 +116,20 @@ function WorkDetail(props: Props) {
                     </div>
                 </div>
                 <div className={styles.carouselWrapper}>
-                    {(galleryImages.length > 0) && (
-                        <Swiper
-                            className={_cs(styles.carousel, imagesShown && styles.imagesShown)}
-                            effect="fade"
-                            modules={[EffectFade, Mousewheel, Pagination, Autoplay]}
-                            pagination={{ clickable: true }}
-                            direction="vertical"
-                            autoplay={{ delay: 2500 }}
-                            mousewheel
-                            draggable
-                        >
-                            {galleryImages?.map((image) => (
-                                isDefined(image.image) && isDefined(image.image.url) && (
-                                    <SwiperSlide
-                                        className={styles.imageWrapper}
-                                    >
-                                        <Image
-                                            className={styles.image}
-                                            src={image.image.url}
-                                            alt="carousel image"
-                                            fill
-                                        />
-                                    </SwiperSlide>
-                                )
-                            ))}
-                        </Swiper>
-                    )}
+                    <div className={styles.imageContainer}>
+                        {(galleryImages.length > 0) && (galleryImages?.map((image) => (
+                            isDefined(image.image) && isDefined(image.image.url) && (
+                                <div className={styles.imageWrapper}>
+                                    <Image
+                                        className={styles.image}
+                                        src={image.image.url}
+                                        alt="carousel image"
+                                        fill
+                                    />
+                                </div>
+                            )))
+                        )}
+                    </div>
                     <div className={styles.rightPane}>
                         <GaathaLogo
                             variant="small"
