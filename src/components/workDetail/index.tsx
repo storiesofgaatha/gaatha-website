@@ -28,14 +28,6 @@ function WorkDetail(props: Props) {
     } = props;
 
     const galleryImages = work.images;
-    const [
-        activeTab,
-        setActiveTab,
-    ] = useState<'text' | 'image'>('image');
-
-    const textShown = activeTab === 'text';
-    // TODO: If the text and image tabs are to be removed, remove this as well
-    // const imagesShown = activeTab === 'image';
 
     return (
         <div
@@ -47,74 +39,28 @@ function WorkDetail(props: Props) {
                 lightMode
                 hideGaathaLogo
             />
-            <ProjectTitle
-                className={styles.workTitle}
-                title={work.title}
-                subtitle={work.subTitle}
-                size="medium"
-            />
-            <div className={styles.topBar}>
-                <ProjectTitle
-                    title={work.title}
-                    subtitle={work.subTitle}
-                    size="medium"
-                />
+            <div className={styles.workTitleContainer}>
                 <GaathaLogo
                     className={styles.logo}
                     variant="small"
                     lightMode
                 />
-            </div>
-            <div className={styles.responsiveArtwork}>
-                {isDefined(work.artWork) && isDefined(work.artWork.url) && (
-                    <Image
-                        className={styles.artwork}
-                        src={work.artWork.url}
-                        alt="artwork"
-                        fill
-                    />
-                )}
+                <ProjectTitle
+                    title={work.title}
+                    subtitle={work.subTitle}
+                    size="medium"
+                />
             </div>
             <div className={styles.content}>
-                <div className={styles.tabs}>
-                    <Button
-                        name="text"
-                        onClick={setActiveTab}
-                        className={_cs(
-                            styles.button,
-                            activeTab === 'text' && styles.active,
-                        )}
-                    >
-                        Text
-                    </Button>
-                    <Button
-                        name="image"
-                        onClick={setActiveTab}
-                        className={_cs(
-                            styles.button,
-                            activeTab === 'image' && styles.active,
-                        )}
-                    >
-                        Images
-                    </Button>
-
-                </div>
-                <div className={styles.left}>
-                    <div className={styles.artworkContainer}>
-                        {isDefined(work.artWork) && isDefined(work.artWork.url) && (
-                            <Image
-                                className={styles.artwork}
-                                src={work.artWork.url}
-                                alt="artwork"
-                                fill
-                            />
-                        )}
-                    </div>
-                    <div className={_cs(styles.description, textShown && styles.textShown)}>
-                        <HTMLOutput
-                            value={work.description}
+                <div className={styles.artworkContainer}>
+                    {isDefined(work.artWork) && isDefined(work.artWork.url) && (
+                        <Image
+                            className={styles.artwork}
+                            src={work.artWork.url}
+                            alt="artwork"
+                            fill
                         />
-                    </div>
+                    )}
                 </div>
                 <div className={styles.carouselWrapper}>
                     <div className={styles.imageContainer}>
@@ -131,39 +77,37 @@ function WorkDetail(props: Props) {
                             )))
                         )}
                     </div>
-                    <div className={styles.rightPane}>
-                        <GaathaLogo
-                            variant="small"
-                            className={styles.logo}
-                            lightMode
-                        />
-                        <div className={styles.extraInfo}>
-                            <TextOutput
-                                className={styles.info}
-                                label="Area"
-                                value={work.area}
-                                multiline
-                            />
-                            <TextOutput
-                                className={styles.info}
-                                label="Status"
-                                value={work.status}
-                                multiline
-                            />
-                            <TextOutput
-                                className={styles.info}
-                                label="Duration"
-                                value={work.duration}
-                                multiline
-                            />
-                            <TextOutput
-                                className={styles.info}
-                                label="Location"
-                                value={work.location}
-                            />
-                        </div>
-                    </div>
                 </div>
+                <div className={styles.description}>
+                    <HTMLOutput
+                        value={work.description}
+                    />
+                </div>
+            </div>
+            <div className={styles.rightPane}>
+                <TextOutput
+                    className={styles.info}
+                    label="Area"
+                    value={work.area}
+                    multiline
+                />
+                <TextOutput
+                    className={styles.info}
+                    label="Status"
+                    value={work.status}
+                    multiline
+                />
+                <TextOutput
+                    className={styles.info}
+                    label="Duration"
+                    value={work.duration}
+                    multiline
+                />
+                <TextOutput
+                    className={styles.info}
+                    label="Location"
+                    value={work.location}
+                />
             </div>
         </div>
     );

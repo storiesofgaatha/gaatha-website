@@ -6,8 +6,6 @@
     background-color: var(--color-background-light);
     height: 100vh;
     overflow: auto;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory;
     color: var(--color-text-on-light-alt);
 
     .imageWrapper {
@@ -17,7 +15,6 @@
         width: 100%;
         height: 100vh;
         overflow: auto;
-        scroll-snap-align: start;
 
         .image {
             object-fit: cover;
@@ -36,6 +33,7 @@
         height: 100vh;
         overflow: auto;
         font-size: var(--font-size-heading-extra-small);
+
         .top {
             display: flex;
             flex-wrap: nowrap;
