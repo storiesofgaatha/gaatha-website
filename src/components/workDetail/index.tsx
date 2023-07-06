@@ -34,7 +34,8 @@ function WorkDetail(props: Props) {
     ] = useState<'text' | 'image'>('image');
 
     const textShown = activeTab === 'text';
-    const imagesShown = activeTab === 'image';
+    // TODO: If the text and image tabs are to be removed, remove this as well
+    // const imagesShown = activeTab === 'image';
 
     return (
         <div

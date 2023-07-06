@@ -13,14 +13,14 @@
 
     .grid {
         display: grid;
+        flex-shrink: 0;
         column-gap: 1.5rem;
         row-gap: 2.5rem;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(4, 1fr);
+        padding-bottom: var(--spacing-gigantic);
         width: 100%;
         height: 100%;
-        flex-shrink: 0;
-        padding-bottom: var(--spacing-gigantic);
         scroll-snap-align: start;
 
         .imageContainer {

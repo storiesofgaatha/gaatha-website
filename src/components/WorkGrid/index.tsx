@@ -1,4 +1,4 @@
-import { _cs, isDefined } from '@togglecorp/fujs';
+import { isDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
 import Image from 'next/image';
 

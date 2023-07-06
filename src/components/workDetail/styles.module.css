@@ -154,9 +154,9 @@
             .imageContainer {
                 display: flex;
                 flex-direction: column;
+                flex-grow: 1;
                 flex-shrink: 0;
                 overflow-y: auto;
-                flex-grow: 1;
                 scroll-snap-type: y mandatory;
 
                 &::-webkit-scrollbar{

@@ -103,10 +103,6 @@
                 padding: var(--spacing-super-small);
                 animation: blink 2s linear infinite;
 
-                .icon {
-                    font-size: var(--font-size-small);
-                }
-
                 @keyframes blink{
                     0% {
                         opacity: 1;
