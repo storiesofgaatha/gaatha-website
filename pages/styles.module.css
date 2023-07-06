@@ -3,6 +3,8 @@
         display: flex;
         flex-direction: column;
         padding: 0 var(--spacing-extra-large);
+        height: 100vh;
+        height: var(--doc-height);
         gap: var(--spacing-extra-large);
         font-size: var(--font-size-medium);
 
@@ -13,6 +15,7 @@
             background-color: transparent;
             width: 100vw;
             height: 100vh;
+            height: var(--doc-height);
             overflow: hidden;
             animation: moveBack 2s 1 forwards;
             animation-delay: 800ms;

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import 'styles/globals.css';
 import 'styles/variables.css';
 
@@ -8,6 +9,16 @@ function MyApp(props: AppProps) {
         Component,
         pageProps,
     } = props;
+
+    useEffect(() => {
+        const documentHeight = () => {
+            const doc = document.documentElement;
+            doc.style.setProperty('--doc-height', `${window.innerHeight}px`);
+        };
+        window.addEventListener('resize', documentHeight);
+        documentHeight();
+        return () => window.removeEventListener('resize', documentHeight);
+    }, []);
 
     return (
         // eslint-disable-next-line react/jsx-props-no-spreading

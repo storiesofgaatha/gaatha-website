@@ -3,7 +3,6 @@
     align-items: flex-start;
     flex-grow: 1;
     width: 100%;
-    gap: var(--spacing-medium);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 
@@ -54,6 +53,23 @@
                 .title {
                     opacity: 1;
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        flex-direction: column;
+        padding: var(--spacing-extra-large);
+        scroll-snap-type: unset;
+
+        .grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            height: unset;
+            scroll-snap-align: unset;
+
+            .imageContainer {
+                height: 6rem;
             }
         }
     }
