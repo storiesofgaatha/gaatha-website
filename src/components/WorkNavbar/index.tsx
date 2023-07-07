@@ -92,103 +92,51 @@ function WorkNavbar(props: Props) {
     }));
 
     return (
-        <nav
-            className={_cs(
-                styles.sideNavbar,
-                className,
-                lightMode && styles.light,
-                hideGaathaLogo && styles.noLogo,
-            )}
-        >
-            {!hideGaathaLogo && (
-                <GaathaLogo
-                    variant="small"
-                    lightMode={lightMode}
-                />
-            )}
-            <div className={styles.linkContainer}>
-                <div className={styles.nestedRoutes}>
-                    <Link
-                        href="/works/"
-                        className={_cs(
-                            (currentRoute === '/works' && isNotDefined(activeCategory))
-                            && styles.active,
-                            styles.link,
-                        )}
-                    >
-                        All
-                    </Link>
-                    {(
-                        subRoutes.map((route) => (
-                            <Link
-                                href={route.url}
-                                className={_cs(
-                                    (activeCategory === route.key) && styles.active,
-                                    styles.link,
-                                )}
-                            >
-                                {route.displayName}
-                            </Link>
-                        ))
-                    )}
-                    <Link
-                        href="/visualizations"
-                        className={_cs(
-                            currentRoute.startsWith('/visualizations')
-                            && styles.active,
-                            styles.link,
-                        )}
-                    >
-                        Graphics + Visualizations
-                    </Link>
-                </div>
-                <div className={styles.routes}>
-                    {primaryRoutes.map((route) => (
+        <>
+            {additionalNavShown && <div className={styles.backdrop} />}
+            <nav
+                className={_cs(
+                    styles.sideNavbar,
+                    className,
+                    lightMode && styles.light,
+                    hideGaathaLogo && styles.noLogo,
+                )}
+            >
+                {!hideGaathaLogo && (
+                    <GaathaLogo
+                        variant="small"
+                        lightMode={lightMode}
+                    />
+                )}
+                <div className={styles.linkContainer}>
+                    <div className={styles.nestedRoutes}>
                         <Link
-                            href={isDefined(route.url) ? route.url : {}}
+                            href="/works/"
                             className={_cs(
-                                isDefined(route.url)
-                                    ? currentRoute.startsWith(route.url) && styles.active
-                                    : styles.disabled,
+                                (currentRoute === '/works' && isNotDefined(activeCategory))
+                                && styles.active,
                                 styles.link,
                             )}
                         >
-                            {route.displayName}
+                            All
                         </Link>
-                    ))}
-                </div>
-            </div>
-            <div className={styles.responsiveMenu}>
-                <div
-                    className={_cs(
-                        styles.subNavbarContainer,
-                        additionalNavShown && styles.unhide,
-                    )}
-                >
-                    <Button
-                        className={styles.arrow}
-                        name={undefined}
-                        onClick={toggleShowAdditionalNav}
-                        actions={additionalNavShown ? <AiFillCaretDown /> : <AiFillCaretUp />}
-                    >
-                        {activeLink}
-                    </Button>
-                    <div className={styles.otherRoutes}>
-                        {subRoutes.map((route) => (
-                            <Link
-                                href={route.url}
-                                className={_cs(
-                                    (activeCategory === route.key) && styles.active,
-                                    styles.link,
-                                )}
-                            >
-                                {route.displayName}
-                            </Link>
-                        ))}
+                        {(
+                            subRoutes.map((route) => (
+                                <Link
+                                    href={route.url}
+                                    className={_cs(
+                                        (activeCategory === route.key) && styles.active,
+                                        styles.link,
+                                    )}
+                                >
+                                    {route.displayName}
+                                </Link>
+                            ))
+                        )}
                         <Link
-                            href="/works/visualizations"
+                            href="/visualizations"
                             className={_cs(
-                                currentRoute.startsWith('/works/visualizations')
+                                currentRoute.startsWith('/visualizations')
                                 && styles.active,
                                 styles.link,
                             )}
@@ -196,24 +144,79 @@ function WorkNavbar(props: Props) {
                             Graphics + Visualizations
                         </Link>
                     </div>
+                    <div className={styles.routes}>
+                        {primaryRoutes.map((route) => (
+                            <Link
+                                href={isDefined(route.url) ? route.url : {}}
+                                className={_cs(
+                                    isDefined(route.url)
+                                        ? currentRoute.startsWith(route.url) && styles.active
+                                        : styles.disabled,
+                                    styles.link,
+                                )}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-                <div className={styles.routes}>
-                    {primaryRoutes.map((route) => (
-                        <Link
-                            href={isDefined(route.url) ? route.url : {}}
-                            className={_cs(
-                                isDefined(route.url)
-                                    ? currentRoute.startsWith(route.url) && styles.active
-                                    : styles.disabled,
-                                styles.link,
-                            )}
+                <div className={styles.responsiveMenu}>
+                    <div
+                        className={_cs(
+                            styles.subNavbarContainer,
+                            additionalNavShown && styles.unhide,
+                        )}
+                    >
+                        <Button
+                            className={styles.arrow}
+                            name={undefined}
+                            onClick={toggleShowAdditionalNav}
+                            actions={additionalNavShown ? <AiFillCaretDown /> : <AiFillCaretUp />}
                         >
-                            {route.displayName}
-                        </Link>
-                    ))}
+                            {activeLink}
+                        </Button>
+                        <div className={styles.otherRoutes}>
+                            {subRoutes.map((route) => (
+                                <Link
+                                    href={route.url}
+                                    className={_cs(
+                                        (activeCategory === route.key) && styles.active,
+                                        styles.link,
+                                    )}
+                                >
+                                    {route.displayName}
+                                </Link>
+                            ))}
+                            <Link
+                                href="/works/visualizations"
+                                className={_cs(
+                                    currentRoute.startsWith('/works/visualizations')
+                                    && styles.active,
+                                    styles.link,
+                                )}
+                            >
+                                Graphics + Visualizations
+                            </Link>
+                        </div>
+                    </div>
+                    <div className={styles.routes}>
+                        {primaryRoutes.map((route) => (
+                            <Link
+                                href={isDefined(route.url) ? route.url : {}}
+                                className={_cs(
+                                    isDefined(route.url)
+                                        ? currentRoute.startsWith(route.url) && styles.active
+                                        : styles.disabled,
+                                    styles.link,
+                                )}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </>
     );
 }
 

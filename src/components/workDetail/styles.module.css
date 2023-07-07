@@ -31,7 +31,7 @@
             }
         }
 
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: 900px) {
             flex-direction: row;
         }
     }
@@ -67,7 +67,7 @@
         display: grid;
         flex-grow: 1;
         grid-gap: var(--spacing-large);
-        grid-template-columns: minmax(10rem, 2fr) minmax(10rem, 3fr);
+        grid-template-columns: minmax(8rem, 2fr) minmax(8rem, 3fr);
 
         @media screen and (max-width: 900px) {
             display: flex;
@@ -77,11 +77,11 @@
         .artworkContainer {
             position: relative;
             align-self: center;
-            padding-top: var(--spacing-enormous);
             width: 100%;
-            height: 20rem;
+            height: calc(12rem + var(--spacing-enormous));
 
             .artwork {
+                padding-top: var(--spacing-enormous);
                 object-fit: contain;
                 object-position: bottom;
             }
@@ -121,7 +121,6 @@
                 flex-direction: column;
                 flex-grow: 1;
                 flex-shrink: 0;
-                width: 100%;
                 overflow-y: auto;
                 scroll-snap-type: y mandatory;
 
@@ -129,17 +128,35 @@
                     display: none;
                 }
 
-                .imageWrapper {
-                    position: relative;
+                .imageContent {
                     flex-shrink: 0;
-                    width: 100%;
                     height: 100vh;
                     scroll-snap-align: start;
 
-                    .image {
-                        background-color: #f2f2f2;
-                        padding: var(--spacing-extra-small);
-                        object-fit: contain;
+                    .imageWrapper {
+                        position: relative;
+                        flex-shrink: 0;
+                        width: 100%;
+                        height: 100%;
+
+                        .image {
+                            object-fit: cover;
+                        }
+                    }
+
+                    &.landscape {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        gap: var(--spacing-large);
+
+                        .imageWrapper {
+                            height: calc(100% / 2 - var(--spacing-large));
+
+                            .image {
+                                object-fit: cover;
+                            }
+                        }
                     }
                 }
             }
@@ -148,7 +165,7 @@
                 align-items: center;
                 flex-direction: column;
                 width: 100%;
-                height: 60vh;
+                height: unset;
 
                 .imageContainer {
                     flex-direction: row;
@@ -156,9 +173,22 @@
                     overflow-x: auto;
                     scroll-snap-type: x mandatory;
 
-                    .imageWrapper {
+                    .imageContent {
+                        flex-shrink: 0;
                         width: 100%;
-                        height: 100%;
+                        height: 60vh;
+                        scroll-snap-align: start;
+
+                        .imageWrapper {
+                            position: relative;
+                            flex-shrink: 0;
+                            width: 100%;
+                            height: 100%;
+
+                            .image {
+                                object-fit: cover;
+                            }
+                        }
                     }
                 }
             }
@@ -177,24 +207,11 @@
         gap: var(--spacing-extra-small);
 
         @media screen and (max-width: 900px) {
-            flex-shrink: unset;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .logo {
-            align-self: flex-end;
-            @media screen and (max-width: 900px) {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 900px) {
             align-self: stretch;
             flex-direction: row;
             flex-wrap: wrap;
-            padding: unset;
-            padding-top: var(--spacing-medium);
+            padding: var(--spacing-gigantic) var(--spacing-large);
+            gap: var(--spacing-medium);
             text-align: center;
 
             .info {

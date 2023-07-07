@@ -61,71 +61,48 @@ function StudioNavbar(props: Props) {
     ] = useBooleanState(false);
 
     return (
-        <nav
-            className={_cs(
-                styles.sideNavbar,
-                className,
-                lightMode && styles.light,
-                hideGaathaLogo && styles.noLogo,
-                transparentMode && styles.transparentMode,
-            )}
-        >
-            {!hideGaathaLogo && (
-                <GaathaLogo
-                    className={styles.logo}
-                    variant="small"
-                    lightMode={lightMode}
+        <>
+            {additionalNavShown && (
+                <div
+                    className={_cs(styles.backdrop, lightMode && styles.light)}
                 />
             )}
+            <nav
+                className={_cs(
+                    styles.sideNavbar,
+                    className,
+                    lightMode && styles.light,
+                    hideGaathaLogo && styles.noLogo,
+                    transparentMode && styles.transparentMode,
+                )}
+            >
+                {!hideGaathaLogo && (
+                    <GaathaLogo
+                        className={styles.logo}
+                        variant="small"
+                        lightMode={lightMode}
+                    />
+                )}
 
-            <div className={styles.linkContainer}>
-                <div className={styles.subRoutes}>
-                    {secondaryRoutes.map((route) => (
-                        <Link
-                            href={route.url}
-                            className={_cs(currentRoute === route.url && styles.active)}
-                        >
-                            {route.displayName}
-                        </Link>
-                    ))}
-                </div>
-                <div className={styles.routes}>
-                    {primaryRoutes.map((route) => (
-                        <Link
-                            href={isDefined(route.url) ? route.url : {}}
-                            className={_cs(
-                                isDefined(route.url)
-                                    ? currentRoute.startsWith(route.url) && styles.active
-                                    : styles.disabled,
-                                styles.link,
-                            )}
-                        >
-                            {route.displayName}
-                        </Link>
-                    ))}
-                </div>
-            </div>
-            <div className={styles.responsiveMenu}>
-                <div
-                    className={_cs(
-                        styles.subNavbarContainer,
-                        additionalNavShown && styles.unhide,
-                    )}
-                >
-                    <Button
-                        className={styles.arrow}
-                        name={undefined}
-                        onClick={toggleShowAdditionalNav}
-                        actions={additionalNavShown ? <AiFillCaretDown /> : <AiFillCaretUp />}
-                    >
-                        {activeLink}
-                    </Button>
-                    <div className={styles.otherRoutes}>
+                <div className={styles.linkContainer}>
+                    <div className={styles.subRoutes}>
                         {secondaryRoutes.map((route) => (
                             <Link
                                 href={route.url}
+                                className={_cs(currentRoute === route.url && styles.active)}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))}
+                    </div>
+                    <div className={styles.routes}>
+                        {primaryRoutes.map((route) => (
+                            <Link
+                                href={isDefined(route.url) ? route.url : {}}
                                 className={_cs(
-                                    currentRoute.startsWith(route.url) && styles.active,
+                                    isDefined(route.url)
+                                        ? currentRoute.startsWith(route.url) && styles.active
+                                        : styles.disabled,
                                     styles.link,
                                 )}
                             >
@@ -134,23 +111,53 @@ function StudioNavbar(props: Props) {
                         ))}
                     </div>
                 </div>
-                <div className={styles.routes}>
-                    {primaryRoutes.map((route) => (
-                        <Link
-                            href={isDefined(route.url) ? route.url : {}}
-                            className={_cs(
-                                isDefined(route.url)
-                                    ? currentRoute.startsWith(route.url) && styles.active
-                                    : styles.disabled,
-                                styles.link,
-                            )}
+                <div className={styles.responsiveMenu}>
+                    <div
+                        className={_cs(
+                            styles.subNavbarContainer,
+                            additionalNavShown && styles.unhide,
+                        )}
+                    >
+                        <Button
+                            className={styles.arrow}
+                            name={undefined}
+                            onClick={toggleShowAdditionalNav}
+                            actions={additionalNavShown ? <AiFillCaretDown /> : <AiFillCaretUp />}
                         >
-                            {route.displayName}
-                        </Link>
-                    ))}
+                            {activeLink}
+                        </Button>
+                        <div className={styles.otherRoutes}>
+                            {secondaryRoutes.map((route) => (
+                                <Link
+                                    href={route.url}
+                                    className={_cs(
+                                        currentRoute.startsWith(route.url) && styles.active,
+                                        styles.link,
+                                    )}
+                                >
+                                    {route.displayName}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                    <div className={styles.routes}>
+                        {primaryRoutes.map((route) => (
+                            <Link
+                                href={isDefined(route.url) ? route.url : {}}
+                                className={_cs(
+                                    isDefined(route.url)
+                                        ? currentRoute.startsWith(route.url) && styles.active
+                                        : styles.disabled,
+                                    styles.link,
+                                )}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </>
     );
 }
 export default StudioNavbar;

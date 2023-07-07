@@ -22,6 +22,19 @@ import { WorkItemQuery } from 'generated/types';
 import styles from './styles.module.css';
 
 type WorkItemType = NonNullable<WorkItemQuery['work']>;
+
+interface GalleryItem {
+    order: number;
+    orientation: 'landscape' | 'portrait';
+    images: {
+        id: string;
+        image: {
+            url: string;
+        };
+        orientation: 'landscape' | 'portrait';
+    }[];
+}
+
 interface Props {
     work: WorkItemType;
     className?: string;
@@ -35,16 +48,65 @@ function WorkDetail(props: Props) {
         elementRef,
     } = props;
 
-    const galleryImages = useMemo(() => (work.images.map(
-        (image) => (
-            isDefined(image.image)
+    const galleryImages = useMemo(() => (
+        work.images.map((workImage) => (
+            isDefined(workImage.image)
                 ? ({
-                    id: image.id,
-                    image: image.image,
+                    id: workImage.id,
+                    image: workImage.image,
+                    orientation: workImage.image.width > workImage.image.height ? 'landscape' as const : 'portrait' as const,
                 })
                 : undefined
-        ),
-    ).filter(isDefined)), [work.images]);
+        ))
+            .filter(isDefined)
+            .reduce((acc, workImage) => {
+                if (workImage.orientation === 'portrait') {
+                    return [
+                        ...acc,
+                        {
+                            order: acc.length + 1,
+                            orientation: 'portrait' as const,
+                            images: [workImage],
+                        },
+                    ];
+                }
+                if (workImage.orientation === 'landscape') {
+                    const itemWithOnlyOneLandscape = acc.findIndex(
+                        (item) => {
+                            if (item.orientation === 'portrait') {
+                                return false;
+                            }
+                            return item.images.length === 1;
+                        },
+                    );
+                    if (itemWithOnlyOneLandscape === -1) {
+                        return [
+                            ...acc,
+                            {
+                                order: acc.length + 1,
+                                orientation: 'landscape' as const,
+                                images: [workImage],
+                            },
+                        ];
+                    }
+                    const newAcc = [...acc];
+                    newAcc.splice(
+                        itemWithOnlyOneLandscape,
+                        1,
+                        {
+                            order: acc[itemWithOnlyOneLandscape].order,
+                            orientation: 'landscape' as const,
+                            images: [
+                                acc[itemWithOnlyOneLandscape].images[0],
+                                workImage,
+                            ],
+                        },
+                    );
+                    return newAcc;
+                }
+                return acc;
+            }, [] as GalleryItem[])
+    ), [work.images]);
 
     const [activeElementIndex, setActiveElementIndex] = useState(0);
     const imageContainerRef = useRef<HTMLDivElement>(null);
@@ -54,14 +116,14 @@ function WorkDetail(props: Props) {
         if (!imageContainerRef.current || !imageContainerParentRef.current) {
             return;
         }
-        if (window.innerWidth > 720) {
+        if (window.innerWidth > 900) {
             const parentHeight = imageContainerParentRef.current.offsetHeight;
             const scrollPosition = imageContainerRef.current.scrollTop;
 
             const elementPosition = Math.floor(scrollPosition / parentHeight);
             setActiveElementIndex(elementPosition);
         }
-        if (window.innerWidth <= 720) {
+        if (window.innerWidth <= 900) {
             const parentWidth = imageContainerParentRef.current.offsetWidth;
             const scrollPosition = imageContainerRef.current.scrollLeft;
 
@@ -74,11 +136,11 @@ function WorkDetail(props: Props) {
         if (!imageContainerRef.current || !imageContainerParentRef.current) {
             return;
         }
-        if (window.innerWidth > 720) {
+        if (window.innerWidth > 900) {
             const parentHeight = imageContainerParentRef.current.offsetHeight;
             imageContainerRef.current.scrollTop = parentHeight * elementIndex;
         }
-        if (window.innerWidth <= 720) {
+        if (window.innerWidth <= 900) {
             const parentWidth = imageContainerParentRef.current.offsetWidth;
             imageContainerRef.current.scrollLeft = parentWidth * elementIndex;
         }
@@ -134,25 +196,31 @@ function WorkDetail(props: Props) {
                         className={styles.imageContainer}
                         ref={imageContainerRef}
                     >
-                        {(galleryImages?.map((image) => (
-                            isDefined(image.image.url) && (
-                                <div
-                                    className={styles.imageWrapper}
-                                >
-                                    <Image
-                                        className={styles.image}
-                                        src={image.image.url}
-                                        alt="carousel image"
-                                        fill
-                                    />
-                                </div>
-                            )))
-                        )}
+                        {(galleryImages?.map((gallery) => (
+                            <div
+                                key={gallery.order}
+                                className={_cs(
+                                    styles.imageContent,
+                                    gallery.orientation === 'landscape' && styles.landscape,
+                                )}
+                            >
+                                {gallery.images.map((image) => (
+                                    <div className={styles.imageWrapper}>
+                                        <Image
+                                            className={styles.image}
+                                            src={image.image.url}
+                                            alt="carousel image"
+                                            fill
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        )))}
                     </div>
                     <div className={styles.sliderDots}>
                         {galleryImages?.map((image, index) => (
                             <button
-                                key={image.id}
+                                key={image.order}
                                 className={_cs(
                                     styles.sliderButton,
                                     activeElementIndex === index && styles.activeSliderButton,

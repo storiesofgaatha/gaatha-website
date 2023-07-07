@@ -133,5 +133,16 @@
             color: var(--color-text-on-light-alt);
         }
     }
+}
 
+.backdrop {
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+
+    &.light {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 }

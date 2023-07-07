@@ -49,9 +49,14 @@ function WorkItem(props: Props) {
                     />
                 )}
             </div>
-            <div className={styles.header}>
-                <div className={styles.top}>
-                    <div className={styles.left}>
+            <div className={styles.hero}>
+                <div className={styles.header}>
+                    <div className={styles.top}>
+                        <GaathaLogo
+                            className={styles.logo}
+                            variant="small"
+                            lightMode={!work.isCoverImageDark}
+                        />
                         <ProjectTitle
                             className={_cs(
                                 styles.title,
@@ -60,32 +65,17 @@ function WorkItem(props: Props) {
                             subtitle={work.subTitle}
                             size="medium"
                         />
-                        <div className={styles.artwork}>
-                            {isDefined(work.artWork) && isDefined(work.artWork.url) && (
-                                <Image
-                                    className={styles.image}
-                                    src={work.artWork.url}
-                                    alt="artwork"
-                                    fill
-                                />
-                            )}
-                        </div>
                     </div>
-                    <GaathaLogo
-                        className={styles.logo}
-                        variant="small"
-                        lightMode={!work.isCoverImageDark}
-                    />
-                </div>
-                <div className={styles.responsiveArtwork}>
-                    {isDefined(work.artWork) && isDefined(work.artWork.url) && (
-                        <Image
-                            className={styles.image}
-                            src={work.artWork.url}
-                            alt="artwork"
-                            fill
-                        />
-                    )}
+                    <div className={styles.artwork}>
+                        {isDefined(work.artWork) && isDefined(work.artWork.url) && (
+                            <Image
+                                className={styles.image}
+                                src={work.artWork.url}
+                                alt="artwork"
+                                fill
+                            />
+                        )}
+                    </div>
                 </div>
                 <div className={styles.bottom}>
                     <Button
@@ -134,6 +124,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     image {
                         name
                         url
+                        width
+                        height
                     }
                 }
             }

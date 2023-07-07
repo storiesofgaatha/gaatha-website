@@ -76,13 +76,24 @@ function GraphicsAndVisualizations(props: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const featuredWorks = gql`
-        query FeaturedWorks {
-            projects {
+    const VisualizationWorks = gql`
+    query VisualizationWorks {
+        works (
+        filters: {
+            workType: GRAPHICS_AND_VISUALIZATION,
+        }
+        order: {
+            order: ASC
+        },
+            ) {
+                description
                 id
-                location
                 title
-                image {
+                category {
+                    id
+                    name
+                }
+                coverImage {
                     name
                     url
                 }
@@ -93,15 +104,14 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
                     name
                 }
             }
-        }
+    }
     `;
 
-    const value = await gaathaRequest(featuredWorks);
+    const value = await gaathaRequest(VisualizationWorks);
 
     return ({
         props: {
-            projects: value.projects,
-            filterChoices: value.filterChoices,
+            visualizations: value.works,
         },
     });
 };
