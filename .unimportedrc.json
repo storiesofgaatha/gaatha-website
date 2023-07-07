@@ -8,6 +8,7 @@
     "rootDir": "./src",
     "aliases": {
         "components/*": ["./components/*"],
+        "hooks/*": ["./hooks/*"],
         "utils/*": ["./utils/*"],
         "styles/*": ["./styles/*"],
         "generated/*": ["./generated/*"]

@@ -1,9 +1,31 @@
-import { _cs } from '@togglecorp/fujs';
-import Image from 'next/image';
+import { useMemo } from 'react';
+import { _cs, isDefined } from '@togglecorp/fujs';
+import {
+    AiFillCaretUp,
+    AiFillCaretDown,
+} from 'react-icons/ai';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import GaathaLogo from 'components/GaathaLogo';
+import Button from 'components/Button';
+import { primaryRoutes } from 'components/WorkNavbar';
+import useBooleanState from 'hooks/useBooleanState';
 import styles from './styles.module.css';
+
+const secondaryRoutes = [
+    {
+        key: 'studio',
+        url: '/about',
+        displayName: 'Studio',
+    },
+    {
+        key: 'people',
+        url: '/about/people',
+        displayName: 'People',
+    },
+];
 
 interface Props {
     className?: string;
@@ -23,114 +45,119 @@ function StudioNavbar(props: Props) {
     const router = useRouter();
     const currentRoute = router.pathname;
 
+    const activeLink = useMemo(() => {
+        if (currentRoute === '/about') {
+            return 'Studio';
+        }
+        return 'People';
+    }, [
+        currentRoute,
+    ]);
+
+    const [
+        additionalNavShown,
+        , , ,
+        toggleShowAdditionalNav,
+    ] = useBooleanState(false);
+
     return (
-        <nav
-            className={_cs(
-                styles.sideNavbar,
-                className,
-                lightMode && styles.light,
-                hideGaathaLogo && styles.noLogo,
-                transparentMode && styles.transparentMode,
+        <>
+            {additionalNavShown && (
+                <div
+                    className={_cs(styles.backdrop, lightMode && styles.light)}
+                />
             )}
-        >
-            {!hideGaathaLogo && (
-                <Link
-                    href="/"
-                >
-                    <div>
-                        {lightMode
-                            ? (
-                                <Image
-                                    src="/logo-dark.png"
-                                    alt="Gaatha"
-                                    width={150}
-                                    height={110}
-                                />
-                            ) : (
-                                <Image
-                                    src="/logo-light.png"
-                                    alt="Gaatha"
-                                    width={150}
-                                    height={110}
-                                />
-                            )}
+            <nav
+                className={_cs(
+                    styles.sideNavbar,
+                    className,
+                    lightMode && styles.light,
+                    hideGaathaLogo && styles.noLogo,
+                    transparentMode && styles.transparentMode,
+                )}
+            >
+                {!hideGaathaLogo && (
+                    <GaathaLogo
+                        className={styles.logo}
+                        variant="small"
+                        lightMode={lightMode}
+                    />
+                )}
+
+                <div className={styles.linkContainer}>
+                    <div className={styles.subRoutes}>
+                        {secondaryRoutes.map((route) => (
+                            <Link
+                                href={route.url}
+                                className={_cs(currentRoute === route.url && styles.active)}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))}
                     </div>
-                </Link>
-            )}
-            <div className={styles.linkContainer}>
-                <div className={styles.subRoutes}>
-                    <Link
-                        href="/studio"
+                    <div className={styles.routes}>
+                        {primaryRoutes.map((route) => (
+                            <Link
+                                href={isDefined(route.url) ? route.url : {}}
+                                className={_cs(
+                                    isDefined(route.url)
+                                        ? currentRoute.startsWith(route.url) && styles.active
+                                        : styles.disabled,
+                                    styles.link,
+                                )}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+                <div className={styles.responsiveMenu}>
+                    <div
                         className={_cs(
-                            (
-                                currentRoute === '/studio'
-                                || currentRoute === '/studio/about'
-                                || currentRoute === '/studio/design'
-                                || currentRoute === '/studio/collaboration'
-                            ) && styles.active,
+                            styles.subNavbarContainer,
+                            additionalNavShown && styles.unhide,
                         )}
                     >
-                        About
-                    </Link>
-                    <Link
-                        href="/studio/people"
-                        className={_cs(currentRoute === '/studio/people' && styles.active)}
-                    >
-                        People
-                    </Link>
-                    {/*
-                    NOTE: To be added when these pages are made
-                    <Link
-                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        href="#"
-                        className={styles.disabled}
-                    >
-                        Activities
-                    </Link>
-                    <Link
-                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        href="#"
-                        className={styles.disabled}
-                    >
-                        Recruit
-                    </Link>
-                    <Link
-                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        href="#"
-                        className={styles.disabled}
-                    >
-                        Blog
-                    </Link>
-                      */}
+                        <Button
+                            className={styles.arrow}
+                            name={undefined}
+                            onClick={toggleShowAdditionalNav}
+                            actions={additionalNavShown ? <AiFillCaretDown /> : <AiFillCaretUp />}
+                        >
+                            {activeLink}
+                        </Button>
+                        <div className={styles.otherRoutes}>
+                            {secondaryRoutes.map((route) => (
+                                <Link
+                                    href={route.url}
+                                    className={_cs(
+                                        currentRoute.startsWith(route.url) && styles.active,
+                                        styles.link,
+                                    )}
+                                >
+                                    {route.displayName}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                    <div className={styles.routes}>
+                        {primaryRoutes.map((route) => (
+                            <Link
+                                href={isDefined(route.url) ? route.url : {}}
+                                className={_cs(
+                                    isDefined(route.url)
+                                        ? currentRoute.startsWith(route.url) && styles.active
+                                        : styles.disabled,
+                                    styles.link,
+                                )}
+                            >
+                                {route.displayName}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-                <div className={styles.routes}>
-                    <Link
-                        href="/works"
-                        className={_cs(currentRoute === '/works' && styles.active)}
-                    >
-                        Works
-                    </Link>
-                    <Link
-                        href="/studio"
-                        className={_cs(currentRoute === '/studio' && styles.active)}
-                    >
-                        Studio
-                    </Link>
-                    <Link
-                        href="/contact"
-                        className={_cs(currentRoute === '/contact' && styles.active)}
-                    >
-                        Contact
-                    </Link>
-                    <Link
-                        href="/search"
-                        className={_cs(currentRoute === '/search' && styles.active)}
-                    >
-                        Search
-                    </Link>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </>
     );
 }
 export default StudioNavbar;

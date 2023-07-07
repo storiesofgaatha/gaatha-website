@@ -1,0 +1,27 @@
+.works {
+    --width-grid-image: 24rem;
+    display: flex;
+    flex-direction: column;
+    padding-right: var(--width-navbar);
+    gap: var(--spacing-medium);
+    height: 100vh;
+
+    @media screen and (max-width: 900px) {
+        padding-right: unset;
+    }
+
+    .topContainer {
+        flex-shrink: 0;
+        padding: var(--spacing-small);
+    }
+
+    .content {
+        display: flex;
+        flex-grow: 1;
+        overflow-y: auto;
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
+        }
+    }
+}

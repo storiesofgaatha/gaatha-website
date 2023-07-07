@@ -1,8 +1,9 @@
-import { _cs } from '@togglecorp/fujs';
-import Image from 'next/image';
+import { _cs, isDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import GaathaLogo from 'components/GaathaLogo';
+import { primaryRoutes } from 'components/WorkNavbar';
 import styles from './styles.module.css';
 
 interface Props {
@@ -34,54 +35,26 @@ function SideNavbar(props: Props) {
             )}
         >
             {!hideGaathaLogo && (
-                <Link
-                    href="/"
-                >
-                    <div>
-                        {lightMode
-                            ? (
-                                <Image
-                                    src="/logo-dark.png"
-                                    alt="Gaatha"
-                                    width={150}
-                                    height={110}
-                                />
-                            ) : (
-                                <Image
-                                    src="/logo-light.png"
-                                    alt="Gaatha"
-                                    width={150}
-                                    height={110}
-                                />
-                            )}
-                    </div>
-                </Link>
+                <GaathaLogo
+                    className={styles.logo}
+                    variant="small"
+                    lightMode={lightMode}
+                />
             )}
             <div className={styles.routes}>
-                <Link
-                    href="/works"
-                    className={_cs(currentRoute === '/works' && styles.active)}
-                >
-                    Works
-                </Link>
-                <Link
-                    href="/studio"
-                    className={_cs(currentRoute === '/studio' && styles.active)}
-                >
-                    Studio
-                </Link>
-                <Link
-                    href="/contact"
-                    className={_cs(currentRoute === '/contact' && styles.active)}
-                >
-                    Contact
-                </Link>
-                <Link
-                    href="/search"
-                    className={_cs(currentRoute === '/search' && styles.active)}
-                >
-                    Search
-                </Link>
+                {primaryRoutes.map((item) => (
+                    <Link
+                        href={isDefined(item.url) ? item.url : {}}
+                        className={_cs(
+                            isDefined(item.url)
+                                ? currentRoute.startsWith(item.url) && styles.active
+                                : styles.disabled,
+                            styles.link,
+                        )}
+                    >
+                        {item.displayName}
+                    </Link>
+                ))}
             </div>
         </nav>
     );

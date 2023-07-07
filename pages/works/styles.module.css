@@ -1,60 +1,29 @@
-.work {
+.works {
     --width-grid-image: 24rem;
     display: flex;
+    flex-direction: column;
+    padding-right: var(--width-navbar);
+    /* NOTE: 2 heights are here to set a fallback height if --doc-height doesn't work */
+    height: 100vh;
+    height: var(--doc-height);
     gap: var(--spacing-medium);
+
+    @media screen and (max-width: 900px) {
+        padding-right: unset;
+    }
+
+    .topContainer {
+        flex-shrink: 0;
+        padding: var(--spacing-small);
+    }
 
     .content {
         display: flex;
-        align-items: center;
-        padding: 0 var(--spacing-super-large);
-    }
-    .buckets {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-medium);
+        flex-grow: 1;
+        overflow-y: auto;
 
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--spacing-extra-large);
-
-            .imageContainer {
-                display: flex;
-                position: relative;
-                width: var(--width-grid-image);
-                height: 13rem;
-
-                .coverImage {
-                    filter: grayscale(100%);
-                    object-fit: cover;
-                    object-position: center;
-                    transition: all ease 1s;
-                }
-
-                &:nth-child(12),
-                &:nth-child(11),
-                &:nth-child(6),
-                &:nth-child(5) {
-                    width: calc(2 * var(--width-grid-image) + var(--spacing-extra-large));
-                }
-
-                .title {
-                    position: absolute;
-                    bottom: -1.5em;
-                    transition: all ease 0.5s;
-                    opacity: 0;
-                }
-
-                &:hover {
-                    .coverImage {
-                        filter: grayscale(0%);
-                    }
-                    .title {
-                        opacity: 1;
-                    }
-                }
-            }
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
         }
     }
 }

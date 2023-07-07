@@ -2,13 +2,80 @@
     .mainContent {
         display: flex;
         flex-direction: column;
-        padding: var(--spacing-extra-large);
+        padding: 0 var(--spacing-extra-large);
+        height: 100vh;
+        height: var(--doc-height);
         gap: var(--spacing-extra-large);
         font-size: var(--font-size-medium);
+
+        .preload {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: transparent;
+            width: 100vw;
+            height: 100vh;
+            height: var(--doc-height);
+            overflow: hidden;
+            animation: moveBack 2s 1 forwards;
+            animation-delay: 800ms;
+
+            @keyframes moveBack {
+                from  {
+                    z-index: initial;
+                }
+                to {
+                    z-index: -1;
+                }
+            }
+
+            .top, .bottom {
+                box-sizing: border-box;
+                left: 0;
+                background-color: #fff;
+                width: 100vw;
+                height: 50vh;
+            }
+
+            .top {
+                top: 0;
+                border-bottom: 5px solid var(--color-background);
+                animation: moveTopBox 2s 1 forwards;
+                animation-delay: 250ms;
+
+                @keyframes moveTopBox {
+                    from {
+                        transform: translateY(0);
+                    }
+
+                    to {
+                        transform: translateY(-100%);
+                    }
+                }
+            }
+
+            .bottom {
+                bottom: 0;
+                border-top: 5px solid var(--color-background);
+                animation: moveBottomBox 2s 1 forwards;
+                animation-delay: 250ms;
+
+                @keyframes moveBottomBox {
+                    from {
+                        transform: translateY(0);
+                    }
+
+                    to {
+                        transform: translateY(100%);
+                    }
+                }
+            }
+        }
     }
 
     .logo {
         display: flex;
+        object-fit: contain;
         margin: auto;
     }
 
@@ -17,8 +84,25 @@
         align-content: center;
         flex-direction: column;
         flex-wrap: wrap;
-        gap: var(--spacing-small);
+        gap: var(--spacing-mega-small);
+        padding-bottom: var(--spacing-gigantic);
         text-align: center;
         font-size: var(--font-size-medium);
+
+        .route {
+            color: var(--color-text-on-dark);
+
+            &.disabled {
+                pointer-events: none;
+
+                &:hover {
+                    color: var(--color-text-on-dark);
+                }
+            }
+
+            &:hover {
+                color: var(--color-text-on-dark-alt);
+            }
+        }
     }
 }

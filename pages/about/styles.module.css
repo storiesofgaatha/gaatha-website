@@ -1,0 +1,170 @@
+.studio {
+    display: flex;
+    background-color: var(--color-background-white);
+    scrollbar-gutter: stable;
+
+    .bgWrap {
+        display: flex;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto;
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
+        }
+
+        .leftBackground {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70vw;
+            height: 100vh;
+
+            .image {
+                position: absolute;
+                object-fit: contain;
+                object-position: center left;
+            }
+        }
+
+        .navbar {
+            align-self: flex-end;
+            flex-shrink: 0;
+            z-index: 11;
+
+            @media screen and (max-width: 900px) {
+                flex-shrink: unset;
+                height: unset;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-grow: 1;
+            gap: var(--spacing-medium);
+            overflow-x: hidden;
+
+            @media screen and (max-width: 900px) {
+                padding: var(--spacing-medium);
+                padding-bottom: var(--spacing-gigantic);
+                overflow: auto;
+            }
+
+            .logoWrapper {
+                display: flex;
+                align-self: flex-end;
+                justify-content: flex-end;
+                width: 42rem;
+
+                @media screen and (max-width: 960px) {
+                    align-self: center;
+                    width: 100%;
+                }
+            }
+            .studioContent {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                flex-grow: 1;
+                z-index: 1;
+                margin: auto;
+                height: 80vh;
+                text-align: center;
+                color: var(--color-text-on-light-alt);
+                gap: calc(var(--spacing-extra-large) * 2);
+
+                @media screen and (max-height: 700px) {
+                    gap: var(--spacing-large);
+                    height: unset;
+                }
+
+                .descriptionContainer {
+                    display: flex;
+                    align-self: flex-end;
+                    flex-direction: column;
+                    flex-shrink: 0;
+                    gap: var(--spacing-gigantic);
+
+                    @media screen and (max-height: 700px) {
+                        gap: var(--spacing-large);
+                    }
+
+                    .studioDescription {
+                        display: flex;
+                        transition: all 0.4s ease-in-out;
+                        max-width: 42rem;
+                        text-align: right;
+                        font-size: var(--font-size-small);
+
+                        &.hideDescription {
+                            opacity: 0;
+                            height: 0;
+
+                            @media screen and (max-width: 900px) {
+                                display: none;
+                                height: unset;
+                            }
+                        }
+                    }
+                }
+
+                .studioTopics {
+                    display: flex;
+                    align-self: flex-end;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: flex-end;
+                    transition: all 0.4s ease-in-out;
+                    max-width: 42rem;
+                    text-align: right;
+                    gap: var(--spacing-mega-small);
+                    color: var(--color-text-on-light-alt);
+                    font-size: var(--font-size-large);
+
+                    .topic {
+                        text-decoration: underline;
+                        color: var(--color-text-on-light-alt);
+
+                        &.active {
+                            text-decoration: unset;
+                            color: var(--color-text-on-light-alt);
+                            font-weight: var(--font-weight-bold);
+                        }
+
+                        &.inactive {
+                            color: var(--color-text-on-light);
+                        }
+
+                        &.neutral {
+                            color: var(--color-text-on-light-alt);
+                        }
+                    }
+                    .topicDescription {
+                        text-align: right;
+                        font-size: var(--font-size-small);
+                    }
+                }
+            }
+
+            .rightBackground {
+                display: flex;
+                position: relative;
+                align-self: flex-end;
+                flex-shrink: 0;
+                z-index: 1;
+                width: 30vw;
+                height: 100vh;
+                .image {
+                    position: absolute;
+                    object-fit: cover;
+                    object-position: right;
+                }
+
+                @media screen and (max-width: 1000px) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

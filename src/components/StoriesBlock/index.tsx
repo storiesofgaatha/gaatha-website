@@ -20,7 +20,7 @@ function StoriesBlock(props: Props) {
         )}
         >
             <span className={styles.stories}>Stories</span>
-            <div>
+            <div className={styles.areBestWhen}>
                 are best when shared
                 <span className={styles.together}>together</span>
             </div>

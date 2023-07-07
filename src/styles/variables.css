@@ -8,7 +8,7 @@
     --spacing-studio-logo: 8rem;
 
     @media screen and (max-width: 900px) {
-        --font-size-base: 0.85rem;
+        --font-size-base: 0.9rem;
         --font-size-heading-base: 1.25rem;
         --spacing-base: 0.85rem;
     }
@@ -16,16 +16,16 @@
     /* Colors */
     --color-text: #ffffff;
     --color-text-grey: #808080;
-    --color-text-on-dark: #a1a1a1;
-    --color-text-on-dark-alt: #f5f5f5;
-    --color-text-on-light: #808080;
-    --color-text-on-light-alt: #111111;
+    --color-text-on-dark: #3e3e3e;
+    --color-text-on-dark-alt: #f7f7f7;
+    --color-text-on-light: #9999a1;
+    --color-text-on-light-alt: #101010;
 
-    --color-primary: #2b9990;
-    --color-secondary: #022154;
+    --color-primary: #f5f5f5;
+    --color-secondary: #111111;
 
-    --color-background: #111111;
-    --color-background-light: #f5f5f5;
+    --color-background: #000000;
+    --color-background-light: #ffffff;
     --color-background-white: #ffffff;
 
     /* Font weights */
@@ -48,6 +48,7 @@
     --font-size-heading-extra-large: calc(var(--font-size-heading-base) * var(--multiplier) * var(--multiplier));
 
     /* Spacing */
+    --spacing-mega-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier)));
     --spacing-super-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier) * var(--multiplier)));
     --spacing-extra-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier)));
     --spacing-small: calc(var(--spacing-base) / var(--multiplier));
@@ -55,9 +56,19 @@
     --spacing-large: calc(var(--spacing-base) * var(--multiplier));
     --spacing-extra-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier));
     --spacing-super-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier));
-
-    --spacing-contact-list: calc(var(--spacing-base) * var(--multiplier) *var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
+    --spacing-mega-large: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
+    --spacing-gigantic: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
+    --spacing-enormous: calc(var(--spacing-base) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier));
     --border-radius: 50%;
 
-    --width-navbar: 10rem;
+    --width-navbar: 16rem;
+
+    @media screen and (max-width: 900px) {
+        --width-navbar: 100%;
+    }
+
+    --color-background-scrollbar: #ffffff;
+    --radius-scrollbar-border: 0.25rem;
+    --color-foreground-scrollbar: #cccccc;
+    --width-scrollbar: 0.5rem;
 }

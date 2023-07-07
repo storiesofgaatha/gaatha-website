@@ -1,101 +1,75 @@
-import { isDefined } from '@togglecorp/fujs';
+import Head from 'next/head';
 import { GetStaticProps } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { gql } from 'graphql-request';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/mousewheel';
-import {
-    Mousewheel,
-} from 'swiper';
+import { gql } from 'graphql-request';
 
 import {
     gaathaRequest,
-    bucketify,
 } from 'utils/common';
+import WorkGrid from 'components/WorkGrid';
+import WorkNavbar from 'components/WorkNavbar';
+import GaathaLogo from 'components/GaathaLogo';
 import { WorkListQuery } from 'generated/types';
-
-import PageWithSideBar from 'components/PageWithSideBar';
 
 import styles from './styles.module.css';
 
-const BUCKET_SIZE = 12;
 type WorkItemType = NonNullable<NonNullable<WorkListQuery['works']>[number]>;
-// type FilterChoiceType = NonNullable<WorkListQuery['filterChoices']>;
-// type CategoryType = NonNullable<FilterChoiceType['workCategory']>[number];
-// type TagType = NonNullable<FilterChoiceType['workTag']>[number];
+type FilterChoiceType = NonNullable<WorkListQuery['filterChoices']>;
 
 interface Props {
     works: WorkItemType[];
-    // filterChoices: FilterChoiceType;
+    filterChoices: FilterChoiceType;
 }
 
 function Works(props: Props) {
     const {
         works,
-        // filterChoices,
+        filterChoices,
     } = props;
 
-    const workBuckets = bucketify(BUCKET_SIZE, works);
+    const categories = filterChoices.workCategory;
 
     return (
-        <PageWithSideBar
-            className={styles.work}
-            contentClassName={styles.content}
-            pageTitle="Works"
-            navbar="work"
-        >
-            <Swiper
-                className={styles.buckets}
-                modules={[Mousewheel]}
-                mousewheel
-            >
-                {workBuckets.map((bucket, index) => (
-                    <SwiperSlide
-                        // eslint-disable-next-line react/no-array-index-key
-                        key={index}
-                        className={styles.grid}
-                    >
-                        {bucket.map((work) => (
-                            isDefined(work.coverImage) && isDefined(work.coverImage.url) && (
-                                <Link
-                                    key={work.id}
-                                    href={`works/${work.id}`}
-                                    className={styles.imageContainer}
-                                >
-                                    <Image
-                                        className={styles.coverImage}
-                                        src={work.coverImage.url}
-                                        alt="cover image"
-                                        layout="fill"
-                                    />
-                                    <div className={styles.title}>
-                                        {work.title}
-                                    </div>
-                                </Link>
-                            )
-                        ))}
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </PageWithSideBar>
+        <div className={styles.works}>
+            <Head>
+                Works
+            </Head>
+            <div className={styles.topContainer}>
+                <GaathaLogo variant="small" />
+            </div>
+            <div className={styles.content}>
+                <WorkNavbar
+                    categories={categories ?? []}
+                    hideGaathaLogo
+                />
+                <WorkGrid
+                    works={works}
+                />
+            </div>
+        </div>
     );
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     const workList = gql`
-        query WorkList {
-            works {
+        query WorkList (
+            $categoryId: ID,
+        ) {
+            works (
+                filters: {
+                    category: $categoryId,
+                }
+                order: {
+                    order: ASC
+                },
+            ) {
                 description
                 id
                 title
+                subTitle
+                workType
+                workTypeLabel
                 category {
-                    id
-                    name
-                }
-                tag {
                     id
                     name
                 }
@@ -109,15 +83,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
                     id
                     name
                 }
-                workTag {
-                    id
-                    name
-                }
             }
         }
     `;
 
-    const value = await gaathaRequest(workList);
+    const variables = {
+        categoryId: undefined,
+    };
+
+    const value = await gaathaRequest(workList, variables);
+
     return ({
         props: {
             works: value.works,

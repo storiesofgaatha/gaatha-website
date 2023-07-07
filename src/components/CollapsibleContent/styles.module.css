@@ -1,0 +1,37 @@
+.collapsibleContent{
+    z-index: 1;
+
+    .headerContainer {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        gap: var(--tui-spacing-medium);
+
+        .header {
+            flex-grow: 1;
+        }
+
+        .icon {
+            flex-shrink: 0;
+        }
+    }
+
+    .children {
+        transition: all 0.4s ease-in-out;
+        opacity: 0;
+        height: 0;
+
+        >* {
+            display: none;
+        }
+
+        &.expanded {
+            opacity: 1;
+            height: auto;
+
+            >* {
+                display: block;
+            }
+        }
+    }
+}

@@ -1,11 +1,30 @@
-import React from 'react';
-import { _cs } from '@togglecorp/fujs';
+import React, { useLayoutEffect, useState } from 'react';
+import { _cs, isDefined, isNotDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
-import Image from 'next/image';
 
 import Page from 'components/Page';
+import GaathaLogo from 'components/GaathaLogo';
+import { primaryRoutes } from 'components/WorkNavbar';
 
 import styles from './styles.module.css';
+
+function PreLoad(props: { show: boolean }) {
+    const {
+        show,
+    } = props;
+    const [showAnimation] = useState(show);
+
+    if (!showAnimation) {
+        return null;
+    }
+
+    return (
+        <div id="preload" className={styles.preload}>
+            <div className={styles.top} />
+            <div className={styles.bottom} />
+        </div>
+    );
+}
 
 interface Props {
     className?: string;
@@ -16,44 +35,35 @@ function Home(props: Props) {
         className,
     } = props;
 
+    const [preloadDone, setPreloadDone] = useState<boolean>();
+    useLayoutEffect(() => {
+        setPreloadDone(sessionStorage.getItem('animationCompleted') === 'true');
+        sessionStorage.setItem('animationCompleted', 'true');
+    }, []);
+
     return (
         <Page
             pageTitle="Home"
             className={_cs(styles.home, className)}
             contentClassName={styles.mainContent}
         >
-            <Image
-                className={styles.logo}
-                src="/logo-light.png"
-                alt="Gaatha"
-                width={400}
-                height={300}
-            />
+
+            {isDefined(preloadDone) && (
+                <PreLoad show={!preloadDone} />
+            )}
+            <GaathaLogo variant="large" className={styles.logo} />
             <div className={styles.routes}>
-                <Link
-                    href="/works"
-                    passHref
-                >
-                    Works
-                </Link>
-                <Link
-                    href="/studio"
-                    passHref
-                >
-                    Studio
-                </Link>
-                <Link
-                    href="/contact"
-                    passHref
-                >
-                    Contact
-                </Link>
-                <Link
-                    href="/search"
-                    passHref
-                >
-                    Search
-                </Link>
+                {primaryRoutes.map((route) => (
+                    <Link
+                        href={isDefined(route.url) ? route.url : {}}
+                        className={_cs(
+                            isNotDefined(route.url) && styles.disabled,
+                            styles.route,
+                        )}
+                    >
+                        {route.displayName}
+                    </Link>
+                ))}
             </div>
         </Page>
     );
