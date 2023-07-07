@@ -7,35 +7,36 @@ import { gql } from 'graphql-request';
 import PageWithSideBar from 'components/PageWithSideBar';
 import { gaathaRequest } from 'utils/common';
 import {
-    FeaturedWorksQuery,
+    VisualizationWorksQuery,
 } from 'generated/types';
+
 import styles from './styles.module.css';
 
-type ProjectType = NonNullable<NonNullable<FeaturedWorksQuery['projects']>[number]>;
-type FilterChoiceType = NonNullable<FeaturedWorksQuery['filterChoices']>;
+type VisualizationType = NonNullable<NonNullable<VisualizationWorksQuery['works']>[number]>;
+type FilterChoiceType = NonNullable<VisualizationWorksQuery['filterChoices']>;
 
 interface Props {
-    projects: ProjectType[];
+    visualizations: VisualizationType[];
     filterChoices: FilterChoiceType;
 }
 
 function GraphicsAndVisualizations(props: Props) {
     const {
-        projects,
+        visualizations,
         filterChoices,
     } = props;
 
     const categories = filterChoices.workCategory;
-    const [selectedProjectId, setSelectedProjectId] = useState<string | undefined>(undefined);
-    const handleMouseHover = useCallback((projectId: string) => {
-        setSelectedProjectId(projectId);
+    const [selectedVizId, setSelectedVizId] = useState<string | undefined>(undefined);
+    const handleMouseHover = useCallback((vizId: string) => {
+        setSelectedVizId(vizId);
     }, []);
 
-    const selectedProject = useMemo(() => projects.find(
-        (project) => project.id === selectedProjectId,
+    const selectedViz = useMemo(() => visualizations.find(
+        (viz) => viz.id === selectedVizId,
     ), [
-        projects,
-        selectedProjectId,
+        visualizations,
+        selectedVizId,
     ]);
 
     return (
@@ -49,14 +50,14 @@ function GraphicsAndVisualizations(props: Props) {
             lightMode
         >
             <div className={styles.imagesContainer}>
-                {projects.map((project) => (
+                {visualizations.map((viz) => (
                     <div className={styles.imageWrapper}>
-                        {isDefined(project.image) && isDefined(project.image.url) && (
+                        {isDefined(viz.coverImage) && isDefined(viz.coverImage.url) && (
                             <Image
                                 className={styles.image}
-                                alt="project cover image"
-                                src={project.image.url}
-                                onMouseOver={() => handleMouseHover(project.id)}
+                                alt="Visualization cover image"
+                                src={viz.coverImage.url}
+                                onMouseOver={() => handleMouseHover(viz.id)}
                                 fill
                             />
                         )}
@@ -64,11 +65,11 @@ function GraphicsAndVisualizations(props: Props) {
                 ))}
             </div>
             <div className={styles.infoContainer}>
-                <span className={styles.projectTitle}>
-                    {selectedProject?.title}
+                <span className={styles.vizTitle}>
+                    {selectedViz?.title}
                 </span>
                 <span>
-                    {selectedProject?.location}
+                    {selectedViz?.location}
                 </span>
             </div>
         </PageWithSideBar>
@@ -76,27 +77,27 @@ function GraphicsAndVisualizations(props: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const VisualizationWorks = gql`
-    query VisualizationWorks {
-        works (
-        filters: {
-            workType: GRAPHICS_AND_VISUALIZATION,
-        }
-        order: {
-            order: ASC
-        },
+    const visualizationWorks = gql`
+        query VisualizationWorks {
+            works (
+                filters: {
+                    workType: GRAPHICS_AND_VISUALIZATION,
+                }
+                order: {
+                    order: ASC
+                },
             ) {
-                description
                 id
                 title
-                category {
-                    id
-                    name
-                }
+                description
                 coverImage {
                     name
                     url
                 }
+                location
+                duration
+                area
+                status
             }
             filterChoices {
                 workCategory {
@@ -104,14 +105,15 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
                     name
                 }
             }
-    }
+        }
     `;
 
-    const value = await gaathaRequest(VisualizationWorks);
+    const value = await gaathaRequest(visualizationWorks);
 
     return ({
         props: {
             visualizations: value.works,
+            filterChoices: value.filterChoices,
         },
     });
 };

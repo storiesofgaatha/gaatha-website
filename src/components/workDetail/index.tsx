@@ -54,7 +54,7 @@ function WorkDetail(props: Props) {
                 ? ({
                     id: workImage.id,
                     image: workImage.image,
-                    orientation: workImage.image.width > workImage.image.height ? 'landscape' as const : 'portrait' as const,
+                    orientation: (workImage.image.width ?? 0) > (workImage.image.height ?? 0) ? 'landscape' as const : 'portrait' as const,
                 })
                 : undefined
         ))
@@ -167,7 +167,6 @@ function WorkDetail(props: Props) {
             />
             <div className={styles.workTitleContainer}>
                 <GaathaLogo
-                    className={styles.logo}
                     variant="small"
                     lightMode
                 />
