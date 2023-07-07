@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import {
+    useCallback,
+    useEffect,
+    useRef,
+    useMemo,
+    useState,
+} from 'react';
 import type { LegacyRef } from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
 import Image from 'next/image';
+import {
+    IoEllipse,
+} from 'react-icons/io5';
 
 import SideNavbar from 'components/PageWithSideBar/SideNav';
 import TextOutput from 'components/TextOutput';
 import GaathaLogo from 'components/GaathaLogo';
 import HTMLOutput from 'components/HTMLOutput';
-import Button from 'components/Button';
 import ProjectTitle from 'components/ProjectTitle';
 import { WorkItemQuery } from 'generated/types';
 
@@ -27,7 +35,63 @@ function WorkDetail(props: Props) {
         elementRef,
     } = props;
 
-    const galleryImages = work.images;
+    const galleryImages = useMemo(() => (work.images.map(
+        (image) => (
+            isDefined(image.image)
+                ? ({
+                    id: image.id,
+                    image: image.image,
+                })
+                : undefined
+        ),
+    ).filter(isDefined)), [work.images]);
+
+    const [activeElementIndex, setActiveElementIndex] = useState(0);
+    const imageContainerRef = useRef<HTMLDivElement>(null);
+    const imageContainerParentRef = useRef<HTMLDivElement>(null);
+
+    const handleScroll = useCallback(() => {
+        if (!imageContainerRef.current || !imageContainerParentRef.current) {
+            return;
+        }
+        if (window.innerWidth > 720) {
+            const parentHeight = imageContainerParentRef.current.offsetHeight;
+            const scrollPosition = imageContainerRef.current.scrollTop;
+
+            const elementPosition = Math.floor(scrollPosition / parentHeight);
+            setActiveElementIndex(elementPosition);
+        }
+        if (window.innerWidth <= 720) {
+            const parentWidth = imageContainerParentRef.current.offsetWidth;
+            const scrollPosition = imageContainerRef.current.scrollLeft;
+
+            const elementPosition = Math.floor(scrollPosition / parentWidth);
+            setActiveElementIndex(elementPosition);
+        }
+    }, []);
+
+    const handleSliderDotClick = useCallback((elementIndex: number) => {
+        if (!imageContainerRef.current || !imageContainerParentRef.current) {
+            return;
+        }
+        if (window.innerWidth > 720) {
+            const parentHeight = imageContainerParentRef.current.offsetHeight;
+            imageContainerRef.current.scrollTop = parentHeight * elementIndex;
+        }
+        if (window.innerWidth <= 720) {
+            const parentWidth = imageContainerParentRef.current.offsetWidth;
+            imageContainerRef.current.scrollLeft = parentWidth * elementIndex;
+        }
+    }, []);
+
+    useEffect(() => {
+        const parent = imageContainerRef.current;
+        parent?.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            parent?.removeEventListener('scroll', handleScroll);
+        };
+    }, [handleScroll]);
 
     return (
         <div
@@ -62,11 +126,19 @@ function WorkDetail(props: Props) {
                         />
                     )}
                 </div>
-                <div className={styles.carouselWrapper}>
-                    <div className={styles.imageContainer}>
-                        {(galleryImages.length > 0) && (galleryImages?.map((image) => (
-                            isDefined(image.image) && isDefined(image.image.url) && (
-                                <div className={styles.imageWrapper}>
+                <div
+                    className={styles.carouselWrapper}
+                    ref={imageContainerParentRef}
+                >
+                    <div
+                        className={styles.imageContainer}
+                        ref={imageContainerRef}
+                    >
+                        {(galleryImages?.map((image) => (
+                            isDefined(image.image.url) && (
+                                <div
+                                    className={styles.imageWrapper}
+                                >
                                     <Image
                                         className={styles.image}
                                         src={image.image.url}
@@ -77,9 +149,27 @@ function WorkDetail(props: Props) {
                             )))
                         )}
                     </div>
+                    <div className={styles.sliderDots}>
+                        {galleryImages?.map((image, index) => (
+                            <button
+                                key={image.id}
+                                className={_cs(
+                                    styles.sliderButton,
+                                    activeElementIndex === index && styles.activeSliderButton,
+                                )}
+                                onClick={() => {
+                                    handleSliderDotClick(index);
+                                }}
+                                type="button"
+                            >
+                                <IoEllipse />
+                            </button>
+                        ))}
+                    </div>
                 </div>
-                <div className={styles.description}>
+                <div className={styles.descriptionContainer}>
                     <HTMLOutput
+                        className={styles.description}
                         value={work.description}
                     />
                 </div>
