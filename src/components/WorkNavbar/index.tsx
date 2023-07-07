@@ -78,7 +78,7 @@ function WorkNavbar(props: Props) {
         if (currentRoute.startsWith('/works/visualizations')) {
             return 'Graphics + Visualizations';
         }
-        return 'Architecture';
+        return 'All';
     }, [
         activeCategory,
         getCategoryName,
@@ -176,6 +176,16 @@ function WorkNavbar(props: Props) {
                             {activeLink}
                         </Button>
                         <div className={styles.otherRoutes}>
+                            <Link
+                                href="/works/"
+                                className={_cs(
+                                    (currentRoute === '/works' && isNotDefined(activeCategory))
+                                    && styles.active,
+                                    styles.link,
+                                )}
+                            >
+                                All
+                            </Link>
                             {subRoutes.map((route) => (
                                 <Link
                                     href={route.url}
