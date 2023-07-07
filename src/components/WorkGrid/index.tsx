@@ -44,6 +44,7 @@ function WorkGrid(props: Props) {
                                     className={styles.coverImage}
                                     src={work.coverImage.url}
                                     alt="cover image"
+                                    placeholder="blur"
                                     fill
                                 />
                                 <ProjectTitle

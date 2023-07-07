@@ -39,6 +39,7 @@ function GaathaLogo(props: Props) {
                 className={_cs(logoClassName, styles.image)}
                 src={lightMode ? '/logo-dark.png' : '/logo-light.png'}
                 alt="Gaatha"
+                placeholder="blur"
                 fill
             />
         </Link>

@@ -29,6 +29,7 @@ function PeopleItem(props: Props) {
                             className={styles.picture}
                             src={people?.profilePicture?.url}
                             alt="profile picture"
+                            placeholder="blur"
                             fill
                         />
                     )}

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
 import StudioNavbar from 'components/StudioNavbar';
 import Image from 'next/image';
@@ -19,21 +19,6 @@ function About() {
     const handleExpansionChange = useCallback((newValue: boolean, name: Topic | undefined) => {
         setSelectedTopic(!newValue ? undefined : name);
     }, []);
-
-    const sideImage = useMemo(() => {
-        if (!selectedTopic) {
-            return '/about_right.png';
-        }
-        if (selectedTopic === 'design') {
-            return 'https://images.unsplash.com/photo-1676808527792-2c6937102a99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80';
-        }
-        if (selectedTopic === 'workspace') {
-            return 'https://images.unsplash.com/photo-1676909027980-4d01f76652e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80';
-        }
-        return 'https://images.unsplash.com/photo-1676834173767-e77528eebbb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=721&q=80';
-    }, [
-        selectedTopic,
-    ]);
 
     return (
         <div className={styles.studio}>
@@ -142,7 +127,6 @@ function About() {
                                     thinking helps the design evolve in terms of material,
                                     aesthetics, functionality, and purpose.
                                 </p>
-
                             </CollapsibleContent>
                             <CollapsibleContent
                                 name="collaboration"
@@ -172,18 +156,46 @@ function About() {
                                     possibilities of design, ultimately opening up further
                                     conversations for innovation in projects.
                                 </p>
-
                             </CollapsibleContent>
                         </div>
                     </div>
                     <div className={styles.rightBackground}>
-                        <Image
-                            className={styles.image}
-                            alt="Right Image"
-                            src={sideImage}
-                            placeholder="blur"
-                            fill
-                        />
+                        {!selectedTopic && (
+                            <Image
+                                className={styles.image}
+                                alt="Right Image"
+                                src="/about_right.png"
+                                placeholder="blur"
+                                fill
+                            />
+                        )}
+                        {selectedTopic === 'design' && (
+                            <Image
+                                className={styles.image}
+                                alt="Right Image"
+                                src="https://images.unsplash.com/photo-1676808527792-2c6937102a99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                placeholder="blur"
+                                fill
+                            />
+                        )}
+                        {selectedTopic === 'workspace' && (
+                            <Image
+                                className={styles.image}
+                                alt="Right Image"
+                                src="https://images.unsplash.com/photo-1676909027980-4d01f76652e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                placeholder="blur"
+                                fill
+                            />
+                        )}
+                        {selectedTopic === 'collaboration' && (
+                            <Image
+                                className={styles.image}
+                                alt="Right Image"
+                                src="https://images.unsplash.com/photo-1676834173767-e77528eebbb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=721&q=80"
+                                placeholder="blur"
+                                fill
+                            />
+                        )}
                     </div>
                 </div>
                 <div className={styles.leftBackground}>

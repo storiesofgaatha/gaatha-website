@@ -183,6 +183,7 @@ function WorkDetail(props: Props) {
                             className={styles.artwork}
                             src={work.artWork.url}
                             alt="artwork"
+                            placeholder="blur"
                             fill
                         />
                     )}
@@ -209,6 +210,7 @@ function WorkDetail(props: Props) {
                                             className={styles.image}
                                             src={image.image.url}
                                             alt="carousel image"
+                                            placeholder="blur"
                                             fill
                                         />
                                     </div>

@@ -57,6 +57,7 @@ function GraphicsAndVisualizations(props: Props) {
                                 className={styles.image}
                                 alt="Visualization cover image"
                                 src={viz.coverImage.url}
+                                placeholder="blur"
                                 onMouseOver={() => handleMouseHover(viz.id)}
                                 fill
                             />

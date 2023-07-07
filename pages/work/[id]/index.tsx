@@ -45,6 +45,7 @@ function WorkItem(props: Props) {
                         className={styles.image}
                         src={work.coverImage.url}
                         alt="cover image"
+                        placeholder="blur"
                         fill
                     />
                 )}
@@ -71,6 +72,7 @@ function WorkItem(props: Props) {
                             <Image
                                 className={styles.image}
                                 src={work.artWork.url}
+                                placeholder="blur"
                                 alt="artwork"
                                 fill
                             />
