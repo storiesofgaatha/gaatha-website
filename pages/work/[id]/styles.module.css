@@ -4,8 +4,6 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--color-background-light);
-    height: 100vh;
-    overflow: auto;
     color: var(--color-text-on-light-alt);
     scroll-snap-type: y mandatory;
 

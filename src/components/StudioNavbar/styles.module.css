@@ -46,11 +46,12 @@
 
     .responsiveMenu {
         --height-navbar: 3.2rem;
-        --height-arrow: 2.4rem;
+        --height-arrow: 2.8rem;
         display: none;
         position: relative;
         flex-direction: column;
         z-index: 11111;
+        background-color: var(--color-background-light);
         gap: var(--spacing-extra-large);
 
         .routes {
@@ -58,7 +59,7 @@
             flex-direction: row;
             z-index: 11;
             background-color: var(--color-background-white);
-            padding: var(--spacing-small) var(--spacing-large);
+            padding: var(--spacing-small) var(--spacing-extra-large);
             height: var(--height-navbar);
             color: var(--color-text-on-dark);
             font-size: var(--font-size-medium);
@@ -76,8 +77,8 @@
             transform: translateY(calc(100% - var(--height-arrow)));
             transition: all ease-in-out 0.2s;
             z-index: 1;
-            background-color: var(--color-background-white);
-            padding: 0 var(--spacing-large);
+            background-color: var(--color-background-light);
+            padding: 0 var(--spacing-extra-large);
             width: 100%;
 
             .arrow {
@@ -137,10 +138,13 @@
 
 .backdrop {
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.3);
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 
     &.light {
         background-color: rgba(0, 0, 0, 0.1);

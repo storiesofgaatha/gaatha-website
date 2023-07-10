@@ -39,6 +39,7 @@ function Works(props: Props) {
             </div>
             <div className={styles.content}>
                 <WorkNavbar
+                    className={styles.navbar}
                     categories={categories ?? []}
                     hideGaathaLogo
                 />

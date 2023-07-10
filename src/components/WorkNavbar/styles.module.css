@@ -83,7 +83,7 @@
 
     .responsiveMenu {
         --height-navbar: 3.2rem;
-        --height-arrow: 2.4rem;
+        --height-arrow: 2.8rem;
         display: none;
         position: relative;
         flex-direction: column;
@@ -94,7 +94,7 @@
             display: flex;
             z-index: 11;
             background-color: var(--color-background);
-            padding: var(--spacing-small) var(--spacing-large);
+            padding: var(--spacing-small) var(--spacing-extra-large);
             height: var(--height-navbar);
             color: var(--color-text-on-dark);
             font-size: var(--font-size-medium);
@@ -113,7 +113,7 @@
             transition: all ease-in-out 0.2s;
             z-index: 1;
             background-color: var(--color-background);
-            padding: 0 var(--spacing-large);
+            padding: 0 var(--spacing-extra-large);
             width: 100%;
 
             .arrow {
@@ -195,8 +195,11 @@
 
 .backdrop {
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }

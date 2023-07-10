@@ -71,7 +71,7 @@ function WorkNavbar(props: Props) {
         categories?.find((cat) => cat?.id === id)?.name ?? ''
     ), [categories]);
 
-    const activeLink: string = useMemo(() => {
+    const activeLinkTitle: string = useMemo(() => {
         if (isDefined(activeCategory)) {
             return getCategoryName(activeCategory);
         }
@@ -173,7 +173,7 @@ function WorkNavbar(props: Props) {
                             onClick={toggleShowAdditionalNav}
                             actions={additionalNavShown ? <AiFillCaretDown /> : <AiFillCaretUp />}
                         >
-                            {activeLink}
+                            {activeLinkTitle}
                         </Button>
                         <div className={styles.otherRoutes}>
                             <Link

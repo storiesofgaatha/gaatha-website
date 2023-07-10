@@ -36,6 +36,7 @@
         gap: var(--spacing-super-small);
 
         @media screen and (max-width: 900px) {
+            --height-navbar: 3.2rem;
             flex-direction: row;
             padding: var(--spacing-small) var(--spacing-large);
             height: var(--height-navbar);
