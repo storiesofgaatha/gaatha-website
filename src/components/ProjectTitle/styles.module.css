@@ -1,15 +1,22 @@
 .projectTitle {
     font-size: var(--font-size-extra-small);
-    .title {
-        font-weight: var(--font-weight-bold);
+
+    .subtitle {
+        opacity: 0.6;
     }
 
     &.medium {
         font-size: var(--font-size-small);
     }
+
     &.large {
         font-size: var(--font-size-medium);
     }
+
+    &.extraLarge {
+        font-size: var(--font-size-large);
+    }
+
     &.block {
         .subtitle, .title {
             display: block;

@@ -51,22 +51,12 @@
                 }
 
                 .title {
-                    text-shadow: 1px 1px 6px rgba(100, 100, 100, 1);
-                    color: var(--color-text-on-dark-alt);
-                }
-            }
+                    color: var(--color-text-on-light-alt);
 
-            .artwork {
-                position: relative;
-                width: 12rem;
-                height: 12rem;
-
-                .image {
-                    object-fit: contain;
-                }
-
-                @media screen and (max-width: 900px) {
-                    width: 100%;
+                    &.darkCoverImage {
+                        text-shadow: 1px 1px 6px rgba(100, 100, 100, 1);
+                        color: var(--color-text-on-dark-alt);
+                    }
                 }
             }
         }

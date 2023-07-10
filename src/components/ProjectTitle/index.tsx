@@ -5,7 +5,7 @@ interface Props {
     className?: string;
     title: string;
     subtitle?: string;
-    size?: 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large' | 'extraLarge';
     separateLines?: boolean;
 }
 
@@ -24,6 +24,7 @@ function ProjectTitle(props: Props) {
             className,
             size === 'medium' && styles.medium,
             size === 'large' && styles.large,
+            size === 'extraLarge' && styles.extraLarge,
             separateLines && styles.block,
         )}
         >
@@ -34,7 +35,7 @@ function ProjectTitle(props: Props) {
                 {isTruthyString(subtitle) && (
                     <>
                         &thinsp;
-                        <b> | </b>
+                        <b>|</b>
                         &thinsp;
                         {subtitle}
                     </>

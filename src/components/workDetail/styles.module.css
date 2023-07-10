@@ -41,6 +41,7 @@
         position: absolute;
         align-items: center;
         padding: var(--spacing-large);
+        color: var(--color-text-on-light-alt);
         gap: var(--spacing-small);
 
         @media screen and (max-width: 900px) {
@@ -88,7 +89,7 @@
         }
 
         .descriptionContainer {
-            padding: 0 0 var(--spacing-large) 0;
+            padding: 0 0 var(--spacing-gigantic) 0;
             overflow: auto;
 
             .description {
@@ -97,6 +98,11 @@
                 overflow: auto;
                 text-align: justify;
                 line-height: 1.5;
+                color: var(--color-text-on-light-alt);
+
+                p {
+                    margin: 0;
+                }
 
                 &::-webkit-scrollbar {
                     width: 0.4em;
@@ -122,6 +128,7 @@
                 flex-grow: 1;
                 flex-shrink: 0;
                 overflow-y: auto;
+                gap: var(--spacing-large);
                 scroll-snap-type: y mandatory;
 
                 &::-webkit-scrollbar{

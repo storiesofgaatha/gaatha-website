@@ -160,11 +160,6 @@ function WorkDetail(props: Props) {
             ref={elementRef}
             className={_cs(styles.page, className)}
         >
-            <SideNavbar
-                className={styles.navbar}
-                lightMode
-                hideGaathaLogo
-            />
             <div className={styles.workTitleContainer}>
                 <GaathaLogo
                     variant="small"
@@ -173,9 +168,14 @@ function WorkDetail(props: Props) {
                 <ProjectTitle
                     title={work.title}
                     subtitle={work.subTitle}
-                    size="medium"
+                    size="extraLarge"
                 />
             </div>
+            <SideNavbar
+                className={styles.navbar}
+                lightMode
+                hideGaathaLogo
+            />
             <div className={styles.content}>
                 <div className={styles.artworkContainer}>
                     {isDefined(work.artWork) && isDefined(work.artWork.url) && (
