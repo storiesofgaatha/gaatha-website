@@ -32,9 +32,9 @@
         }
 
         @media screen and (min-width: 900px) {
-            position: fixed;
-            right: var(--spacing-extra-small);
+            position: absolute;
             top: 50%;
+            right: var(--spacing-extra-small);
             transform: translateY(-50%);
         }
 
@@ -111,7 +111,6 @@
 
     .carouselWrapper {
         display: flex;
-        position: relative;
         flex-shrink: 0;
         justify-content: flex-end;
         height: 100vh;

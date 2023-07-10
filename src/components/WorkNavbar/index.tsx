@@ -31,7 +31,7 @@ export const primaryRoutes = [
     },
     {
         key: 'search',
-        url: undefined,
+        url: '/search',
         displayName: 'Search',
     },
 ];
