@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import Page from 'components/Page';
 import GaathaLogo from 'components/GaathaLogo';
+import Animation from 'components/Animation';
 import { primaryRoutes } from 'components/WorkNavbar';
 
 import styles from './styles.module.css';
@@ -51,7 +52,12 @@ function Home(props: Props) {
             {isDefined(preloadDone) && (
                 <PreLoad show={!preloadDone} />
             )}
-            <GaathaLogo variant="large" className={styles.logo} />
+            <div className={styles.logoContainer}>
+                <GaathaLogo variant="large" className={styles.logo} />
+                <Animation
+                    className={styles.scribble}
+                />
+            </div>
             <div className={styles.routes}>
                 {primaryRoutes.map((route) => (
                     <Link

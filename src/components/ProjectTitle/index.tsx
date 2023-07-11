@@ -31,16 +31,11 @@ function ProjectTitle(props: Props) {
             <span className={styles.title}>
                 {title}
             </span>
-            <span className={styles.subtitle}>
-                {isTruthyString(subtitle) && (
-                    <>
-                        &thinsp;
-                        <b>|</b>
-                        &thinsp;
-                        {subtitle}
-                    </>
-                )}
-            </span>
+            {isTruthyString(subtitle) && (
+                <span className={styles.subtitle}>
+                    {subtitle}
+                </span>
+            )}
         </div>
     );
 }

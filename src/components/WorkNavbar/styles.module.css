@@ -82,8 +82,6 @@
     }
 
     .responsiveMenu {
-        --height-navbar: 3.2rem;
-        --height-arrow: 2.8rem;
         display: none;
         position: relative;
         flex-direction: column;
@@ -92,16 +90,16 @@
 
         .routes {
             display: flex;
+            justify-content: space-between;
             z-index: 11;
             background-color: var(--color-background);
             padding: var(--spacing-small) var(--spacing-extra-large);
             height: var(--height-navbar);
             color: var(--color-text-on-dark);
-            font-size: var(--font-size-medium);
+            font-size: var(--font-size-small);
             gap: var(--spacing-extra-large);
 
             .link {
-                flex-grow: 1;
                 text-align: center;
             }
         }
@@ -122,6 +120,7 @@
                 padding: var(--spacing-medium) 0;
                 width: 100%;
                 height: var(--height-arrow);
+                font-size: var(--font-size-small);
             }
 
             .otherRoutes {

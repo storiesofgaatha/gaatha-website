@@ -12,7 +12,7 @@ function Search() {
                 Search
             </Head>
             <GaathaLogo variant="large" />
-            <h2>This page is currently being modeled.</h2>
+            <p>This page is under construction.</p>
             <Link
                 href="/"
             >

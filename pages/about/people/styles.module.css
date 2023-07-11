@@ -14,7 +14,7 @@
             flex-direction: column;
             flex-wrap: nowrap;
             padding-top: 0;
-            padding-bottom: calc(var(--spacing-large) + 3.6rem + 3.2rem);
+            padding-bottom: calc(var(--spacing-large) + var(--height-navbar) + var(--height-arrow));
             height: unset;
         }
 

@@ -48,12 +48,16 @@
         position: sticky;
         top: 0;
         align-items: center;
-        padding: var(--spacing-large);
+        z-index: 1;
         background-color: var(--color-background-light);
+        padding: var(--spacing-large);
         color: var(--color-text-on-light-alt);
         gap: var(--spacing-small);
         grid-column: span 2 / auto;
-        z-index: 1;
+
+        .logo {
+            flex-shrink: 0;
+        }
     }
 
     .navbar {
@@ -156,7 +160,7 @@
                         height: calc(100% / 2 - var(--spacing-large));
 
                         .image {
-                            object-fit: cover;
+                            object-fit: contain;
                         }
                     }
                 }
@@ -218,10 +222,10 @@
             .info {
                 display: flex;
                 align-items: flex-start;
-                text-align: left;
                 flex-basis: 100%;
                 flex-direction: column;
                 flex-grow: 1;
+                text-align: left;
             }
         }
     }

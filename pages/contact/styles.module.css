@@ -11,29 +11,6 @@
         min-height: 100vh;
         gap: var(--spacing-super-large);
 
-        @media screen and (max-width: 1600px) {
-            padding-right: var(--spacing-right);
-        }
-
-        @media screen and (max-width: 1500px) {
-            padding-right: var(--spacing-gigantic);
-            padding-left: calc(var(--spacing-gigantic) * var(--multiplier));
-        }
-
-        @media screen and (max-width: 1300px) {
-            padding: var(--spacing-extra-large);
-        }
-
-        @media screen and (max-width: 1000px) {
-            padding-right: var(--spacing-medium);
-            padding-left: 0;
-        }
-
-        @media screen and (max-width: 900px) {
-            flex-direction: column;
-            padding-right: unset;
-        }
-
         .map {
             display: flex;
             flex-grow: 1;
@@ -131,11 +108,31 @@
             font-weight: var(--font-weight-bold);
         }
 
+        @media screen and (max-width: 1600px) {
+            padding-right: var(--spacing-right);
+        }
+
+        @media screen and (max-width: 1500px) {
+            padding-right: var(--spacing-gigantic);
+            padding-left: calc(var(--spacing-gigantic) * var(--multiplier));
+        }
+
+        @media screen and (max-width: 1300px) {
+            padding: var(--spacing-extra-large);
+        }
+
+        @media screen and (max-width: 1000px) {
+            padding-right: var(--spacing-medium);
+            padding-left: 0;
+        }
+
         @media screen and (max-width: 900px) {
             align-items: end;
             flex-direction: column;
             flex-wrap: unset;
             padding: 0;
+            padding-right: unset;
+            min-height: unset;
 
             .map {
                 order: 2;

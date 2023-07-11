@@ -162,6 +162,7 @@ function WorkDetail(props: Props) {
         >
             <div className={styles.workTitleContainer}>
                 <GaathaLogo
+                    className={styles.logo}
                     variant="small"
                     lightMode
                 />

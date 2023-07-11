@@ -45,6 +45,7 @@ function WorkItem(props: Props) {
                         className={styles.image}
                         src={work.coverImage.url}
                         alt="cover image"
+                        quality={90}
                         placeholder="blur"
                         fill
                     />

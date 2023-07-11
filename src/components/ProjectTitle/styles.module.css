@@ -3,6 +3,11 @@
 
     .subtitle {
         opacity: 0.6;
+
+        &:before {
+            padding: 0 var(--spacing-mega-small);
+            content: '|';
+        }
     }
 
     &.medium {
@@ -20,6 +25,21 @@
     &.block {
         .subtitle, .title {
             display: block;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .title {
+            display: block;
+        }
+
+        .subtitle {
+            display: block;
+
+            &:before {
+                padding: unset;
+                content: unset;
+            }
         }
     }
 }

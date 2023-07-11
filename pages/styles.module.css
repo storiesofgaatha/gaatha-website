@@ -2,6 +2,7 @@
     .mainContent {
         display: flex;
         flex-direction: column;
+        justify-content: flex-end;
         padding: 0 var(--spacing-extra-large);
         height: 100vh;
         height: var(--doc-height);
@@ -73,16 +74,52 @@
         }
     }
 
-    .logo {
+    .logoContainer {
         display: flex;
-        object-fit: contain;
-        margin: auto;
+        position: relative;
+        align-items: center;
+        flex-grow: 1;
+
+        .logo {
+            display: flex;
+            position: absolute;
+            bottom: 27%;
+            left: 50%;
+            transform: translateX(-50%);
+            object-fit: contain;
+            margin: auto;
+        }
+
+        .scribble {
+            position: absolute;
+            bottom: 20%;
+            height: 30rem;
+        }
+
+        @media screen and (max-width: 1080px) {
+            .scribble {
+                height: 20rem;
+            }
+        }
+
+        @media screen and (max-width: 720px) {
+            .scribble {
+                height: 16rem;
+            }
+        }
+
+        @media screen and (max-width: 460px) {
+            .scribble {
+                height: 12.5rem;
+            }
+        }
     }
 
     .routes {
         display: flex;
         align-content: center;
         flex-direction: column;
+        flex-shrink: 0;
         flex-wrap: wrap;
         gap: var(--spacing-mega-small);
         padding-bottom: var(--spacing-gigantic);

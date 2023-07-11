@@ -3,7 +3,6 @@
     position: relative;
     background-color: var(--color-background-white);
     min-height: 100vh;
-    overflow-y: auto;
 
     @media screen and (max-width: 900px) {
         flex-direction: column-reverse;
@@ -60,6 +59,7 @@
                 width: 100%;
             }
         }
+
         .studioContent {
             display: flex;
             align-items: center;
@@ -74,6 +74,7 @@
 
             @media screen and (max-height: 700px) {
                 gap: var(--spacing-large);
+                padding-bottom: calc(var(--height-navbar) + var(--height-arrow));
                 height: unset;
             }
 

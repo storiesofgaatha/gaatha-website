@@ -5,4 +5,8 @@
     justify-content: center;
     min-height: 100vh;
     gap: var(--spacing-large);
+
+    h3 {
+        text-align: center;
+    }
 }
