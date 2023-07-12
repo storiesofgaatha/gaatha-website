@@ -1,19 +1,14 @@
 name: CD
 
-# TODO
-# - Change default branch to main
-# - Change feature/gh-pages-deploy -> main
-# - Comment-out schedule
-
 # NOTE: Don't update this
 on:
   push:
     branches:
-      - feature/gh-pages-deploy
+      - main
 
-  # schedule:
-  #   # Runs "At 00:01. every day" (see https://crontab.guru)
-  #   - cron: '1 0 * * *'
+  schedule:
+    # Runs "At 00:01. every day" (see https://crontab.guru)
+    - cron: '1 0 * * *'
 
 jobs:
   test_build:
