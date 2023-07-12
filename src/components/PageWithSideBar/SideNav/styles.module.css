@@ -37,14 +37,14 @@
 
         @media screen and (max-width: 900px) {
             flex-direction: row;
+            justify-content: space-between;
             padding: var(--spacing-small) var(--spacing-large);
             height: var(--height-navbar);
             color: var(--color-text-on-dark);
-            font-size: var(--font-size-medium);
+            font-size: var(--font-size-small);
             gap: var(--spacing-extra-large);
 
             .link {
-                flex-grow: 1;
                 text-align: center;
             }
         }

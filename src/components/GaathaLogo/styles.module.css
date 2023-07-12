@@ -14,6 +14,7 @@
     &.small {
         width: 6.25rem;
         height: 5rem;
+
         @media screen and (max-width: 900px) {
             width: 4.35rem;
             height: 3.5rem;
@@ -22,6 +23,7 @@
     &.mediumSmall{
         width: 9rem;
         height: 6.75rem;
+
         @media screen and (max-width: 900px) {
             width: 6.25rem;
             height: 5rem;
@@ -30,6 +32,7 @@
     &.medium {
         width: 12.5rem;
         height: 10rem;
+
         @media screen and (max-width: 900px) {
             width: 9rem;
             height: 6.75rem;
@@ -38,6 +41,7 @@
     &.large{
         width: 15rem;
         height: 12.5rem;
+
         @media screen and (max-width: 900px) {
             width: 12.5rem;
             height: 10rem;
@@ -46,6 +50,7 @@
     &.extraLarge {
         width: 20rem;
         height: 12.5rem;
+
         @media screen and (max-width: 900px) {
             width: 15rem;
             height: 12.5rem;

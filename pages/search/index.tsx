@@ -1,12 +1,24 @@
-import PageWithSideBar from 'components/PageWithSideBar';
+import Head from 'next/head';
+import Link from 'next/link';
+
+import GaathaLogo from 'components/GaathaLogo';
+
+import styles from './styles.module.css';
 
 function Search() {
     return (
-        <PageWithSideBar
-            pageTitle="Search"
-        >
-            <h2>This is search page</h2>
-        </PageWithSideBar>
+        <div className={styles.search}>
+            <Head>
+                Search
+            </Head>
+            <GaathaLogo variant="large" />
+            <p>This page is under construction.</p>
+            <Link
+                href="/"
+            >
+                Go back to home page
+            </Link>
+        </div>
     );
 }
 

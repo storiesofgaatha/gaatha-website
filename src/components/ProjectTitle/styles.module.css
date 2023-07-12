@@ -1,18 +1,45 @@
 .projectTitle {
     font-size: var(--font-size-extra-small);
-    .title {
-        font-weight: var(--font-weight-bold);
+
+    .subtitle {
+        opacity: 0.6;
+
+        &:before {
+            padding: 0 var(--spacing-mega-small);
+            content: '|';
+        }
     }
 
     &.medium {
         font-size: var(--font-size-small);
     }
+
     &.large {
         font-size: var(--font-size-medium);
     }
+
+    &.extraLarge {
+        font-size: var(--font-size-large);
+    }
+
     &.block {
         .subtitle, .title {
             display: block;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .title {
+            display: block;
+        }
+
+        .subtitle {
+            display: block;
+
+            &:before {
+                padding: unset;
+                content: unset;
+            }
         }
     }
 }

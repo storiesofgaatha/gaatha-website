@@ -48,11 +48,12 @@ function PageWithSideBar(props: Props) {
                 {pageTitle}
             </Head>
             <div className={styles.pageContent}>
-                <GaathaLogo
-                    className={styles.responsiveLogo}
-                    variant="small"
-                    lightMode={lightMode}
-                />
+                <div className={styles.responsiveLogoContainer}>
+                    <GaathaLogo
+                        variant="small"
+                        lightMode={lightMode}
+                    />
+                </div>
                 {isNotDefined(navbar) && (
                     <SideNavbar
                         className={_cs(navbarClassName, styles.navbar)}

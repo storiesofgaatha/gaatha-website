@@ -10,8 +10,9 @@
         color: var(--color-text-on-light);
     }
 
-    .responsiveLogo {
+    .responsiveLogoContainer {
         display: none;
+        padding: var(--spacing-large) var(--spacing-large) 0;
 
         @media screen and (max-width: 900px) {
             display: flex;
@@ -21,9 +22,7 @@
 
     .pageContent {
         display: flex;
-        height: 100vh;
         gap: var(--spacing-medium);
-        overflow: auto;
 
         @media screen and (max-width: 900px) {
             flex-direction: column-reverse;
@@ -33,7 +32,10 @@
             flex-shrink: 0;
 
             @media screen and (max-width: 900px) {
+                position: fixed;
+                bottom: 0;
                 flex-shrink: 0;
+                z-index: 1;
                 width: 100%;
                 height: unset;
             }
@@ -41,7 +43,6 @@
 
         .content {
             flex-grow: 1;
-            overflow: auto;
         }
     }
 }

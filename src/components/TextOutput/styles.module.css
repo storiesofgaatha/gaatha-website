@@ -9,10 +9,8 @@
         flex-direction: column;
     }
 
-    .label {
-        font-weight: var(--font-weight-bold);
-    }
     .value {
+        word-break: break-all;
         font-weight: var(--font-weight-medium);
     }
 }

@@ -1,6 +1,4 @@
 .page {
-    overflow: auto;
-
     .mainContent {
         --spacing-right: var(--width-navbar);
         display: flex;
@@ -10,27 +8,8 @@
         padding: var(--spacing-extra-large) 0;
         padding-right: calc(var(--spacing-right) + var(--spacing-gigantic));
         padding-left: calc(var(--spacing-gigantic) * var(--multiplier) * var(--multiplier));
-        overflow-y: auto;
+        min-height: 100vh;
         gap: var(--spacing-super-large);
-
-        @media screen and (max-width: 1600px) {
-            padding-right: var(--spacing-right);
-        }
-        @media screen and (max-width: 1500px) {
-            padding-right: var(--spacing-gigantic);
-            padding-left: calc(var(--spacing-gigantic) * var(--multiplier));
-        }
-        @media screen and (max-width: 1300px) {
-            padding: var(--spacing-extra-large);
-        }
-        @media screen and (max-width: 1000px) {
-            padding-right: var(--spacing-medium);
-            padding-left: 0;
-        }
-        @media screen and (max-width: 900px) {
-            flex-direction: column;
-            padding-right: unset;
-        }
 
         .map {
             display: flex;
@@ -50,8 +29,8 @@
                 position: relative;
                 align-items: center;
                 justify-content: center;
-                width: 30vw;
-                height: 30vw;
+                width: 30rem;
+                height: 30rem;
                 overflow: hidden;
                 text-align: right;
 
@@ -66,6 +45,7 @@
                     border-radius: 50%;
                     aspect-ratio: 1/1;
                     width: 100%;
+
                     @media screen and (max-width: 900px) {
                         position: absolute;
                         top: 0;
@@ -75,6 +55,7 @@
                         height: 100%;
                     }
                 }
+
                 &:hover {
                     border-radius: 0%;
                     .gmapIframe {
@@ -127,13 +108,38 @@
             font-weight: var(--font-weight-bold);
         }
 
+        @media screen and (max-width: 1600px) {
+            padding-right: var(--spacing-right);
+        }
+
+        @media screen and (max-width: 1500px) {
+            padding-right: var(--spacing-gigantic);
+            padding-left: calc(var(--spacing-gigantic) * var(--multiplier));
+        }
+
+        @media screen and (max-width: 1300px) {
+            padding: var(--spacing-extra-large);
+        }
+
+        @media screen and (max-width: 1000px) {
+            padding-right: var(--spacing-medium);
+            padding-left: 0;
+        }
+
         @media screen and (max-width: 900px) {
             align-items: end;
             flex-direction: column;
             flex-wrap: unset;
             padding: 0;
+            padding-right: unset;
+            min-height: unset;
+
+            .map {
+                order: 2;
+            }
 
             .contact {
+                order: 1;
                 padding: var(--spacing-extra-large);
             }
         }

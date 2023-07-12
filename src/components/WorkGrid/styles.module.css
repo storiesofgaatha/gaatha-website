@@ -1,13 +1,20 @@
 .buckets {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     flex-grow: 1;
-    width: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
 
-    &::-webkit-scrollbar{
-        display: none;
+    .gridsContainer {
+        display: flex;
+        align-items: flex-start;
+        flex-grow: 1;
+        width: 100%;
+        gap: 2.5rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
     }
 
     .grid {
@@ -44,6 +51,7 @@
                 transition: all ease 0.5s;
                 opacity: 0;
                 background-color: var(--color-background);
+                width: 100%;
             }
 
             &:hover {
@@ -58,19 +66,53 @@
     }
 
     @media screen and (max-width: 720px) {
-        flex-direction: column;
-        padding: var(--spacing-extra-large);
-        scroll-snap-type: unset;
-
-        .grid {
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(4, 1fr);
+        .gridsContainer {
+            flex-direction: column;
+            padding: var(--spacing-extra-large);
+            gap: unset;
             height: unset;
-            scroll-snap-align: unset;
+            scroll-snap-type: unset;
 
-            .imageContainer {
-                height: 6rem;
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                height: unset;
+                scroll-snap-align: unset;
+
+                .imageContainer {
+                    height: 6rem;
+                }
             }
         }
+    }
+}
+
+.buttons {
+    display: flex;
+    position: absolute;
+    right: var(--width-navbar);
+    bottom: var(--spacing-large);
+    flex-shrink: 0;
+    justify-content: flex-end;
+    gap: var(--spacing-extra-small);
+
+    .button {
+        outline: 0;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 0;
+        color: var(--color-text-on-dark-alt);
+        font-size: var(--font-size-medium);
+
+        &.disabled {
+            opacity: 0.6;
+            cursor: unset;
+            pointer-events: none;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        display: none;
     }
 }

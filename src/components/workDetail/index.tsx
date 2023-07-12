@@ -160,85 +160,86 @@ function WorkDetail(props: Props) {
             ref={elementRef}
             className={_cs(styles.page, className)}
         >
-            <SideNavbar
-                className={styles.navbar}
-                lightMode
-                hideGaathaLogo
-            />
             <div className={styles.workTitleContainer}>
                 <GaathaLogo
+                    className={styles.logo}
                     variant="small"
                     lightMode
                 />
                 <ProjectTitle
                     title={work.title}
                     subtitle={work.subTitle}
-                    size="medium"
+                    size="extraLarge"
                 />
             </div>
-            <div className={styles.content}>
-                <div className={styles.artworkContainer}>
-                    {isDefined(work.artWork) && isDefined(work.artWork.url) && (
-                        <Image
-                            className={styles.artwork}
-                            src={work.artWork.url}
-                            alt="artwork"
-                            fill
-                        />
-                    )}
-                </div>
-                <div
-                    className={styles.carouselWrapper}
-                    ref={imageContainerParentRef}
-                >
-                    <div
-                        className={styles.imageContainer}
-                        ref={imageContainerRef}
-                    >
-                        {(galleryImages?.map((gallery) => (
-                            <div
-                                key={gallery.order}
-                                className={_cs(
-                                    styles.imageContent,
-                                    gallery.orientation === 'landscape' && styles.landscape,
-                                )}
-                            >
-                                {gallery.images.map((image) => (
-                                    <div className={styles.imageWrapper}>
-                                        <Image
-                                            className={styles.image}
-                                            src={image.image.url}
-                                            alt="carousel image"
-                                            fill
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        )))}
-                    </div>
-                    <div className={styles.sliderDots}>
-                        {galleryImages?.map((image, index) => (
-                            <button
-                                key={image.order}
-                                className={_cs(
-                                    styles.sliderButton,
-                                    activeElementIndex === index && styles.activeSliderButton,
-                                )}
-                                onClick={() => {
-                                    handleSliderDotClick(index);
-                                }}
-                                type="button"
-                            >
-                                <IoEllipse />
-                            </button>
-                        ))}
-                    </div>
-                </div>
-                <div className={styles.descriptionContainer}>
-                    <HTMLOutput
-                        className={styles.description}
-                        value={work.description}
+            <SideNavbar
+                className={styles.navbar}
+                lightMode
+                hideGaathaLogo
+            />
+            <div className={styles.artworkContainer}>
+                {isDefined(work.artWork) && isDefined(work.artWork.url) && (
+                    <Image
+                        className={styles.artwork}
+                        src={work.artWork.url}
+                        alt="artwork"
+                        placeholder="blur"
+                        fill
                     />
+                )}
+            </div>
+            <div className={styles.descriptionContainer}>
+                <HTMLOutput
+                    className={styles.description}
+                    value={work.description}
+                />
+            </div>
+            <div
+                className={styles.carouselWrapper}
+                ref={imageContainerParentRef}
+            >
+                <div
+                    className={styles.imageContainer}
+                    ref={imageContainerRef}
+                >
+                    {(galleryImages?.map((gallery) => (
+                        <div
+                            key={gallery.order}
+                            className={_cs(
+                                styles.imageContent,
+                                gallery.orientation === 'landscape' && styles.landscape,
+                            )}
+                        >
+                            {gallery.images.map((image) => (
+                                <div className={styles.imageWrapper}>
+                                    <Image
+                                        className={styles.image}
+                                        src={image.image.url}
+                                        alt="carousel image"
+                                        placeholder="blur"
+                                        fill
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    )))}
+                </div>
+                <div className={styles.sliderDots}>
+                    {galleryImages?.map((image, index) => (
+                        <button
+                            key={image.order}
+                            className={_cs(
+                                styles.sliderButton,
+                                activeElementIndex === index && styles.activeSliderButton,
+                            )}
+                            onClick={() => {
+                                handleSliderDotClick(index);
+                            }}
+                            type="button"
+                        >
+                            <IoEllipse />
+                        </button>
+                    ))}
                 </div>
             </div>
             <div className={styles.rightPane}>

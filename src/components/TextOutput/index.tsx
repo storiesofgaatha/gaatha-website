@@ -27,7 +27,7 @@ function TextOutput(props: Props) {
                 multiline && styles.multiline,
             )}
         >
-            <div className={_cs(styles.label, labelClassName)}>
+            <div className={_cs(labelClassName)}>
                 {label}
             </div>
             <div className={_cs(styles.value, valueClassName)}>

@@ -45,6 +45,8 @@ function WorkItem(props: Props) {
                         className={styles.image}
                         src={work.coverImage.url}
                         alt="cover image"
+                        quality={90}
+                        placeholder="blur"
                         fill
                     />
                 )}
@@ -60,21 +62,12 @@ function WorkItem(props: Props) {
                         <ProjectTitle
                             className={_cs(
                                 styles.title,
+                                work.isCoverImageDark && styles.darkCoverImage,
                             )}
                             title={work.title}
                             subtitle={work.subTitle}
-                            size="medium"
+                            size="extraLarge"
                         />
-                    </div>
-                    <div className={styles.artwork}>
-                        {isDefined(work.artWork) && isDefined(work.artWork.url) && (
-                            <Image
-                                className={styles.image}
-                                src={work.artWork.url}
-                                alt="artwork"
-                                fill
-                            />
-                        )}
                     </div>
                 </div>
                 <div className={styles.bottom}>
