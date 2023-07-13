@@ -1,6 +1,11 @@
 import React from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
 import Image from 'next/image';
+import {
+    IoMailOutline,
+    IoLogoLinkedin,
+    IoLogoInstagram,
+} from 'react-icons/io5';
 
 import { PeopleQuery } from 'generated/types';
 
@@ -45,8 +50,32 @@ function PeopleItem(props: Props) {
                 <div>
                     {people?.qualification}
                 </div>
-                <div>
-                    {people?.email}
+                <div className={styles.socials}>
+                    {people.email && (
+                        <a
+                            href={`mailto:${people.email}`}
+                        >
+                            <IoMailOutline title={people.email} />
+                        </a>
+                    )}
+                    {people.linkedinUrl && (
+                        <a
+                            href={people.linkedinUrl}
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            <IoLogoLinkedin />
+                        </a>
+                    )}
+                    {people.instagramUrl && (
+                        <a
+                            href={people.instagramUrl}
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            <IoLogoInstagram />
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

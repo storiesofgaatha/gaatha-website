@@ -24,7 +24,8 @@
 
         .link {
             transition: all 0.2s ease-in;
-            opacity: 0;
+            opacity: 1;
+
             &:hover {
                 color: var(--color-text-on-dark-alt);
             }
@@ -66,14 +67,6 @@
 
         @media screen and (max-width: 900px) {
             display: none;
-        }
-    }
-
-    &:hover {
-        .linkContainer {
-            .link {
-                opacity: 1;
-            }
         }
     }
 

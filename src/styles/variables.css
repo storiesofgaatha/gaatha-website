@@ -34,6 +34,7 @@
     --font-weight-bold: 600;
 
     /* Font size */
+    --font-size-super-small: calc(var(--font-size-base) / var(--multiplier) / var(--multiplier));
     --font-size-extra-small: calc(var(--font-size-base) / var(--multiplier));
     --font-size-small: var(--font-size-base);
     --font-size-medium: calc(var(--font-size-base) * var(--multiplier));
@@ -48,6 +49,7 @@
     --font-size-heading-extra-large: calc(var(--font-size-heading-base) * var(--multiplier) * var(--multiplier));
 
     /* Spacing */
+    --spacing-tiny: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier)));
     --spacing-mega-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier) * var(--multiplier) * var(--multiplier)));
     --spacing-super-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier) * var(--multiplier)));
     --spacing-extra-small: calc(var(--spacing-base) / (var(--multiplier) * var(--multiplier)));

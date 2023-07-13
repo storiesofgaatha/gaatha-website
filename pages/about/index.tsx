@@ -50,17 +50,16 @@ function About() {
                             isDefined(selectedTopic) && styles.hideDescription,
                         )}
                         >
-                            Based in Kathmandu, Gaatha (Nepali: गाथा), translatang to
-                            &quot;stories,&quot; started with a young group of collaborative
-                            professionals aligned together in creating a studio where
-                            ideas are valued to reinforce better solutions in architectural
-                            practice. Our studio incorporates a team that constantly strives
-                            to enhance the built environment with the same care and
-                            attention to detail in all works of architecture, planning,
-                            landscape, art, graphics, and research. By exploring, creating,
-                            and documenting stories with a team from diverse disciplines
-                            across the globe, our practice has remained true to its core
-                            values since its inception.
+                            Gaatha (Nepali: गाथा), translating to &quot;stories,&quot; is
+                            an architecture and design firm based in Kathmandu started in
+                            2019 by a young group of architects with a common vision to
+                            redefine architecture and design as a practice of crafting
+                            stories of the relationship between people,
+                            nature, and the built environment. Gaatha recognizes architecture
+                            as a collaborative discipline between diverse fields of practice.
+                            Thus, our studio incorporates a global team that constantly interact
+                            together in exploring, creating, and documenting stories, to create
+                            the &quot;stories of Gaatha&quot;.
                         </div>
                         <StoriesBlock
                             semiTransparent={isDefined(selectedTopic)}

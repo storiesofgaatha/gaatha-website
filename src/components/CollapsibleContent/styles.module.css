@@ -1,4 +1,7 @@
 .collapsibleContent{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
     z-index: 1;
 
     .headerContainer {
@@ -17,21 +20,15 @@
     }
 
     .children {
+        display: none;
         transition: all 0.4s ease-in-out;
         opacity: 0;
         height: 0;
 
-        >* {
-            display: none;
-        }
-
         &.expanded {
+            display: block;
             opacity: 1;
             height: auto;
-
-            >* {
-                display: block;
-            }
         }
     }
 }

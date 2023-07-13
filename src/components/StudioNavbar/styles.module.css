@@ -70,36 +70,20 @@
         }
 
         .subNavbarContainer {
+            display: flex;
             position: absolute;
             bottom: var(--height-navbar);
-            transform: translateY(calc(100% - var(--height-arrow)));
+            transform: translateY(calc(100%)));
             transition: all ease-in-out 0.2s;
             z-index: 1;
+            border-top: 1px solid #f0f0f0;
             background-color: var(--color-background-light);
-            padding: 0 var(--spacing-extra-large);
+            padding: var(--spacing-extra-small) var(--spacing-extra-large);
             width: 100%;
+            gap: var(--spacing-small);
 
-            .arrow {
-                display: flex;
-                justify-content: space-between;
-                padding: var(--spacing-medium) 0;
-                width: 100%;
-                height: var(--height-arrow);
-                color: var(--color-text-on-light-alt);
+            .link {
                 font-size: var(--font-size-small);
-            }
-
-            .otherRoutes {
-                display: flex;
-                flex-direction: column;
-                padding: var(--spacing-small) 0;
-                color: var(--color-text-on-light);
-                font-size: var(--font-size-small);
-                gap: var(--spacing-super-small);
-            }
-
-            &.unhide {
-                transform: translateY(0);
             }
         }
 
@@ -132,20 +116,5 @@
         .active {
             color: var(--color-text-on-light-alt);
         }
-    }
-}
-
-.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.3);
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-
-    &.light {
-        background-color: rgba(0, 0, 0, 0.1);
     }
 }

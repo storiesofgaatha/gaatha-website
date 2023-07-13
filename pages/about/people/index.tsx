@@ -44,7 +44,6 @@ function People(props: Props) {
         >
             <div className={styles.people}>
                 <div className={styles.founders}>
-                    <span>Founding members</span>
                     {founders.map((person) => (
                         <PeopleItem
                             className={styles.person}
@@ -53,7 +52,6 @@ function People(props: Props) {
                     ))}
                 </div>
                 <div className={styles.members}>
-                    <span>Team members</span>
                     {currentMembers.length > 0 && currentMembers.map((person) => (
                         <PeopleItem
                             className={styles.person}

@@ -32,7 +32,7 @@ function Contact() {
                         value={(
                             <>
                                 <p>
-                                    Kupondole, Jwagal Road
+                                    Patan Dhoka - 03
                                 </p>
                                 <p>
                                     Lalitpur, Province 3, Nepal
