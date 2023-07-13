@@ -1,6 +1,5 @@
-import React, { useRef, useCallback } from 'react';
+import React from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
-import { IoCaretDown } from 'react-icons/io5';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import { gql } from 'graphql-request';
@@ -14,7 +13,6 @@ import {
 import ProjectTitle from 'components/ProjectTitle';
 import GaathaLogo from 'components/GaathaLogo';
 import WorkDetail from 'components/workDetail';
-import Button from 'components/Button';
 
 import styles from './styles.module.css';
 
@@ -29,6 +27,7 @@ function WorkItem(props: Props) {
         work,
     } = props;
 
+    /*
     const divRef = useRef<HTMLDivElement>(null);
 
     const handleClick = useCallback(() => {
@@ -36,6 +35,7 @@ function WorkItem(props: Props) {
             behavior: 'smooth',
         });
     }, []);
+     */
 
     return (
         <div className={styles.page}>
@@ -57,7 +57,6 @@ function WorkItem(props: Props) {
                         <GaathaLogo
                             className={styles.logo}
                             variant="small"
-                            lightMode={!work.isCoverImageDark}
                         />
                         <ProjectTitle
                             className={_cs(
@@ -66,22 +65,13 @@ function WorkItem(props: Props) {
                             )}
                             title={work.title}
                             subtitle={work.subTitle}
-                            size="extraLarge"
+                            size="large"
                         />
                     </div>
                 </div>
-                <div className={styles.bottom}>
-                    <Button
-                        name={undefined}
-                        onClick={handleClick}
-                        className={styles.button}
-                    >
-                        <IoCaretDown />
-                    </Button>
-                </div>
             </div>
             <WorkDetail
-                elementRef={divRef}
+                // elementRef={divRef}
                 className={styles.detail}
                 work={work}
             />

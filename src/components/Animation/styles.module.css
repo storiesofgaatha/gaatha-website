@@ -4,6 +4,82 @@
         stroke-dashoffset: 10000;
         animation: dash 4s linear forwards;
     }
+
+    .one {
+        path {
+            animation: dash 5s linear forwards;
+            animation-delay: 0;
+        }
+    }
+
+    .two {
+        path {
+            animation: dash 3s linear forwards;
+            animation-delay: 3s;
+        }
+    }
+
+    .three {
+        path {
+            animation: dash 3s linear forwards;
+            animation-delay: 4.5s;
+        }
+    }
+
+    .four {
+        path {
+            animation: dash 8s linear forwards;
+            animation-delay: 4s;
+        }
+    }
+
+    .five {
+        path {
+            animation: dash 8s linear forwards;
+            animation-delay: 4.5s;
+        }
+    }
+
+    .six {
+        path {
+            animation: dash 8s linear forwards;
+            animation-delay: 4.5s;
+        }
+    }
+
+    .seven {
+        path {
+            animation: dash 8s linear forwards;
+            animation-delay: 6s;
+        }
+    }
+
+    .eight {
+        path {
+            animation-delay: 6.5s;
+        }
+    }
+
+    .nine {
+        path {
+            animation: dash 5s linear forwards;
+            animation-delay: 7s;
+        }
+    }
+
+    .ten {
+        path {
+            animation: dash 7s linear forwards;
+            animation-delay: 8s;
+        }
+    }
+
+    .eleven {
+        path {
+            animation: dash 5s linear forwards;
+            animation-delay: 8s;
+        }
+    }
 }
 
 @keyframes dash {

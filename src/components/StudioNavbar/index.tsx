@@ -1,17 +1,11 @@
-import { useMemo } from 'react';
 import { _cs, isDefined } from '@togglecorp/fujs';
-import {
-    AiFillCaretUp,
-    AiFillCaretDown,
-} from 'react-icons/ai';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import GaathaLogo from 'components/GaathaLogo';
-import Button from 'components/Button';
 import { primaryRoutes } from 'components/WorkNavbar';
-import useBooleanState from 'hooks/useBooleanState';
+
 import styles from './styles.module.css';
 
 const secondaryRoutes = [
@@ -45,119 +39,84 @@ function StudioNavbar(props: Props) {
     const router = useRouter();
     const currentRoute = router.pathname;
 
-    const activeLink = useMemo(() => {
-        if (currentRoute === '/about') {
-            return 'Studio';
-        }
-        return 'People';
-    }, [
-        currentRoute,
-    ]);
-
-    const [
-        additionalNavShown,
-        , , ,
-        toggleShowAdditionalNav,
-    ] = useBooleanState(false);
-
     return (
-        <>
-            {additionalNavShown && (
-                <div
-                    className={_cs(styles.backdrop, lightMode && styles.light)}
+        <nav
+            className={_cs(
+                styles.sideNavbar,
+                className,
+                lightMode && styles.light,
+                hideGaathaLogo && styles.noLogo,
+                transparentMode && styles.transparentMode,
+            )}
+        >
+            {!hideGaathaLogo && (
+                <GaathaLogo
+                    className={styles.logo}
+                    variant="small"
+                    lightMode={lightMode}
                 />
             )}
-            <nav
-                className={_cs(
-                    styles.sideNavbar,
-                    className,
-                    lightMode && styles.light,
-                    hideGaathaLogo && styles.noLogo,
-                    transparentMode && styles.transparentMode,
-                )}
-            >
-                {!hideGaathaLogo && (
-                    <GaathaLogo
-                        className={styles.logo}
-                        variant="small"
-                        lightMode={lightMode}
-                    />
-                )}
 
-                <div className={styles.linkContainer}>
-                    <div className={styles.subRoutes}>
-                        {secondaryRoutes.map((route) => (
-                            <Link
-                                href={route.url}
-                                className={_cs(currentRoute === route.url && styles.active)}
-                            >
-                                {route.displayName}
-                            </Link>
-                        ))}
-                    </div>
-                    <div className={styles.routes}>
-                        {primaryRoutes.map((route) => (
-                            <Link
-                                href={isDefined(route.url) ? route.url : {}}
-                                className={_cs(
-                                    isDefined(route.url)
-                                        ? currentRoute.startsWith(route.url) && styles.active
-                                        : styles.disabled,
-                                    styles.link,
-                                )}
-                            >
-                                {route.displayName}
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-                <div className={styles.responsiveMenu}>
-                    <div
-                        className={_cs(
-                            styles.subNavbarContainer,
-                            additionalNavShown && styles.unhide,
-                        )}
-                    >
-                        <Button
-                            className={styles.arrow}
-                            name={undefined}
-                            onClick={toggleShowAdditionalNav}
-                            actions={additionalNavShown ? <AiFillCaretDown /> : <AiFillCaretUp />}
+            <div className={styles.linkContainer}>
+                <div className={styles.subRoutes}>
+                    {secondaryRoutes.map((route) => (
+                        <Link
+                            href={route.url}
+                            className={_cs(currentRoute === route.url && styles.active)}
                         >
-                            {activeLink}
-                        </Button>
-                        <div className={styles.otherRoutes}>
-                            {secondaryRoutes.map((route) => (
-                                <Link
-                                    href={route.url}
-                                    className={_cs(
-                                        currentRoute.startsWith(route.url) && styles.active,
-                                        styles.link,
-                                    )}
-                                >
-                                    {route.displayName}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                    <div className={styles.routes}>
-                        {primaryRoutes.map((route) => (
-                            <Link
-                                href={isDefined(route.url) ? route.url : {}}
-                                className={_cs(
-                                    isDefined(route.url)
-                                        ? currentRoute.startsWith(route.url) && styles.active
-                                        : styles.disabled,
-                                    styles.link,
-                                )}
-                            >
-                                {route.displayName}
-                            </Link>
-                        ))}
-                    </div>
+                            {route.displayName}
+                        </Link>
+                    ))}
                 </div>
-            </nav>
-        </>
+                <div className={styles.routes}>
+                    {primaryRoutes.map((route) => (
+                        <Link
+                            href={isDefined(route.url) ? route.url : {}}
+                            className={_cs(
+                                isDefined(route.url)
+                                    ? currentRoute.startsWith(route.url) && styles.active
+                                    : styles.disabled,
+                                styles.link,
+                            )}
+                        >
+                            {route.displayName}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+            <div className={styles.responsiveMenu}>
+                <div
+                    className={styles.subNavbarContainer}
+                >
+                    {secondaryRoutes.map((route) => (
+                        <Link
+                            href={route.url}
+                            className={_cs(
+                                currentRoute === route.url && styles.active,
+                                styles.link,
+                            )}
+                        >
+                            {route.displayName}
+                        </Link>
+                    ))}
+                </div>
+                <div className={styles.routes}>
+                    {primaryRoutes.map((route) => (
+                        <Link
+                            href={isDefined(route.url) ? route.url : {}}
+                            className={_cs(
+                                isDefined(route.url)
+                                    ? currentRoute.startsWith(route.url) && styles.active
+                                    : styles.disabled,
+                                styles.link,
+                            )}
+                        >
+                            {route.displayName}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </nav>
     );
 }
 export default StudioNavbar;

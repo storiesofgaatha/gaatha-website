@@ -54,7 +54,7 @@ function WorkDetail(props: Props) {
                 ? ({
                     id: workImage.id,
                     image: workImage.image,
-                    orientation: (workImage.image.width ?? 0) > (workImage.image.height ?? 0) ? 'landscape' as const : 'portrait' as const,
+                    orientation: (workImage.image?.width ?? 0) > (workImage.image?.height ?? 0) ? 'landscape' as const : 'portrait' as const,
                 })
                 : undefined
         ))
@@ -169,7 +169,7 @@ function WorkDetail(props: Props) {
                 <ProjectTitle
                     title={work.title}
                     subtitle={work.subTitle}
-                    size="extraLarge"
+                    size="large"
                 />
             </div>
             <SideNavbar

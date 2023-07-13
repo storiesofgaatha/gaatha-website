@@ -12,8 +12,9 @@
             display: flex;
             position: relative;
             flex-shrink: 0;
-            width: 120px;
+            width: 144px;
             height: 120px;
+
             .picture {
                 object-fit: cover;
                 object-position: top;
@@ -24,7 +25,9 @@
             transition: 1s ease-out;
             opacity: 0;
             padding: var(--spacing-large) 0;
+            text-transform: lowercase;
             font-size: var(--font-size-small);
+
             @media screen and (max-width: 900px) {
                 opacity: 1;
             }
@@ -36,9 +39,16 @@
         flex-direction: column;
         flex-grow: 1;
         font-size: var(--font-size-extra-small);
+        gap: var(--spacing-tiny);
 
         .designation {
             font-weight: var(--font-weight-bold);
+        }
+
+        .socials {
+            display: flex;
+            gap: var(--spacing-tiny);
+            font-size: var(--font-size-small);
         }
     }
     &:hover {

@@ -91,10 +91,12 @@
 
                 .studioDescription {
                     display: flex;
+                    flex-direction: column;
                     transition: all 0.4s ease-in-out;
                     max-width: 42rem;
                     text-align: right;
                     font-size: var(--font-size-small);
+                    gap: var(--spacing-extra-small);
 
                     &.hideDescription {
                         opacity: 0;

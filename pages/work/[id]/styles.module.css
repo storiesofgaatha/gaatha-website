@@ -27,7 +27,6 @@
         flex-direction: column;
         flex-shrink: 0;
         justify-content: stretch;
-        padding: var(--spacing-large);
         width: 100%;
         height: 100vh;
         overflow: auto;
@@ -37,6 +36,9 @@
         .header {
             display: flex;
             flex-direction: column;
+            background: linear-gradient(0deg, rgb(0% 0% 0% / 0) 0%, rgb(0% 0% 0% / 0.004803679899192392) 6.25%, rgb(0% 0% 0% / 0.019030116872178315) 12.5%, rgb(0% 0% 0% / 0.04213259692436369) 18.75%, rgb(0% 0% 0% / 0.0732233047033631) 25%, rgb(0% 0% 0% / 0.11110744174509943) 31.25%, rgb(0% 0% 0% / 0.15432914190872754) 37.5%, rgb(0% 0% 0% / 0.20122741949596792) 43.75%, rgb(0% 0% 0% / 0.24999999999999997) 50%, rgb(0% 0% 0% / 0.29877258050403205) 56.25%, rgb(0% 0% 0% / 0.3456708580912724) 62.5%, rgb(0% 0% 0% / 0.3888925582549005) 68.75%, rgb(0% 0% 0% / 0.42677669529663687) 75%, rgb(0% 0% 0% / 0.45786740307563634) 81.25%, rgb(0% 0% 0% / 0.4809698831278217) 87.5%, rgb(0% 0% 0% / 0.4951963201008076) 93.75%, rgb(0% 0% 0% / 0.5) 100%);
+            padding: var(--spacing-large);
+            padding-bottom: var(--spacing-gigantic);
             gap: var(--spacing-medium);
 
             .top {
@@ -49,41 +51,17 @@
                 }
 
                 .title {
-                    color: var(--color-text-on-light-alt);
+                    color: #fff;
 
                     &.darkCoverImage {
                         text-shadow: 1px 1px 6px rgba(100, 100, 100, 1);
-                        color: var(--color-text-on-dark-alt);
+                        color: #fff;
                     }
                 }
             }
-        }
 
-        .bottom {
-            display: flex;
-            align-items: flex-end;
-            flex-grow: 1;
-            justify-content: center;
-
-            .button {
-                display: flex;
-                position: relative;
-                justify-content: center;
-                padding: var(--spacing-super-small);
-                animation: blink 2s linear infinite;
-
-                @keyframes blink{
-                    0% {
-                        opacity: 1;
-                    }
-                    45% {
-                        transform: translateY(2px);
-                        opacity: 0.2;
-                    }
-                    100% {
-                        opacity: 1;
-                    }
-                }
+            @media screen and (max-width: 900px) {
+                padding-bottom: calc(var(--spacing-gigantic) * 2);
             }
         }
     }

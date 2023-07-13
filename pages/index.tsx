@@ -48,12 +48,11 @@ function Home(props: Props) {
             className={_cs(styles.home, className)}
             contentClassName={styles.mainContent}
         >
-
             {isDefined(preloadDone) && (
                 <PreLoad show={!preloadDone} />
             )}
             <div className={styles.logoContainer}>
-                <GaathaLogo variant="large" className={styles.logo} />
+                <GaathaLogo variant="medium" className={styles.logo} />
                 <Animation
                     className={styles.scribble}
                 />

@@ -16,7 +16,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: var(--spacing-super-small);
+        gap: 0.2rem;
 
         .sliderButton {
             outline: 0;
@@ -24,7 +24,8 @@
             background-color: transparent;
             cursor: pointer;
             padding: 0;
-            color: #c0c0c0;
+            color: #d0d0d0;
+            font-size: 0.5rem;
 
             &.activeSliderButton {
                 color: #616161;
@@ -97,18 +98,19 @@
             height: 100%;
             overflow: auto;
             text-align: justify;
-            line-height: 1.5;
+            line-height: 1.4;
             color: var(--color-text-on-light-alt);
 
             p {
                 margin: 0;
+                margin-bottom: var(--spacing-large);
             }
 
             &::-webkit-scrollbar {
-                width: 0.4em;
+                width: 0.3em;
             }
             &::-webkit-scrollbar-thumb {
-                background-color: rgba(0, 0, 0, 0.3);
+                background-color: rgba(0, 0, 0, 0.2);
             }
         }
     }
@@ -222,10 +224,15 @@
             .info {
                 display: flex;
                 align-items: flex-start;
-                flex-basis: 100%;
+                flex-basis: calc(100% / 2 - var(--spacing-medium));
                 flex-direction: column;
                 flex-grow: 1;
                 text-align: left;
+
+                &:nth-child(even) {
+                    align-items: flex-end;
+                    text-align: right!important;
+                }
             }
         }
     }
@@ -250,6 +257,10 @@
         .descriptionContainer {
             order: 4;
             padding: var(--spacing-extra-small);
+
+            .description {
+                text-align: unset;
+            }
         }
 
         .rightPane {

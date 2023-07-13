@@ -18,7 +18,7 @@
             height: 100vh;
             height: var(--doc-height);
             overflow: hidden;
-            animation: moveBack 2s 1 forwards;
+            animation: moveBack 10s 1 forwards;
             animation-delay: 800ms;
 
             @keyframes moveBack {
@@ -41,7 +41,7 @@
             .top {
                 top: 0;
                 border-bottom: 5px solid var(--color-background);
-                animation: moveTopBox 2s 1 forwards;
+                animation: moveTopBox 4s 1 forwards;
                 animation-delay: 250ms;
 
                 @keyframes moveTopBox {
@@ -58,7 +58,7 @@
             .bottom {
                 bottom: 0;
                 border-top: 5px solid var(--color-background);
-                animation: moveBottomBox 2s 1 forwards;
+                animation: moveBottomBox 4s 1 forwards;
                 animation-delay: 250ms;
 
                 @keyframes moveBottomBox {
@@ -87,7 +87,19 @@
             left: 50%;
             transform: translateX(-50%);
             object-fit: contain;
+            opacity: 0.2;
             margin: auto;
+            animation: showLogo 5s forwards;
+            animation-delay: 800ms;
+
+            @keyframes showLogo {
+                from  {
+                    opacity: 0.2;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
         }
 
         .scribble {
@@ -124,7 +136,7 @@
         gap: var(--spacing-mega-small);
         padding-bottom: var(--spacing-gigantic);
         text-align: center;
-        font-size: var(--font-size-medium);
+        font-size: var(--font-size-small);
 
         .route {
             color: var(--color-text-on-dark);
@@ -140,6 +152,10 @@
             &:hover {
                 color: var(--color-text-on-dark-alt);
             }
+        }
+
+        @media screen and (max-width: 900px) {
+            padding-bottom: calc(var(--spacing-gigantic) * 2);
         }
     }
 }
