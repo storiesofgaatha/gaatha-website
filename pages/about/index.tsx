@@ -57,7 +57,7 @@ function About() {
                             stories of the relationship between people,
                             nature, and the built environment. Gaatha recognizes architecture
                             as a collaborative discipline between diverse fields of practice.
-                            Thus, our studio incorporates a global team that constantly interact
+                            Thus, our studio incorporates a global team that constantly interacts
                             together in exploring, creating, and documenting stories, to create
                             the &quot;stories of Gaatha&quot;.
                         </div>
