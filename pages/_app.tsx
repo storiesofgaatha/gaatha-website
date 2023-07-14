@@ -1,14 +1,42 @@
 import { useEffect } from 'react';
+import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react';
+import { useRouter } from 'next/router';
 import 'styles/globals.css';
 import 'styles/variables.css';
 
 import type { AppProps } from 'next/app';
+// Check that PostHog is client-side (used to handle Next.js SSR)
+if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
+        api_host: 'https://app.posthog.com',
+        persistence: 'memory',
+        // Enable debug mode in development
+        loaded: (loadedPosthog) => {
+            if (process.env.NODE_ENV === 'development') {
+                loadedPosthog.debug();
+            }
+        },
+    });
+}
 
 function MyApp(props: AppProps) {
     const {
         Component,
         pageProps,
     } = props;
+
+    const router = useRouter();
+
+    useEffect(() => {
+        // Track page views
+        const handleRouteChange = () => posthog?.capture('$pageview');
+        router.events.on('routeChangeComplete', handleRouteChange);
+
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, [router]);
 
     useEffect(() => {
         const documentHeight = () => {
@@ -21,8 +49,10 @@ function MyApp(props: AppProps) {
     }, []);
 
     return (
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        <Component {...pageProps} />
+        <PostHogProvider client={posthog}>
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+            <Component {...pageProps} />
+        </PostHogProvider>
     );
 }
 
