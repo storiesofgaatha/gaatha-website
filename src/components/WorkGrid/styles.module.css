@@ -6,11 +6,12 @@
     .gridsContainer {
         display: flex;
         align-items: flex-start;
+        flex-direction: column;
         flex-grow: 1;
         width: 100%;
         gap: 2.5rem;
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: y mandatory;
 
         &::-webkit-scrollbar{
             display: none;

@@ -8,8 +8,8 @@ import { _cs, isDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-    AiFillCaretLeft,
-    AiFillCaretRight,
+    AiFillCaretUp,
+    AiFillCaretDown,
 } from 'react-icons/ai';
 
 import {
@@ -43,10 +43,10 @@ function WorkGrid(props: Props) {
         if (!childRef.current || !parentRef.current) {
             return;
         }
-        const parentWidth = parentRef.current.offsetWidth;
-        const scrollPosition = childRef.current.scrollLeft;
+        const parentHeight = parentRef.current.offsetHeight;
+        const scrollPosition = childRef.current.scrollTop;
 
-        const elementPosition = Math.floor(scrollPosition / parentWidth);
+        const elementPosition = Math.floor(scrollPosition / parentHeight);
         setActiveElementIndex(elementPosition);
     }, []);
 
@@ -54,8 +54,8 @@ function WorkGrid(props: Props) {
         if (!parentRef.current || !childRef.current) {
             return;
         }
-        const parentWidth = parentRef.current.offsetWidth;
-        childRef.current.scrollLeft = parentWidth * (activeElementIndex - 1);
+        const parentHeight = parentRef.current.offsetHeight;
+        childRef.current.scrollTop = parentHeight * (activeElementIndex - 1);
         setActiveElementIndex(activeElementIndex - 1);
     }, [activeElementIndex]);
 
@@ -63,8 +63,8 @@ function WorkGrid(props: Props) {
         if (!parentRef.current || !childRef.current) {
             return;
         }
-        const parentWidth = parentRef.current.offsetWidth;
-        childRef.current.scrollLeft = parentWidth * (activeElementIndex + 1);
+        const parentHeight = parentRef.current.offsetHeight;
+        childRef.current.scrollTop = parentHeight * (activeElementIndex + 1);
         setActiveElementIndex(activeElementIndex + 1);
     }, [activeElementIndex]);
 
@@ -128,7 +128,7 @@ function WorkGrid(props: Props) {
                     onClick={handlePreviousClick}
                     type="button"
                 >
-                    <AiFillCaretLeft />
+                    <AiFillCaretUp />
                 </button>
                 <button
                     className={_cs(
@@ -138,7 +138,7 @@ function WorkGrid(props: Props) {
                     onClick={handleNextClick}
                     type="button"
                 >
-                    <AiFillCaretRight />
+                    <AiFillCaretDown />
                 </button>
             </div>
         </>
