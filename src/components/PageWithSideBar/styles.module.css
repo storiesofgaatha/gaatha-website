@@ -22,10 +22,12 @@
 
     .pageContent {
         display: flex;
+        flex-grow: 1;
         gap: var(--spacing-medium);
 
         @media screen and (max-width: 900px) {
             flex-direction: column-reverse;
+            flex-grow: unset;
         }
 
         .navbar {
