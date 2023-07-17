@@ -32,13 +32,13 @@
 
         .imageContainer {
             position: relative;
+            filter: grayscale(100%);
 
             .coverImage {
                 transition: all ease 1s;
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
-                filter: grayscale(100%);
             }
 
             &:nth-child(6n),
@@ -56,9 +56,8 @@
             }
 
             &:hover {
-                .coverImage {
-                    filter: grayscale(0%);
-                }
+                filter: grayscale(0%);
+
                 .title {
                     opacity: 1;
                 }

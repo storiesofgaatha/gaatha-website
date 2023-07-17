@@ -1,7 +1,7 @@
 import React from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { gql } from 'graphql-request';
 
 import { gaathaRequest } from 'utils/common';
@@ -47,7 +47,7 @@ function WorkItem(props: Props) {
                         alt="cover image"
                         quality={90}
                         placeholder="blur"
-                        fill
+                        layout="fill"
                     />
                 )}
             </div>

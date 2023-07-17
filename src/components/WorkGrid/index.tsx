@@ -6,7 +6,7 @@ import {
 } from 'react';
 import { _cs, isDefined } from '@togglecorp/fujs';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import {
     AiFillCaretUp,
     AiFillCaretDown,
@@ -105,7 +105,7 @@ function WorkGrid(props: Props) {
                                             src={work.coverImage.url}
                                             alt="cover image"
                                             placeholder="blur"
-                                            fill
+                                            layout="fill"
                                         />
                                         <ProjectTitle
                                             className={styles.title}
