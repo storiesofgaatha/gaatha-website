@@ -58,12 +58,16 @@ function People(props: Props) {
                             people={person}
                         />
                     ))}
+                </div>
+                <div className={styles.alumni}>
                     {pastMembers.length > 0 && (
                         <>
-                            <span>Past members</span>
+                            <span className={styles.title}>Former members</span>
                             <div className={styles.pastMembers}>
                                 {pastMembers.map((person) => (
-                                    person.name
+                                    <div className={styles.member}>
+                                        {person.name}
+                                    </div>
                                 ))}
                             </div>
                         </>

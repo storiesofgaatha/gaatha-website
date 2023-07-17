@@ -180,7 +180,7 @@ function About() {
                         <Image
                             className={styles.image}
                             alt="Right Image"
-                            src="/design.avif"
+                            src="/design.jpeg"
                             placeholder="blur"
                             layout="fill"
                         />
@@ -189,7 +189,7 @@ function About() {
                         <Image
                             className={styles.image}
                             alt="Right Image"
-                            src="/workspace.avif"
+                            src="/workspace.jpeg"
                             placeholder="blur"
                             layout="fill"
                         />
@@ -198,7 +198,7 @@ function About() {
                         <Image
                             className={styles.image}
                             alt="Right Image"
-                            src="/collab.avif"
+                            src="/collab.jpeg"
                             placeholder="blur"
                             layout="fill"
                         />

@@ -54,6 +54,9 @@ function PeopleItem(props: Props) {
                     {people.email && (
                         <a
                             href={`mailto:${people.email}`}
+                            rel="noreferrer"
+                            target="_blank"
+                            title="Gmail"
                         >
                             <IoMailOutline title={people.email} />
                         </a>
@@ -63,6 +66,7 @@ function PeopleItem(props: Props) {
                             href={people.linkedinUrl}
                             rel="noreferrer"
                             target="_blank"
+                            title="LinkedIn"
                         >
                             <IoLogoLinkedin />
                         </a>
@@ -72,6 +76,7 @@ function PeopleItem(props: Props) {
                             href={people.instagramUrl}
                             rel="noreferrer"
                             target="_blank"
+                            title="Instagram"
                         >
                             <IoLogoInstagram />
                         </a>
