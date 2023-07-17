@@ -173,34 +173,34 @@ function About() {
                             alt="Right Image"
                             src="/about_right.png"
                             placeholder="blur"
-                            fill
+                            layout="fill"
                         />
                     )}
                     {selectedTopic === 'design' && (
                         <Image
                             className={styles.image}
                             alt="Right Image"
-                            src="https://images.unsplash.com/photo-1676808527792-2c6937102a99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                            src="/design.avif"
                             placeholder="blur"
-                            fill
+                            layout="fill"
                         />
                     )}
                     {selectedTopic === 'workspace' && (
                         <Image
                             className={styles.image}
                             alt="Right Image"
-                            src="https://images.unsplash.com/photo-1676909027980-4d01f76652e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                            src="/workspace.avif"
                             placeholder="blur"
-                            fill
+                            layout="fill"
                         />
                     )}
                     {selectedTopic === 'collaboration' && (
                         <Image
                             className={styles.image}
                             alt="Right Image"
-                            src="https://images.unsplash.com/photo-1676834173767-e77528eebbb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=721&q=80"
+                            src="/collab.avif"
                             placeholder="blur"
-                            fill
+                            layout="fill"
                         />
                     )}
                 </div>
