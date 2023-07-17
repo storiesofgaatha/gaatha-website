@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { _cs } from '@togglecorp/fujs';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 import styles from './styles.module.css';
 
@@ -40,7 +40,7 @@ function GaathaLogo(props: Props) {
                 src={lightMode ? '/logo-dark.png' : '/logo-light.png'}
                 alt="Gaatha"
                 placeholder="blur"
-                fill
+                layout="fill"
             />
         </Link>
     );

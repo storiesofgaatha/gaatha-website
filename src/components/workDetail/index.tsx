@@ -7,7 +7,7 @@ import {
 } from 'react';
 import type { LegacyRef } from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import {
     IoEllipse,
 } from 'react-icons/io5';
@@ -184,7 +184,7 @@ function WorkDetail(props: Props) {
                         src={work.artWork.url}
                         alt="artwork"
                         placeholder="blur"
-                        fill
+                        layout="fill"
                     />
                 )}
             </div>
@@ -217,7 +217,7 @@ function WorkDetail(props: Props) {
                                         src={image.image.url}
                                         alt="carousel image"
                                         placeholder="blur"
-                                        fill
+                                        layout="fill"
                                     />
                                 </div>
                             ))}

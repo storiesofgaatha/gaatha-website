@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import { isDefined } from '@togglecorp/fujs';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { GetStaticProps } from 'next';
 import { gql } from 'graphql-request';
 
@@ -59,7 +59,7 @@ function GraphicsAndVisualizations(props: Props) {
                                 src={viz.coverImage.url}
                                 placeholder="blur"
                                 onMouseOver={() => handleMouseHover(viz.id)}
-                                fill
+                                layout="fill"
                             />
                         )}
                     </div>

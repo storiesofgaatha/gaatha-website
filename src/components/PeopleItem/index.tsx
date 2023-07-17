@@ -1,6 +1,6 @@
 import React from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import {
     IoMailOutline,
     IoLogoLinkedin,
@@ -35,7 +35,7 @@ function PeopleItem(props: Props) {
                             src={people?.profilePicture?.url}
                             alt="profile picture"
                             placeholder="blur"
-                            fill
+                            layout="fill"
                         />
                     )}
                 </div>

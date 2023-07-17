@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { isDefined, _cs } from '@togglecorp/fujs';
 import StudioNavbar from 'components/StudioNavbar';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 import GaathaLogo from 'components/GaathaLogo';
 import StoriesBlock from 'components/StoriesBlock';
@@ -28,7 +28,7 @@ function About() {
                     alt="Left Image"
                     src="/about_left.png"
                     placeholder="blur"
-                    fill
+                    layout="fill"
                 />
             </div>
             <StudioNavbar
