@@ -103,6 +103,35 @@ function About() {
                             </p>
                         </CollapsibleContent>
                         <CollapsibleContent
+                            name="collaboration"
+                            headerClassName={_cs(
+                                styles.topic,
+                                selectedTopic === 'collaboration' ? styles.active : styles.inactive,
+                                !selectedTopic && styles.neutral,
+                            )}
+                            onExpansionChange={handleExpansionChange}
+                            isExpanded={selectedTopic === 'collaboration'}
+                            childrenClassName={styles.topicDescription}
+                            header="collaboration"
+                        >
+                            <p>
+                                We value our partnerships when collaborating with various
+                                engineering professionals, architects, artists, academicians,
+                                local communities, and stakeholders who aid in useful and
+                                interactive problem-solving in the overall design and delivery
+                                process. Constant interaction with multiple disciplines
+                                inspires us to approach a subject from newer perspectives
+                                while opening a window of opportunity for learning and growth.
+                            </p>
+                            <p>
+                                For instance, getting to know the material and construction
+                                techniques of natural building practices from the perspective
+                                of site personnel allows our team to experiment further with
+                                possibilities of design, ultimately opening up further
+                                conversations for innovation in projects.
+                            </p>
+                        </CollapsibleContent>
+                        <CollapsibleContent
                             name="workspace"
                             headerClassName={_cs(
                                 styles.topic,
@@ -133,35 +162,6 @@ function About() {
                                 while interactive sessions within the team build connections
                                 and unity, ultimately creating a joyful experience and a story
                                 of its own.
-                            </p>
-                        </CollapsibleContent>
-                        <CollapsibleContent
-                            name="collaboration"
-                            headerClassName={_cs(
-                                styles.topic,
-                                selectedTopic === 'collaboration' ? styles.active : styles.inactive,
-                                !selectedTopic && styles.neutral,
-                            )}
-                            onExpansionChange={handleExpansionChange}
-                            isExpanded={selectedTopic === 'collaboration'}
-                            childrenClassName={styles.topicDescription}
-                            header="collaboration"
-                        >
-                            <p>
-                                We value our partnerships when collaborating with various
-                                engineering professionals, architects, artists, academicians,
-                                local communities, and stakeholders who aid in useful and
-                                interactive problem-solving in the overall design and delivery
-                                process. Constant interaction with multiple disciplines
-                                inspires us to approach a subject from newer perspectives
-                                while opening a window of opportunity for learning and growth.
-                            </p>
-                            <p>
-                                For instance, getting to know the material and construction
-                                techniques of natural building practices from the perspective
-                                of site personnel allows our team to experiment further with
-                                possibilities of design, ultimately opening up further
-                                conversations for innovation in projects.
                             </p>
                         </CollapsibleContent>
                     </div>
