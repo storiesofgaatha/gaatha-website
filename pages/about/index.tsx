@@ -167,42 +167,46 @@ function About() {
                     </div>
                 </div>
                 <div className={styles.rightBackground}>
-                    {!selectedTopic && (
-                        <Image
-                            className={styles.image}
-                            alt="Right Image"
-                            src="/about_right.png"
-                            placeholder="blur"
-                            layout="fill"
-                        />
-                    )}
-                    {selectedTopic === 'design' && (
-                        <Image
-                            className={styles.image}
-                            alt="Right Image"
-                            src="/design.jpeg"
-                            placeholder="blur"
-                            layout="fill"
-                        />
-                    )}
-                    {selectedTopic === 'workspace' && (
-                        <Image
-                            className={styles.image}
-                            alt="Right Image"
-                            src="/workspace.jpeg"
-                            placeholder="blur"
-                            layout="fill"
-                        />
-                    )}
-                    {selectedTopic === 'collaboration' && (
-                        <Image
-                            className={styles.image}
-                            alt="Right Image"
-                            src="/collab.jpeg"
-                            placeholder="blur"
-                            layout="fill"
-                        />
-                    )}
+                    <Image
+                        className={_cs(
+                            !selectedTopic && styles.show,
+                            styles.image,
+                        )}
+                        alt="Right Image"
+                        src="/about_right.png"
+                        placeholder="blur"
+                        layout="fill"
+                    />
+                    <Image
+                        className={_cs(
+                            selectedTopic === 'design' && styles.show,
+                            styles.image,
+                        )}
+                        alt="Design"
+                        src="/design.jpeg"
+                        placeholder="blur"
+                        layout="fill"
+                    />
+                    <Image
+                        className={_cs(
+                            selectedTopic === 'collaboration' && styles.show,
+                            styles.image,
+                        )}
+                        alt="Collaboration"
+                        src="/collab.jpeg"
+                        placeholder="blur"
+                        layout="fill"
+                    />
+                    <Image
+                        className={_cs(
+                            selectedTopic === 'workspace' && styles.show,
+                            styles.image,
+                        )}
+                        alt="Workspace"
+                        src="/workspace.jpeg"
+                        placeholder="blur"
+                        layout="fill"
+                    />
                 </div>
             </div>
         </div>
