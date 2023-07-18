@@ -67,39 +67,6 @@ function About() {
                     </div>
                     <div className={styles.studioTopics}>
                         <CollapsibleContent
-                            name="workspace"
-                            headerClassName={_cs(
-                                styles.topic,
-                                selectedTopic === 'workspace' ? styles.active : styles.inactive,
-                                !selectedTopic && styles.neutral,
-                            )}
-                            onExpansionChange={handleExpansionChange}
-                            isExpanded={selectedTopic === 'workspace'}
-                            header="workspace"
-                            childrenClassName={styles.topicDescription}
-                        >
-                            <p>
-                                Our studio is designed to promote collaboration, conversation,
-                                and sharing of ideas. We have intentionally maintained a cozy,
-                                homely environment where anyone feels comfortable being their
-                                true self, which we believe would empower confident and
-                                authentic designers to practice design freely. This value
-                                is reflected in a non-hierarchial team structure where every
-                                team member’s voice is heard and valued equally.
-                            </p>
-                            <p>
-                                Although our workspace follows any design office&apos;s basic
-                                fundamentals and layouts, our studio is not limited to just
-                                that. Instead, it expands to our working site and related
-                                collaboration offices, working together in a regulated
-                                structure. We have organized our workspace in such a way
-                                that critical brainstorming and planning events take place,
-                                while interactive sessions within the team build connections
-                                and unity, ultimately creating a joyful experience and a story
-                                of its own.
-                            </p>
-                        </CollapsibleContent>
-                        <CollapsibleContent
                             name="design"
                             headerClassName={_cs(
                                 styles.topic,
@@ -133,6 +100,39 @@ function About() {
                                 adds to the experience. Moreover, the idea of multi-disciplinary
                                 thinking helps the design evolve in terms of material,
                                 aesthetics, functionality, and purpose.
+                            </p>
+                        </CollapsibleContent>
+                        <CollapsibleContent
+                            name="workspace"
+                            headerClassName={_cs(
+                                styles.topic,
+                                selectedTopic === 'workspace' ? styles.active : styles.inactive,
+                                !selectedTopic && styles.neutral,
+                            )}
+                            onExpansionChange={handleExpansionChange}
+                            isExpanded={selectedTopic === 'workspace'}
+                            header="workspace"
+                            childrenClassName={styles.topicDescription}
+                        >
+                            <p>
+                                Our studio is designed to promote collaboration, conversation,
+                                and sharing of ideas. We have intentionally maintained a cozy,
+                                homely environment where anyone feels comfortable being their
+                                true self, which we believe would empower confident and
+                                authentic designers to practice design freely. This value
+                                is reflected in a non-hierarchial team structure where every
+                                team member’s voice is heard and valued equally.
+                            </p>
+                            <p>
+                                Although our workspace follows any design office&apos;s basic
+                                fundamentals and layouts, our studio is not limited to just
+                                that. Instead, it expands to our working site and related
+                                collaboration offices, working together in a regulated
+                                structure. We have organized our workspace in such a way
+                                that critical brainstorming and planning events take place,
+                                while interactive sessions within the team build connections
+                                and unity, ultimately creating a joyful experience and a story
+                                of its own.
                             </p>
                         </CollapsibleContent>
                         <CollapsibleContent
