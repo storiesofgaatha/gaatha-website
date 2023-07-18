@@ -6,7 +6,7 @@
         display: flex;
         flex-grow: 1;
         padding-top: var(--spacing-gigantic);
-        height: 42rem;
+        height: 44rem;
         gap: var(--spacing-mega-large);
 
         @media screen and (max-width: 900px) {
@@ -30,18 +30,48 @@
         }
 
         .members {
-            overflow: auto;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 0.2em;
+            }
 
             @media screen and (max-width: 900px) {
                 overflow: unset;
             }
         }
 
-        .pastMembers {
+        .alumni{
             display: flex;
+            align-self: flex-end;
             flex-direction: column;
-            gap: var(--spacing-medium);
-            font-weight: var(--font-weight-bold);
+            justify-content: flex-end;
+            padding-bottom: var(--spacing-large);
+            text-align: right;
+            font-size: var(--font-size-extra-small);
+            gap: var(--spacing-large);
+
+            @media screen and (max-width: 900px) {
+                align-self: flex-start;
+                justify-content: flex-start;
+                text-align: left;
+            }
+
+            .title {
+                text-decoration: underline;
+            }
+
+            .pastMembers {
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-super-small);
+
+                .member {
+                    &:hover {
+                        font-weight: var(--font-weight-bold);
+                    }
+                }
+            }
         }
 
         .person {
