@@ -37,6 +37,7 @@
                 }
 
                 .image {
+                    pointer-events: none;
                     object-fit: cover;
                     filter: grayscale(100%);
                     transition: filter ease 1s;

@@ -19,6 +19,7 @@
                 object-fit: cover;
                 object-position: top;
                 filter: grayscale(100%);
+                pointer-events: none;
             }
         }
         .name {
