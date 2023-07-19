@@ -16,6 +16,7 @@
         overflow: auto;
 
         .image {
+            pointer-events: none;
             object-fit: cover;
             object-position: center;
         }

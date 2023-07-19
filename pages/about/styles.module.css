@@ -16,6 +16,7 @@
         height: 100vh;
 
         .image {
+            pointer-events: none;
             position: absolute;
             object-fit: contain;
             object-position: center left;
@@ -162,6 +163,7 @@
                 opacity: 0;
                 object-fit: cover;
                 object-position: right;
+                pointer-events: none;
 
                 &.show {
                     opacity: 1;

@@ -83,6 +83,7 @@
         max-height: var(--artwork-height);
 
         .artwork {
+            pointer-events: none;
             object-fit: contain;
             object-position: bottom;
         }
@@ -148,6 +149,7 @@
                     height: 100%;
 
                     .image {
+                        pointer-events: none;
                         object-fit: cover;
                     }
                 }
