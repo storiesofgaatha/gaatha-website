@@ -1,6 +1,6 @@
 name: CD
 
-# NOTE: Don't update this
+# NOTE: Don't update this - After 60 inactive days this will not work
 on:
   push:
     branches:
