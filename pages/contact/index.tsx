@@ -49,12 +49,13 @@ function Contact() {
                             <>
                                 <p>
                                     <Link
-                                        href="tel:+977-123456789"
+                                        href="tel:+977-9766388487"
                                         className={styles.link}
                                     >
-                                        +977-123456789
+                                        +977-9766388487
                                     </Link>
                                 </p>
+                                {/*
                                 <p>
                                     <Link
                                         className={styles.link}
@@ -63,6 +64,7 @@ function Contact() {
                                         +1-1234567
                                     </Link>
                                 </p>
+                                  */}
                             </>
                         )}
                     />
