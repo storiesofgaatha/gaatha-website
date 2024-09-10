@@ -2,6 +2,7 @@ name: CD
 
 # NOTE: Don't update this - After 60 inactive days this will not work
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
