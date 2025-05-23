@@ -18,12 +18,12 @@ jobs:
 
     steps:
       # NOTE: This uses default branch which is `main`
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
           ssh-key: ${{secrets.GH_GAATHA_SERVER_SSH_KEY}}
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '18.x'
           cache: 'yarn'
@@ -47,7 +47,7 @@ jobs:
           NEXT_PUBLIC_POSTHOG_HOST_URL: ${{ vars.NEXT_PUBLIC_POSTHOG_HOST_URL }}
 
       - name: Upload GH artifacts
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: out/
 
@@ -68,4 +68,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
