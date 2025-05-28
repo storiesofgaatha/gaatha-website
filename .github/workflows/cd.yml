@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - fix/update-cd-packages
 
   schedule:
     # Runs "At 00:01. every day" (see https://crontab.guru)
@@ -61,9 +61,9 @@ jobs:
       id-token: write
       pages: write
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # environment:
+      # name: github-pages
+      # url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Deploy to GitHub Pages 🚀
